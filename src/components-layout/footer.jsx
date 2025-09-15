@@ -13,9 +13,7 @@ function Footer() {
     <Box
       bg="#1E1E1C"
       minWidth={{ base: "375px", md: "auto" }}
-      minHeight={{ base: "513px", md: "254px" }}
-      pt={{ base: "31px", md: 60 }}
-      px={{ base: "20px", md: 80 }}
+      pt={{ base: "31px", md: "60px" }}
       fontFamily="Inter"
       fontSize={"16px"}
       letterSpacing={"-2%"}
@@ -26,11 +24,10 @@ function Footer() {
       width="100%"
     >
       <Flex
-        border="1px solid red" // Main container
         direction={{ base: "column", md: "row" }}
         justifyContent={{ base: "flex-start", md: "space-between" }}
-        minWidth={{ base: "335px", md: "auto" }}
-        minHeight={{ base: "416px", md: "254px" }}
+        alignItems={{ md: "start" }}
+        px={{ base: "20px", md: "80px" }}
         pt={{ base: "20px", md: 0 }}
       >
         <Box mb={{ base: "41px", md: 0 }} ml={{ base: "5px", md: 0 }}>
@@ -43,20 +40,16 @@ function Footer() {
         </Box>
 
         <Flex
-          border="1px solid orange" // Text+Contacts+Socials Container
-          ml={{ base: 0, md: "79px" }}
-          mr={{ base: 0, md: "75px" }}
-          direction={{ base: "column", md: "row" }}
+          //   border="1px solid orange" // Text+Contacts+Socials Container
+          direction={{ base: "column", md: "row-reverse" }}
           justify={{ base: "flex-start" }}
           align="flex-start"
           width="100%"
         >
           <Box
-            border="1px solid white" // Text Container
-            width={{ base: "335px", md: "auto" }}
-            gap={{ base: 0, md: "40px" }}
+          // border="1px solid white" // Text Container
           >
-            <Text textStyle={textStyle} width="335px" height="57px">
+            <Text textStyle={textStyle} width="305px" height="57px">
               EdVision LLC — custom finishes, accent walls, tile & bathroom
               remodeling in Minneapolis and surrounding suburbs.{" "}
             </Text>
@@ -85,80 +78,80 @@ function Footer() {
           </Box>
 
           <Flex
-            border="1px solid magenta" // Text+Contacts+Socials Container
+            // border="1px solid magenta" // Contacts Container
             direction="column"
             alignItems="flex-start"
+            mt={{ base: "28px", md: "0" }}
+            mr={{ base: 0, md: "79px" }}
           >
             <Box
-              border="1px solid blue" // Contacts container
-              mt={{ base: "28px", md: "0" }}
-              // textAlign="left"
-              // className={inter.className}
-              // border={{ base: "1px solid green", md: "none" }}
-            >
-              <Box
-                display="inline-flex"
-                flexDirection="column"
-                alignItems="flex-start"
-              >
-                <Text display="inline">Contacts:</Text>
-                <Box display="flex" flexDirection="row" mt="6px" gap="11px">
-                  <Image
-                    src="/lib/icons/Phone.svg"
-                    alt="Phone"
-                    width={20}
-                    height={20}
-                  />
-                  <Link href="tel:+17634855531">+17634855531</Link>
-                </Box>
-                <Box display="flex" flexDirection="row" mt="8px" gap="7px">
-                  <Image
-                    src="/lib/icons/Email.svg"
-                    alt="Email"
-                    width={20}
-                    height={20}
-                  />
-                  <Link href="mailto:edvisions.pro@gmail.com" lineHeight="20px">
-                    edvisions.pro@gmail.com
-                  </Link>
-                </Box>
-              </Box>
-            </Box>
-
-            <Box
-              border="1px solid yellow" // Socials container
-              position={{ base: "static", md: "absolute" }}
-              bottom={{ md: "8px" }}
-              right={{ md: "75px" }}
               display="inline-flex"
-              flexDirection={{ base: "column", md: "row" }}
+              flexDirection="column"
               alignItems="flex-start"
-              mt="28px"
-              textAlign="left"
-              width={{ base: "110px", md: "auto" }}
-              height={{ base: "42px", md: "auto" }}
             >
-              <Text mr={{ base: "0", md: "28px" }}>Socials</Text>
-              <Text>Privacy Policy</Text>
+              <Text display="inline">Contacts:</Text>
+              <Box display="flex" flexDirection="row" mt="6px" gap="11px">
+                <Image
+                  src="/lib/icons/Phone.svg"
+                  alt="Phone"
+                  width={20}
+                  height={20}
+                />
+                <Link href="tel:+17634855531">+17634855531</Link>
+              </Box>
+              <Box display="flex" flexDirection="row" mt="8px" gap="7px">
+                <Image
+                  src="/lib/icons/Email.svg"
+                  alt="Email"
+                  width={20}
+                  height={20}
+                />
+                <Link href="mailto:edvisions.pro@gmail.com" lineHeight="20px">
+                  edvisions.pro@gmail.com
+                </Link>
+              </Box>
             </Box>
           </Flex>
         </Flex>
       </Flex>
 
-      <Box
-        mt={{ base: "40px", md: "83px" }}
-        borderTop="1px solid #FFFFFF1A"
-        fontSize={{ base: "10px", md: "16px" }}
-        fontStyle="italic"
+      <Flex
+        direction={{ base: "column", md: "row-reverse" }}
+        justify={{ base: "flex-start", md: "space-between" }}
+        align={{ base: "block", md: "center" }}
+        mt={{ base: "28px", md: "83px" }}
+        pt={{ base: "0", md: "19px" }}
+        pb={{ base: "0", md: "20px" }}
+        borderTop={{ base: "none", md: "1px solid #FFFFFF1A" }} // ✅ линия только на desktop
+        width="100%"
       >
-        <Text
-          ml="21px"
-          mb={{ base: "8px", md: "20px" }}
-          mt={{ base: "6px", md: "19px" }}
+        <Flex
+          //   border="1px solid yellow" // Socials container
+          display="inline-flex"
+          flexDirection={{ base: "column", md: "row" }}
+          alignItems="flex-start"
+          pl={{ base: "20px" }}
+          pr={{ md: "195px" }}
         >
-          Designed by Iryna Savchenko
-        </Text>
-      </Box>
+          <Text mr={{ base: "0", md: "28px" }}>Socials</Text>
+          <Text whiteSpace="nowrap">Privacy Policy</Text>
+        </Flex>
+        <Flex mt={{ base: "40px", md: "0" }}>
+          <Text
+            width="100%"
+            borderTop={{ base: "1px solid #FFFFFF1A", md: "none" }}
+            fontStyle="italic"
+            fontSize={{ base: "10px", md: "16px" }}
+            lineHeight="12px"
+            px={{ base: "20px", md: "80px" }}
+            pt={{ base: "6px" }}
+            pb={{ base: "8px" }}
+            whiteSpace="nowrap"
+          >
+            Designed by Iryna Savchenko
+          </Text>
+        </Flex>
+      </Flex>
     </Box>
   );
 }
