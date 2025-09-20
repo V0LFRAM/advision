@@ -1,8 +1,6 @@
 import { Box, Flex, Text, Link } from "@chakra-ui/react";
 import Image from "next/image";
-import { inter } from "../lib/fonts"; // Импортируем шрифт
 
-// components-layout/footer.jsx
 function Footer() {
   const textStyle = {
     letterSpacing: "-2%",
