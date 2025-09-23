@@ -1,8 +1,25 @@
 import { Footer } from "@/components-layout/footer";
 import { Provider } from "@/components/ui/provider";
-import { inter } from "../lib/fonts";
-import ThemeToggle from "@/components/ThemeToggle";
 import "./globals.css";
+
+import { Inter, League_Spartan } from "next/font/google";
+
+export const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+export const league = League_Spartan({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-league",
+  display: "swap",
+});
+
+
+
 
 export const metadata = {
   title: "Next Tailwind Theme",
@@ -15,10 +32,6 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Provider>
           <header>
-            <div>
-              <h1>Next Tailwind Theme</h1>
-              <ThemeToggle />
-            </div>
           </header>
           <main>{children}</main>
           <Footer />
