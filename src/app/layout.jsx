@@ -1,7 +1,8 @@
-import { Footer } from "@/components-layout/footer";
-import { Provider } from "@/components/ui/provider";
+import { Footer } from "@/componentsLayout/footer";
+import { Home } from "@/componentsLayout/header";
+// import { Provider } from "@/components/ui/provider";
 import { inter } from "../lib/fonts";
-import ThemeToggle from "@/components/ThemeToggle";
+// import ThemeToggle from "@/components/ThemeToggle";
 import "./globals.css";
 
 export const metadata = {
@@ -13,16 +14,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="uk" suppressHydrationWarning>
       <body className={inter.className}>
-        <Provider>
-          <header>
-            <div>
-              <h1>Next Tailwind Theme</h1>
-              <ThemeToggle />
-            </div>
-          </header>
-          <main>{children}</main>
-          <Footer />
-        </Provider>
+        {/* <Provider> */}
+        <Home />
+        <header>
+          <div>
+            <h1>Next Tailwind Theme</h1>
+            {/* <ThemeToggle /> */}
+          </div>
+        </header>
+        <main>{children}</main>
+        <Footer />
+        {/* </Provider> */}
       </body>
     </html>
   );
