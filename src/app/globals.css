@@ -1,36 +1,24 @@
-
-@import "tailwindcss";
-
-@config {
-  theme: {
-    extend: {
-      fontFamily: {
-        inter: ["Inter", "sans-serif"],
-      },
-    },
-  },
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Приклад токенів кольорів */
+/* твои стили ниже */
 :root {
-  --bg: 255 255 255;        /* білий */
-  --fg: 15 23 42;           /* slate-900 */
+  --bg: 223 224 219;
+  --fg: 30 30 28;
 }
 
 .dark {
-  --bg: 15 23 42;           /* slate-900 */
-  --fg: 241 245 249;        /* slate-100 */
+  --bg: 30 30 28;
+  --fg: 241 245 249;
 }
 
-html, body {
-  height: 100%;
+html,
+body {
+  height: 100%
 }
 
 body {
-  background-color: rgb(var(--bg));
+  background: rgb(var(--bg));
   color: rgb(var(--fg));
 }

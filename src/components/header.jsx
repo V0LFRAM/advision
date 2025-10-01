@@ -1,9 +1,8 @@
 import Image from "next/image";
 
-function Home() {
+function Header() {
   return (
-    <div className="pt-[20px] bg-red-500">
-      <h1 className="text-green-500">Вітаннячка!!!---!!!!!</h1>
+    <div className="pt-[20px]">
       <div className="flex flex-row justify-between items-center">
         <div className="w-[326px] h-[92px]">
           <img
@@ -26,4 +25,4 @@ function Home() {
   );
 }
 
-export { Home };
+export { Header };

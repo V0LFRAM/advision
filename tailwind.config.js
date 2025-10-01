@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: "class", // важливо для перемикача теми
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,jsx}",
     "./src/components/**/*.{js,jsx}",
@@ -13,7 +13,13 @@ module.exports = {
     // "./componentsLayout/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        inter: ["var(--font-inter)", "sans-serif"],
+        league: ["var(--font-league)", "sans-serif"],
+      },
+      letterSpacing: { tight001: "-0.01em" },
+    },
   },
   plugins: [],
 };
