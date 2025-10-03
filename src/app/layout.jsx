@@ -1,4 +1,3 @@
-import { Footer } from "@/components-layout/footer";
 import { Provider } from "@/components/ui/provider";
 import "./globals.css";
 
@@ -18,9 +17,6 @@ export const league = League_Spartan({
   display: "swap",
 });
 
-
-
-
 export const metadata = {
   title: "Next Tailwind Theme",
   description: "Light/Dark theme toggle with next-themes",
@@ -31,10 +27,8 @@ export default function RootLayout({ children }) {
     <html lang="uk" suppressHydrationWarning>
       <body className={inter.className}>
         <Provider>
-          <header>
-          </header>
+          <header></header>
           <main>{children}</main>
-          <Footer />
         </Provider>
       </body>
     </html>
