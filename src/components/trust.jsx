@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const trustItems = [
   {
     title: "Free On-Site Estimate",
@@ -25,13 +23,13 @@ const trustItems = [
 
 const TrustSection = () => {
   return (
-    <section className="w-full bg-[#1E1E1C]  pt-[120px] xl:pt-[180px] pb-[120px] xl:pb-[200px]  px-[20px] xl:pl-[80px] xl:pr-[67px]">
+    <section className="w-full bg-[rgb(var(--bg))] text-[rgb(var(--fg))] pt-[120px] xl:pt-[180px] pb-[120px] xl:pb-[200px]  px-[20px] xl:pl-[80px] xl:pr-[67px]">
       <div className="xl:block">
-        {/* Header */}
         <h2
+          style={{ fontFamily: "League Spartan, sans-serif" }}
           className="
             font-league font-regular lg:font-medium uppercase tracking-[-0.02em]
-            text-[35px] xl:text-[44px] leading-[100%] text-[#DFE0DB] pb-[40px] xl:pb-[50px]
+            text-[35px] xl:text-[44px] leading-[100%] pb-[40px] xl:pb-[50px]
           "
         >
           Why people{" "}
@@ -39,15 +37,12 @@ const TrustSection = () => {
           Us
         </h2>
 
-        {/* Desktop */}
-
         <div className="hidden xl:grid lg:grid-cols-5 xl:gap-[30px]">
           {trustItems.map((item, idx) => (
             <div key={idx} className="xl:w-[197px] xl:flex flex-col xl:gap-2">
               <h3
                 className="
                   font-inter font-semibold text-[16px] leading-[100%] tracking-[-0.02em] 
-                  text-[#9B948A]
                 "
               >
                 {item.title}
@@ -55,7 +50,6 @@ const TrustSection = () => {
               <p
                 className="
                   font-inter font-normal text-[16px] leading-[100%] tracking-[-0.02em] 
-                  text-[#DFE0DB]
                 "
               >
                 {item.text}
@@ -65,15 +59,12 @@ const TrustSection = () => {
         </div>
       </div>
 
-      {/* Mobile */}
-
       <div className="xl:hidden grid grid-cols-2 gap-y-[20px] gap-x-[14px]">
         {trustItems.map((item, idx) => (
           <div key={idx} className="w-[161px] flex flex-col gap-2">
             <h3
               className="
                   font-inter font-semibold text-[16px] leading-[100%] tracking-[-0.02em] 
-                  text-[#9B948A]
                 "
             >
               {item.title}
@@ -81,7 +72,6 @@ const TrustSection = () => {
             <p
               className="
                   font-inter font-normal text-[16px] leading-[100%] tracking-[-0.02em] 
-                  text-[#DFE0DB]
                 "
             >
               {item.text}

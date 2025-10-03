@@ -35,9 +35,10 @@ const steps = [
 
 const HowSection = () => {
   return (
-    <section className="w-full bg-[#1E1E1C] text-[#DFE0DB]">
+    <section className="w-full bg-[rgb(var(--bg))] text-[rgb(var(--fg))]">
       <div className="px-[20px] xl:px-[78px]">
         <h2
+          style={{ fontFamily: "League Spartan, sans-serif" }}
           className="
             font-league font-semibold text-center uppercase tracking-[-0.01em]
             text-[32px] xl:text-[60px] leading-[1] xl:pb-[75px]
@@ -70,7 +71,7 @@ const HowSection = () => {
                   leading-none
                   p-0 m-0
                   inline-block
-                  text-[rgba(255,255,255,0.6)]
+                  text-[rgb(var(--fg))]
                   tracking-[-0.02em]
                 "
                 >

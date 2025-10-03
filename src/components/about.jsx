@@ -5,7 +5,10 @@ const About = () => {
     <section className="w-full bg-[rgb(var(--bg))] text-[rgb(var(--fg))]">
       <div className="py-[120px] px-[20px] xl:px-[80px] flex flex-wrap gap-[20px] justify-between">
         <div>
-          <h2 className="flex flex-wrap items-baseline xl:block gap-x-3 max-w-[700px]">
+          <h2
+            className="flex flex-wrap items-baseline xl:block gap-x-3 max-w-[700px] mb-[20px]"
+            style={{ fontFamily: "League Spartan, sans-serif" }}
+          >
             <span
               className="
             font-league font-semibold uppercase tracking-[-0.01em]
@@ -42,8 +45,8 @@ const About = () => {
           </h2>
           <p
             className="
-            font-league font-semibold uppercase tracking-[-0.02em]
-            text-[16px] xl:text-[20px] leading-[1] text-[rgb(var(--fg))] max-w-[700px]
+            font-league font-semibold  tracking-[-0.02em]
+            text-[16px] xl:text-[20px] leading-[1] text-[rgb(var(--fg))] max-w-[700px] mb-[20px]
           "
           >
             At EdVision, we don’t just finish walls — we bring your ideas to life. Based in
@@ -52,7 +55,7 @@ const About = () => {
           </p>
           <p
             className="
-            font-league font-semibold uppercase tracking-[-0.02em]
+            font-league font-semibold  tracking-[-0.02em]
             text-[16px] xl:text-[20px] leading-[1] text-[rgb(var(--fg))]  max-w-[700px]
           "
           >

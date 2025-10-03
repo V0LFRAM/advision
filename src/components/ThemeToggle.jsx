@@ -15,13 +15,12 @@ function ThemeToggle() {
     <Switch.Root
       checked={isDark}
       onCheckedChange={() => setTheme(isDark ? "light" : "dark")}
-      colorPalette="transparent"
       size="sm"
       aria-label="Toggle theme"
     >
       <Switch.HiddenInput />
-      <Switch.Control>
-        <Switch.Thumb />
+      <Switch.Control bg="#1E1E1C" _dark={{ bg: "#DFE0DB", _checked: { bg: "white" } }}>
+        <Switch.Thumb bg="#DFE0DB" _dark={{ bg: "#1E1E1C" }} />
       </Switch.Control>
     </Switch.Root>
   );

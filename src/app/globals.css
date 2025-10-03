@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* твои стили ниже */
 :root {
   --bg: 223 224 219;
   --fg: 30 30 28;
@@ -22,3 +21,7 @@ body {
   background: rgb(var(--bg));
   color: rgb(var(--fg));
 }
+
+
+/* bg-[rgb(var(--bg))] text-[rgb(var(--fg))] */
+/* style={{ fontFamily: "League Spartan, sans-serif" }} */
