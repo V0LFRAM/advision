@@ -6,7 +6,10 @@ const HeroSection = () => {
   return (
     <section className="w-full ">
       <div className="pt-[66px] xl:pt-[88px] pl-[20px] pr-[20px] xl:pl-[82px] xl:pr-[78px] relative flex flex-col gap-y-10">
-        <h1 className="flex flex-wrap items-baseline gap-x-3">
+        <h1
+          className="flex flex-wrap items-baseline gap-x-3"
+          style={{ fontFamily: "League Spartan, sans-serif" }}
+        >
           <div>
             <span
               className="
@@ -27,7 +30,7 @@ const HeroSection = () => {
               Walls & Cust
               <span className="relative inline-block">
                 o
-                <span className="absolute top-[-7px] right-[14px]">
+                <span className="absolute top-[-10px] right-[13.5px]">
                   <ThemeToggle />
                 </span>
               </span>
@@ -56,7 +59,6 @@ const HeroSection = () => {
             </span>
           </div>
         </h1>
-
         <div className="flex gap-[24px] xl:gap-[50px] xl:ml-auto mb-[55px] flex-wrap">
           <p
             className="
