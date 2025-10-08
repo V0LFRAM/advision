@@ -45,13 +45,22 @@ export const LookSection = () => {
       {/* Desktop */}
       <div className="hidden xl:block px-[80px] xl:pr-[67px] relative">
         <h2
+          style={{ fontFamily: "League Spartan, sans-serif" }}
           className="
             text-right font-league font-regular uppercase tracking-[-0.02em]
             text-[44px] leading-[100%] text-[#DFE0DB] mb-[60px]
           "
         >
           Take a{" "}
-          <span className="text-transparent [-webkit-text-stroke:1px_#DFE0DB]">Closer Look</span>
+          <span
+            className="
+            font-league font-semibold uppercase tracking-[-0.01em]
+            text-[35px] xl:text-[44px] leading-[1] text-transparent 
+            [-webkit-text-stroke:2px_rgb(var(--fg))]
+          "
+          >
+            Closer Look
+          </span>
           <br />
           At real homes we’ve enhanced
           <br />
