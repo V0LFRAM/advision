@@ -1,52 +1,28 @@
 import Image from "next/image";
+import { TitleStroke } from "./ui/title-stroke";
 
 const About = () => {
   return (
-    <section className="w-full bg-[rgb(var(--bg))] text-[rgb(var(--fg))]">
+    <section className="w-full">
       <div className="py-[120px] px-[20px] xl:px-[80px] flex flex-wrap gap-[20px] justify-between">
         <div>
-          <h2
-            className="flex flex-wrap items-baseline xl:block gap-x-3 max-w-[700px] mb-[20px]"
-            style={{ fontFamily: "League Spartan, sans-serif" }}
-          >
+          <h2 className="flex flex-wrap items-baseline xl:block gap-x-3 max-w-[700px] mb-[20px]">
             <span
               className="
             font-league font-semibold uppercase tracking-[-0.01em]
-            text-[35px] xl:text-[44px] leading-[1] text-[rgb(var(--fg))] relative
+            text-[35px] xl:text-[44px] leading-[1] 
           "
             >
               Design that
-            </span>
-            <span
-              className="
-            font-league font-semibold uppercase tracking-[-0.01em]
-            text-[35px] xl:text-[44px] leading-[1] text-transparent 
-            [-webkit-text-stroke:2px_rgb(var(--fg))]
-          "
-            >
-              Reflects
-              <span
-                className="
-            font-league font-semibold uppercase tracking-[-0.01em]
-            text-[35px] xl:text-[44px] leading-[1] text-[rgb(var(--fg))] relative ml-[15px]
-          "
-              >
-                You —
-              </span>
-            </span>
-            <span
-              className="
-            font-league font-semibold uppercase tracking-[-0.01em]
-            text-[35px] xl:text-[44px] leading-[1] text-[rgb(var(--fg))] 
-          "
-            >
+              <TitleStroke text={"Reflects"} />
+              <TitleStroke text={"You —"} />
               Craftsmanship that Lasts
             </span>
           </h2>
           <p
             className="
             font-league font-semibold  tracking-[-0.02em]
-            text-[16px] xl:text-[20px] leading-[1] text-[rgb(var(--fg))] max-w-[700px] mb-[20px]
+            text-[16px] xl:text-[20px] leading-[1] max-w-[700px] mb-[20px]
           "
           >
             At EdVision, we don’t just finish walls — we bring your ideas to life. Based in
@@ -56,7 +32,7 @@ const About = () => {
           <p
             className="
             font-league font-semibold  tracking-[-0.02em]
-            text-[16px] xl:text-[20px] leading-[1] text-[rgb(var(--fg))]  max-w-[700px]
+            text-[16px] xl:text-[20px] leading-[1]  max-w-[700px]
           "
           >
             Whether you're looking for a sleek TV wall, a cozy fireplace accent, or a bathroom

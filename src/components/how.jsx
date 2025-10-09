@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { TitleStroke } from "./ui/title-stroke";
 
 const steps = [
   {
@@ -35,17 +36,21 @@ const steps = [
 
 const HowSection = () => {
   return (
-    <section className="w-full bg-[rgb(var(--bg))] text-[rgb(var(--fg))]">
+    <section className="w-full">
       <div className="px-[20px] xl:px-[78px]">
         <h2
-          style={{ fontFamily: "League Spartan, sans-serif" }}
           className="
-            font-league font-semibold text-center uppercase tracking-[-0.01em]
-            text-[32px] xl:text-[60px] leading-[1] xl:pb-[75px]
+            xl:pb-[75px]
           "
         >
-          HOW WE{" "}
-          <span className="text-transparent [-webkit-text-stroke:2px_rgb(var(--fg))]">WORK</span>
+          <span
+            className="
+            font-semibold uppercase tracking-[-0.01em]
+            text-[35px] xl:text-[44px] leading-[1] 
+          "
+          >
+            HOW WE <TitleStroke text={"WORK"} />
+          </span>
         </h2>
 
         {/* Desktop grid */}

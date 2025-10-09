@@ -1,26 +1,15 @@
 import { Arrow } from "@/lib/icons/arrow";
 import { ThemeToggle } from "./ThemeToggle";
 import Image from "next/image";
+import { HeroTitleStroke } from "./ui/hero-title-stroke";
 
 const HeroSection = () => {
   return (
-    <section className="w-full ">
+    <section className="w-full">
       <div className="pt-[66px] xl:pt-[88px] pl-[20px] pr-[20px] xl:pl-[82px] xl:pr-[78px] relative flex flex-col gap-y-10">
-        <h1
-          className="flex flex-wrap items-baseline gap-x-3"
-          style={{ fontFamily: "League Spartan, sans-serif" }}
-        >
+        <h1 className="flex flex-wrap items-baseline gap-x-3">
           <div>
-            <span
-              className="
-              font-league font-semibold uppercase tracking-[-0.01em]
-              text-[40px] xl:text-[80px] leading-[1] text-transparent mr-[15px]
-              [-webkit-text-stroke:2px_rgb(var(--fg))]
-            "
-            >
-              ACCENT
-            </span>
-
+            <HeroTitleStroke text={"ACCENT"} />
             <span
               className="
               font-league font-semibold uppercase tracking-[-0.01em]
@@ -47,16 +36,7 @@ const HeroSection = () => {
             >
               That Make a
             </span>
-
-            <span
-              className="
-              font-league font-semibold uppercase tracking-[-0.01em]
-              text-[40px] xl:text-[80px] leading-[1] text-transparent
-              [-webkit-text-stroke:2px_rgb(var(--fg))]
-            "
-            >
-              Statement
-            </span>
+            <HeroTitleStroke text={"Statement"} />
           </div>
         </h1>
         <div className="flex gap-[24px] xl:gap-[50px] xl:ml-auto mb-[55px] flex-wrap">
@@ -75,13 +55,13 @@ const HeroSection = () => {
             bathroom remodels
           </p>
           <div className="flex gap-[17px] xl:gap-[35px]">
-            <button className="bg-[#9B948A] w-[159px] xl:w-[197px] h-[34px] xl:h-[46px] flex items-center justify-center gap-2">
+            <button className="bg-[#9B948A] text-[16px] xl:text-[18px] w-[159px] xl:w-[197px] h-[34px] xl:h-[46px] flex items-center justify-center gap-2">
               Get a Free Quote
               <span className="mt-[2px]">
                 <Arrow />
               </span>
             </button>
-            <button className="border-[#9B948A] border-[1px] w-[159px] xl:w-[197px] h-[34px] xl:h-[46px] flex items-center justify-center gap-2">
+            <button className="border-[#9B948A] text-[16px] xl:text-[18px] border-[1px] w-[159px] xl:w-[197px] h-[34px] xl:h-[46px] flex items-center justify-center gap-2">
               Send Your Idea
               <span className="mt-[2px]">
                 <Arrow />
@@ -90,7 +70,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-      <div className="lg:hidden relative w-full h-screen">
+      <div className="lg:hidden relative w-full min-h-[335px] max-h-[335px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
         <Image
           src="/images/hero-mob.png"
           alt="Hero Image"
@@ -101,7 +81,7 @@ const HeroSection = () => {
           className="object-cover"
         />
       </div>
-      <div className="hidden lg:block relative w-full h-screen">
+      <div className="hidden lg:block relative w-full min-h-[600px] max-h-[600px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
         <Image
           src="/images/hero-image.png"
           alt="Hero Image"

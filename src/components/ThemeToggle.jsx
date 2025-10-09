@@ -15,7 +15,9 @@ function ThemeToggle() {
     <Switch.Root
       checked={isDark}
       onCheckedChange={() => setTheme(isDark ? "light" : "dark")}
-      size="sm"
+      // size="sm"
+
+      className="w-[20px] h-[11px]"
       aria-label="Toggle theme"
     >
       <Switch.HiddenInput />
