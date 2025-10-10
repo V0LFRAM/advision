@@ -3,8 +3,7 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 
 function Header() {
-  const { setTheme, resolvedTheme } = useTheme();
-  console.log(resolvedTheme);
+  const { resolvedTheme } = useTheme();
 
   return (
     <div className="pt-[20px]">

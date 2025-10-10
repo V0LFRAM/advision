@@ -1,6 +1,24 @@
 import Image from "next/image";
 import { TitleStroke } from "./ui/title-stroke";
 
+const textMock = [
+  {
+    num: "120+",
+    title: "Projects Completed",
+    text: "From cozy homes to stylish apartments across whole World.",
+  },
+  {
+    num: "8+",
+    title: "Years of Experience",
+    text: "Interior finishing you can rely on — built with precision.",
+  },
+  {
+    num: "24h",
+    title: "Design Proposal",
+    text: "Send us a photo — we’ll reply with ideas & estimate in a day.",
+  },
+];
+
 const About = () => {
   return (
     <section className="w-full">
@@ -61,6 +79,43 @@ const About = () => {
             sizes="378px"
             className="object-cover"
           />
+        </div>
+        <div className="w-full ">
+          <span
+            className="font-league font-normal tracking-[-0.01em]
+            text-[35px] xl:text-[44px] leading-[1] text-[#9B948A] mb-[28px]"
+          >
+            more
+          </span>
+          <ul className="flex flex-wrap gap-[12px] xl:gap-[146px] [&>li:last-child]:ml-auto xl:[&>li:last-child]:ml-[112px]">
+            {textMock.map((item, index) => (
+              <li
+                key={index}
+                className="mb-[20px] last:mb-0 flex flex-col xl:flex-col gap-[10px] xl:gap-[20px] w-[160px] xl:w-[220px]"
+              >
+                <span
+                  className=" tracking-[-0.02em]
+                  text-[65px] xl:text-[80px] leading-[1] text-[#DFE0DB] mb-[8px]"
+                >
+                  {item.num}
+                </span>
+                <div>
+                  <h3
+                    className="font-[700] tracking-[-0.02em]
+                  text-[16px] xl:text-[20px] leading-[1] mb-[10px]"
+                  >
+                    {item.title}
+                  </h3>
+                  <p
+                    className="font-normal tracking-[-0.02em]
+                  text-[16px] xl:text-[20px] leading-[1]"
+                  >
+                    {item.text}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
