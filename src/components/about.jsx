@@ -27,19 +27,18 @@ const About = () => {
           <h2 className="flex flex-wrap items-baseline xl:block gap-x-3 max-w-[700px] mb-[20px]">
             <span
               className="
-            font-league font-semibold uppercase tracking-[-0.01em]
+            font-league font-[500] uppercase tracking-[-0.01em]
             text-[35px] xl:text-[44px] leading-[1] 
           "
             >
               Design that
               <TitleStroke text={"Reflects"} />
-              <TitleStroke text={"You —"} />
-              Craftsmanship that Lasts
+              You — Craftsmanship that Lasts
             </span>
           </h2>
           <p
             className="
-            font-league font-semibold  tracking-[-0.02em]
+            font-league font-[500]  tracking-[-0.02em]
             text-[16px] xl:text-[20px] leading-[1] max-w-[700px] mb-[20px]
           "
           >
@@ -49,7 +48,7 @@ const About = () => {
           </p>
           <p
             className="
-            font-league font-semibold  tracking-[-0.02em]
+            font-league font-[500]  tracking-[-0.02em]
             text-[16px] xl:text-[20px] leading-[1]  max-w-[700px]
           "
           >
@@ -118,6 +117,20 @@ const About = () => {
           </ul>
         </div>
       </div>
+      <Image
+        src="/images/about-bottom-decor.png"
+        alt="Decor"
+        width={1920}
+        height={100}
+        className="w-full h-auto xl:block hidden"
+      />
+      <Image
+        src="/images/about-bottom-decor-mob.png"
+        alt="Decor"
+        width={1920}
+        height={100}
+        className="w-full h-auto xl:hidden"
+      />
     </section>
   );
 };

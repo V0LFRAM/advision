@@ -11,7 +11,7 @@ import { FormSection } from "@/components/form-section";
 export default function Home() {
   return (
     <>
-      <GridBack />
+      {/* <GridBack /> */}
       <Header />
       <HeroSection />
       <About />

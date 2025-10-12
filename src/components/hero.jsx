@@ -12,7 +12,7 @@ const HeroSection = () => {
             <HeroTitleStroke text={"ACCENT"} />
             <span
               className="
-              font-league font-semibold uppercase tracking-[-0.01em]
+              font-league font-[500] uppercase tracking-[-0.01em]
               text-[40px] xl:text-[80px] leading-[1] text-[rgb(var(--fg))] relative
             "
             >
@@ -30,7 +30,7 @@ const HeroSection = () => {
           <div className="ml-auto">
             <span
               className="
-              font-league font-semibold uppercase tracking-[-0.01em]
+              font-league font-[500] uppercase tracking-[-0.01em]
               text-[40px] xl:text-[80px] leading-[1] text-[rgb(var(--fg))] mr-[15px]
             "
             >
