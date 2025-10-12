@@ -48,7 +48,7 @@ export const LookSection = () => {
         <h2 className="mb-[60px]">
           <span
             className="
-            font-semibold uppercase tracking-[-0.01em]
+            font-[500] uppercase tracking-[-0.01em]
             text-[35px] xl:text-[44px] leading-[1] 
           "
           >
@@ -114,7 +114,7 @@ export const LookSection = () => {
         >
           <span
             className="
-            font-semibold uppercase tracking-[-0.01em]
+            font-[500] uppercase tracking-[-0.01em]
             text-[35px] xl:text-[44px] leading-[1] 
           "
           >

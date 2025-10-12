@@ -27,7 +27,7 @@ function TrustSection() {
   return (
     <section className="w-full pt-[120px] xl:pt-[180px] pb-[120px] xl:pb-[200px] px-[20px] xl:pl-[80px] xl:pr-[67px]">
       <h2 className="pb-[40px] xl:pb-[50px]">
-        <span className="font-league font-semibold uppercase tracking-[-0.01em] text-[35px] xl:text-[44px] leading-[1]">
+        <span className="font-league font-[500] uppercase tracking-[-0.01em] text-[35px] xl:text-[44px] leading-[1]">
           Why people <TitleStroke text="Trust" /> Us
         </span>
       </h2>
@@ -49,7 +49,7 @@ function TrustSection() {
               w-[161px] xl:w-[197px]
             "
           >
-            <h3 className="font-inter font-semibold text-[16px] leading-[100%] tracking-[-0.02em]">
+            <h3 className="font-inter font-[500] text-[16px] leading-[100%] tracking-[-0.02em]">
               {item.title}
             </h3>
             <p className="font-inter font-normal text-[16px] leading-[100%] tracking-[-0.02em]">

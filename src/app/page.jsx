@@ -6,17 +6,19 @@ import { Footer } from "@/components/footer";
 import { TrustSection } from "@/components/trust";
 import { LookSection } from "@/components/look";
 import { GridBack } from "@/components/ui/grid-back";
+import { FormSection } from "@/components/form-section";
 
 export default function Home() {
   return (
     <>
-      <GridBack />
+      {/* <GridBack /> */}
       <Header />
       <HeroSection />
       <About />
       <LookSection />
       <HowSection />
       <TrustSection />
+      <FormSection />
       <Footer />
     </>
   );
