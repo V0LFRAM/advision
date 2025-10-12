@@ -33,8 +33,7 @@ const About = () => {
             >
               Design that
               <TitleStroke text={"Reflects"} />
-              <TitleStroke text={"You —"} />
-              Craftsmanship that Lasts
+              You — Craftsmanship that Lasts
             </span>
           </h2>
           <p
@@ -118,6 +117,20 @@ const About = () => {
           </ul>
         </div>
       </div>
+      <Image
+        src="/images/about-bottom-decor.png"
+        alt="Decor"
+        width={1920}
+        height={100}
+        className="w-full h-auto xl:block hidden"
+      />
+      <Image
+        src="/images/about-bottom-decor-mob.png"
+        alt="Decor"
+        width={1920}
+        height={100}
+        className="w-full h-auto xl:hidden"
+      />
     </section>
   );
 };
