@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { TrustSection } from "@/components/trust";
 import { LookSection } from "@/components/look";
+import AccordionSection from "@/components/accordion";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Header />
       <HeroSection />
       <About />
+      <AccordionSection />
       <LookSection />
       <HowSection />
       <TrustSection />
