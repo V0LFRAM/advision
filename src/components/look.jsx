@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { TitleStroke } from "./ui/title-stroke";
 
 const lookItems = [
   {
@@ -41,30 +42,23 @@ export const LookSection = () => {
   const visibleItems = getVisibleItems(); // 🔸 добавлено
 
   return (
-    <section className="w-full bg-[#1E1E1C] pt-[120px] xl:pt-[180px] pb-[120px] xl:pb-[200px] overflow-hidden">
+    <section className="w-full pt-[120px] xl:pt-[180px] pb-[120px] xl:pb-[200px] overflow-hidden">
       {/* Desktop */}
       <div className="hidden xl:block px-[80px] xl:pr-[67px] relative">
-        <h2
-          style={{ fontFamily: "League Spartan, sans-serif" }}
-          className="
-            text-right font-league font-regular uppercase tracking-[-0.02em]
-            text-[44px] leading-[100%] text-[#DFE0DB] mb-[60px]
-          "
-        >
-          Take a{" "}
+        <h2 className="mb-[60px]">
           <span
             className="
-            font-league font-semibold uppercase tracking-[-0.01em]
-            text-[35px] xl:text-[44px] leading-[1] text-transparent 
-            [-webkit-text-stroke:2px_rgb(var(--fg))]
+            font-[500] uppercase tracking-[-0.01em]
+            text-[35px] xl:text-[44px] leading-[1] 
           "
           >
-            Closer Look
+            Take a
+            <TitleStroke text={"Closer Look"} />
+            <br />
+            At real homes we’ve enhanced
+            <br />
+            with custom finishing solutions
           </span>
-          <br />
-          At real homes we’ve enhanced
-          <br />
-          with custom finishing solutions
         </h2>
 
         {/* 🔹 изменено: теперь отображаем именно три картинки по кругу */}
@@ -115,17 +109,22 @@ export const LookSection = () => {
         <h2
           className="
             text-left font-league font-regular uppercase tracking-[-0.02em]
-            text-[33px] leading-[100%] text-[#DFE0DB] mb-[40px]
+            text-[33px] leading-[100%] mb-[40px]
           "
         >
-          Take a{" "}
-          <span className="text-transparent [-webkit-text-stroke:1px_#DFE0DB] text-[35px]">
-            Closer Look
+          <span
+            className="
+            font-[500] uppercase tracking-[-0.01em]
+            text-[35px] xl:text-[44px] leading-[1] 
+          "
+          >
+            Take a
+            <TitleStroke text={"Closer Look"} />
+            <br />
+            At real homes we’ve enhanced
+            <br />
+            with custom finishing solutions
           </span>
-          <br />
-          At real homes we’ve enhanced
-          <br />
-          with custom finishing solutions
         </h2>
 
         <div className="relative w-full flex justify-center">
@@ -153,7 +152,7 @@ export const LookSection = () => {
         <p
           className="
             font-inter font-normal text-[16px] leading-[100%] tracking-[-0.02em]
-            text-[#DFE0DB] mt-[16px] text-center
+            mt-[16px] text-center
           "
         >
           {lookItems[index].date}

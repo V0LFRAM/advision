@@ -5,11 +5,16 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { TrustSection } from "@/components/trust";
 import { LookSection } from "@/components/look";
+
 import AccordionSection from "@/components/accordion";
+import { GridBack } from "@/components/ui/grid-back";
+import { FormSection } from "@/components/form-section";
+
 
 export default function Home() {
   return (
     <>
+      <GridBack /> 
       <Header />
       <HeroSection />
       <About />
@@ -17,6 +22,7 @@ export default function Home() {
       <LookSection />
       <HowSection />
       <TrustSection />
+      <FormSection />
       <Footer />
     </>
   );
