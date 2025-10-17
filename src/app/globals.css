@@ -6,11 +6,13 @@
 :root {
   --bg: 223 224 219;
   --fg: 30 30 28;
+  --acc: 198 196 189;
 }
 
 .dark {
   --bg: 30 30 28;
   --fg: 241 245 249;
+  --acc: 67 65 61;
 }
 
 html,
@@ -21,6 +23,7 @@ body {
 body {
   background: rgb(var(--bg));
   color: rgb(var(--fg));
+  background: rgb(var(--acc))
 }
 
 h1, h2 {
