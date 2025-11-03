@@ -42,6 +42,7 @@ export function HeaderSection() {
         </div>
 
         {/* ЦЕНТРАЛЬНОЕ МЕНЮ (только десктоп) */}
+
         <nav className="hidden md:flex items-center gap-[20px]">
           {navItems.map((item) => (
             <a
