@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,11 +6,17 @@
 :root {
   --bg: 223 224 219;
   --fg: 30 30 28;
+  --acc: 198 196 189;
+  --border: 30 30 28 / 0.15;
+  --line: 30 30 28 / 0.1;
 }
 
 .dark {
   --bg: 30 30 28;
   --fg: 241 245 249;
+  --acc: 67 65 61;
+  --border: 223 224 219 / 0.1;
+  --line: 255 255 255 / 0.1;
 }
 
 html,
@@ -22,6 +29,30 @@ body {
   color: rgb(var(--fg));
 }
 
+h1, h2 {
+  font-family: 'League Spartan', sans-serif ;
+  /* color: #DFE0DB; */
+}
 
-/* bg-[rgb(var(--bg))] text-[rgb(var(--fg))] */
-/* style={{ fontFamily: "League Spartan, sans-serif" }} */
+p {
+  /* color:#DFE0DB; */
+}
+
+
+
+/* фон:
+
+bg-[rgb(var(--bg))] 
+
+текст:
+text-[rgb(var(--fg))] 
+
+глобально на все заголовки:
+style={{ fontFamily: "League Spartan, sans-serif" }}
+
+прозрачный текст:
+
+className="
+    font-league font-[500] uppercase tracking-[-0.01em] text-[35px] xl:text-[44px] leading-[1] text-transparent [-webkit-text-stroke:2px_rgb(var(--fg))] 
+  " 
+ */
