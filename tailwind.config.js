@@ -7,10 +7,6 @@ module.exports = {
     "./src/app/**/*.{js,jsx}",
     "./src/componentsLayout/**/*.{js,jsx}",
     "./src/**/*.{js,jsx,ts,tsx}",
-    // "./app/**/*.{js,ts,jsx,tsx}", // App Router
-    // "./pages/**/*.{js,ts,jsx,tsx}", // Pages Router
-    // "./components/**/*.{js,ts,jsx,tsx}",
-    // "./componentsLayout/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -19,6 +15,14 @@ module.exports = {
         league: ["var(--font-league)", "sans-serif"],
       },
       letterSpacing: { tight001: "-0.01em" },
+    },
+    screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      xxl: "1440px",
+      "2xl": "1536px",
     },
   },
   plugins: [],

@@ -43,7 +43,10 @@ export const LookSection = () => {
   const visibleItems = getVisibleItems(); // 🔸 добавлено
 
   return (
-    <section className="w-full pt-[120px] xl:pt-[180px] pb-[120px] xl:pb-[200px] overflow-hidden">
+    <section
+      id="projects"
+      className="w-full pt-[120px] xl:pt-[180px] pb-[120px] xl:pb-[200px] overflow-hidden"
+    >
       {/* Desktop */}
       <div className="hidden xl:block px-[80px] xl:pr-[67px] relative">
         <h2 className="mb-[60px]">
