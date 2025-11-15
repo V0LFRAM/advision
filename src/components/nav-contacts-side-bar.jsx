@@ -4,12 +4,12 @@ const NavContactsSideBar = () => {
   return (
     <div
       className="
-        flex flex-col items-start px-[19px]
+        flex flex-col items-start px-[20px]
         border-t border-[rgb(var(--border))]
         pt-[20px] pb-[28px]
       "
     >
-      <div className="flex flex-row items-center mt-[6px] gap-[11px]">
+      <div className="flex flex-row items-center gap-[11px]">
         <svg
           width="20"
           height="20"
@@ -24,7 +24,9 @@ const NavContactsSideBar = () => {
             fill="currentColor"
           />
         </svg>
-        <a href="tel:+17634855531">+17634855531</a>
+        <a href="tel:+17634855531" className="leading-[20px] text-[16px]">
+          +17634855531
+        </a>
       </div>
       <div className="flex flex-row items-center mt-[8px] gap-[7px]">
         <div className="relative w-[20px] h-[20px]">
@@ -43,7 +45,7 @@ const NavContactsSideBar = () => {
             priority
           />
         </div>
-        <a href="mailto:edvisions.pro@gmail.com" className="lineHeight-20px">
+        <a href="mailto:edvisions.pro@gmail.com" className="leading-[20px] text-[16px]">
           edvisions.pro@gmail.com
         </a>
       </div>

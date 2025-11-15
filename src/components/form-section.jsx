@@ -4,7 +4,7 @@ import { ContactForm } from "./contact-form";
 
 const FormSection = () => {
   return (
-    <section className="w-full relative">
+    <section id="get-a-quote" className="w-full relative">
       <div className="px-[20px] xl:px-[80px] xl:flex ">
         <div className="hidden xl:block ">
           <Image
