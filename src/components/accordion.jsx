@@ -37,7 +37,7 @@ export default function AccordionSection() {
   };
 
   return (
-    <section className="bg-[rgb(var(--bg))] text-[rgb(var(--fg))] w-full">
+    <section id="services" className="bg-[rgb(var(--bg))] text-[rgb(var(--fg))] w-full">
       {/* Заголовок секции */}
       <div className="px-[20px] pt-[40px]">
         <h2

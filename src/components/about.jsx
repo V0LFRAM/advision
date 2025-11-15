@@ -21,7 +21,7 @@ const textMock = [
 
 const About = () => {
   return (
-    <section className="w-full">
+    <section id="about-us" className="w-full">
       <div className="py-[120px] px-[20px] xl:px-[80px] flex flex-wrap gap-[20px] justify-between">
         <div>
           <h2 className="flex flex-wrap items-baseline xl:block gap-x-3 max-w-[700px] mb-[20px]">

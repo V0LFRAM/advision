@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ThemeToggle } from "./ThemeToggle";
 import { NavContactsSideBar } from "./nav-contacts-side-bar";
@@ -9,6 +9,19 @@ import { useBreakpointValue } from "@chakra-ui/react";
 export function HeaderSection() {
   const [isOpen, setIsOpen] = useState(false);
   const variant = useBreakpointValue({ base: false, xl: true });
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    // Чистим при размонтировании
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   return (
     <header
