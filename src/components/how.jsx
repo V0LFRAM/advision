@@ -40,7 +40,7 @@ const HowSection = () => {
       <div className="px-[20px] xl:px-[78px]">
         <h2
           className="
-            xl:pb-[75px]
+            xl:pb-[75px] text-center
           "
         >
           <span
@@ -60,7 +60,7 @@ const HowSection = () => {
             return (
               <div
                 key={id}
-                className={`relative flex flex-col gap-4 w-[197px] ${isEven ? "mt-[79px]" : "mt-[185px]"}`}
+                className={`relative flex flex-col gap-4 w-[197px] ${isEven ? "mt-[99px]" : "mt-[205px]"}`}
               >
                 {/* Большое число над правым краем */}
                 <span
@@ -84,7 +84,7 @@ const HowSection = () => {
                 </span>
 
                 <div>
-                  <h3 className="font-inter font-[500] text-semibold text-[18px] mb-2 text-[#9B948A]">
+                  <h3 className="font-inter font-[500] text-semibold text-[16px] mb-2 text-[#9B948A]">
                     {title}
                   </h3>
                   <p className="font-inter text-[14px] leading-[1.4] mb-[12px]">{text}</p>

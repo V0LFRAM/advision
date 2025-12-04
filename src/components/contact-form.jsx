@@ -30,18 +30,18 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-[372px] flex flex-col gap-4 xl:mt-[200px] xl:mr-auto xl:relative xl:left-[-80px]"
+      className="max-w-[372px] flex flex-col gap-4 mb-[60px] md:mb-0 xl:mt-[200px] xl:mr-auto xl:relative xl:left-[-80px]"
     >
       <input
         name="fullName"
         placeholder="Full Name"
-        className="w-full h-[50px] border border-[#B7B0A6] bg-transparent px-4 py-5 placeholder:text-[#ffffff59] placeholder:text-lg focus:outline-none"
+        className="w-full h-[33px] md:h-[50px] border border-[#938C82] bg-transparent px-3 py-1 text-sm placeholder:text-[#ffffff59] focus:outline-none"
       />
 
       <input
         name="phone"
         placeholder="Phone Number"
-        className="w-full h-[50px] border border-[#B7B0A6] bg-transparent px-4 py-5 placeholder:text-[#ffffff59] placeholder:text-lg focus:outline-none"
+        className="w-full h-[33px] md:h-[50px] border border-[#938C82] bg-transparent px-3 py-1 text-sm placeholder:text-[#ffffff59] focus:outline-none"
       />
 
       <input
@@ -49,19 +49,19 @@ const ContactForm = () => {
         name="email"
         placeholder="Email"
         required
-        className="w-full h-[50px] border border-[#B7B0A6] bg-transparent px-4 py-5 placeholder:text-[#ffffff59] placeholder:text-lg focus:outline-none"
+        className="w-full h-[33px] md:h-[50px] border border-[#938C82] bg-transparent px-3 py-1 text-sm placeholder:text-[#ffffff59] focus:outline-none"
       />
 
-      <div className="relative">
+      <div className="relative h-[128px] md:h-[140px]">
         <textarea
           name="message"
           placeholder="Describe Your Project"
-          className="w-full h-[140px] border border-[#B7B0A6] bg-transparent px-4 py-5 min-h-[160px] resize-y placeholder:text-[#ffffff59] placeholder:text-lg focus:outline-none"
+          className="absolute inset-0 w-full h-full box-border border border-[#938C82] bg-transparent px-3 py-2 resize-y placeholder:text-[#ffffff59] placeholder:text-lg focus:outline-none"
         />
         <button
           type="button"
           onClick={() => fileInputRef.current?.click()}
-          className="absolute bottom-3 right-4 text-[#B7B0A6] hover:opacity-80"
+          className="absolute bottom-3 right-4 text-[#938C82] hover:opacity-80"
         >
           <FiPaperclip size={18} />
         </button>
@@ -87,12 +87,22 @@ const ContactForm = () => {
         </div>
       )}
 
+      {/* BUTTON: small screens fixed 336x34 with 16px gap from textarea (gap-4 already), inner paddings 8px; large screens preserved */}
       <button
         type="submit"
         disabled={sending}
-        className="flex items-center justify-between max-h-[45px] bg-[#A89F94] hover:bg-[#9A9186] text-white text-xl md:text-2xl py-5 px-6 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+        className={
+          "flex items-center justify-between " +
+          /* small screen styles */
+          "w-[336px] h-[34px] bg-[#A89F94] text-[#DFE0DB] font-inter font-normal text-[16px] leading-[100%] tracking-[-0.02em] px-2 " +
+          /* preserve large screen look */
+          "md:py-5 md:px-6 md:text-[20px] md:h-auto md:w-auto transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+        }
+        style={{ lineHeight: "100%" }}
       >
-        <span>{sending ? "Sending..." : "Send"}</span>
+        <span className="block" style={{ lineHeight: "100%" }}>
+          {sending ? "Sending..." : "Send"}
+        </span>
         <FiArrowUpRight size={22} />
       </button>
     </form>

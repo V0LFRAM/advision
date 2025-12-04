@@ -45,7 +45,7 @@ export const LookSection = () => {
   return (
     <section
       id="projects"
-      className="w-full pt-[120px] xl:pt-[180px] pb-[120px] xl:pb-[200px] overflow-hidden"
+      className="w-full pt-[120px] xl:pt-[180px] pb-[120px] xl:pb-[158px] overflow-hidden"
     >
       {/* Desktop */}
       <div className="hidden xl:block px-[80px] xl:pr-[67px] relative">
@@ -74,12 +74,12 @@ export const LookSection = () => {
                 alt={item.date}
                 width={373}
                 height={438}
-                className="object-cover w-[373px] h-[438px] z-[1] rounded-lg"
+                className="object-cover w-[373px] h-[438px] z-[1]"
               />
               <p
                 className="
                   font-inter font-normal text-[20px] leading-[100%] tracking-[-0.02em]
-                  text-[#DFE0DB] mt-[20px] text-center
+                  text-[#DFE0DB] mt-[10px] text-center
                 "
               >
                 {item.date}
@@ -137,7 +137,7 @@ export const LookSection = () => {
             alt={lookItems[index].date}
             width={336}
             height={392}
-            className="object-cover w-[336px] h-[392px] z-[1] rounded-lg"
+            className="object-cover w-[336px] h-[392px] z-[1]"
           />
           <button
             onClick={prevSlide}

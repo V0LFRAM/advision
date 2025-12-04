@@ -9,6 +9,7 @@ import { LookSection } from "@/components/look";
 import AccordionSection from "@/components/accordion";
 import { GridBack } from "@/components/ui/grid-back";
 import { FormSection } from "@/components/form-section";
+import RunningLine from "@/components/running-line";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <HowSection />
       <TrustSection />
       <FormSection />
+      <RunningLine />
       <Footer />
     </>
   );

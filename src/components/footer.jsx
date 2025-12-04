@@ -2,20 +2,22 @@ import Image from "next/image";
 
 function Footer() {
   return (
-    <div className="bg-[rgb(var(--bg))] min-w-[375px] md:min-w-0 pt-[31px] md:pt-[60px] font-inter text-[16px] tracking-[-0.02em] font-normal leading-[19px] text-[rgb(var(--fg))] relative w-full">
+    <div className="bg-[rgb(var(--bg))] border-t border-[rgb(var(--border))] min-w-[375px] md:min-w-0 pt-[31px] md:pt-[60px] font-inter text-[16px] tracking-[-0.02em] font-normal leading-[19px] text-[rgb(var(--fg))] relative w-full">
       <div className="flex flex-col md:flex-row justify-start md:justify-between md:items-start px-[20px] md:px-[80px] pt-[20px] md:pt-0">
-        <div className="mb-[41px] md:mb-0 ml-[5px] md:ml-0 w-[326px] h-[92px] relative">
+        <div className="mb-[41px] md:mb-0 ml-[5px] md:ml-0 w-[326px] h-[92px] relative flex-none md:flex-none md:min-w-[326px]">
           <Image
             src="/images/logo-main-light.png"
             alt="EdVision Logo big"
-            fill
+            width={326}
+            height={92}
             className="object-contain dark:hidden"
             priority
           />
           <Image
             src="/images/logo-main-dark.png"
             alt="EdVision Logo big"
-            fill
+            width={326}
+            height={92}
             className="object-contain hidden dark:block"
             priority
           />
@@ -105,7 +107,7 @@ function Footer() {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row-reverse justify-start md:justify-between md:items-center md:text-[rgba(147,140,130,1)] mt-[28px] md:mt-[83px] pt-0 md:pt-[19px] pb-0 md:pb-[20px] border-t-0 md:border-t md:border-[rgb(var(--border))] w-full">
+      <div className="flex flex-col md:flex-row-reverse justify-start md:justify-between md:items-center md:text-[#938c82] mt-[28px] md:mt-[60px] pt-0 md:pt-[19px] pb-0 md:pb-[20px] border-t-0 md:border-t md:border-[rgb(var(--border))] w-full">
         <div className="flex flex-col md:flex-row items-start pl-[20px] pr-[200px]">
           <p className="mr-0 md:mr-[28px]">Socials</p>
           <p className="whiteSpace-nowrap">Privacy Policy</p>
