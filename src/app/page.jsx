@@ -9,6 +9,7 @@ import { LookSection } from "@/components/look";
 import AccordionSection from "@/components/accordion";
 import { GridBack } from "@/components/ui/grid-back";
 import { FormSection } from "@/components/form-section";
+import PrecisionSection from "@/components/precision";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <AccordionSection />
       <LookSection />
       <HowSection />
+      <PrecisionSection />
       <TrustSection />
       <FormSection />
       <Footer />
