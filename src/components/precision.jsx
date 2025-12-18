@@ -133,6 +133,7 @@ export default function PrecisionSection() {
           />
         </div>
 
+        {/* Контейнер параграфа и кнопки с выравниванием по левому краю */}
         <div className="w-full mx-0 mb-[28px]">
           <p
             className="text-[16px] leading-[115%] tracking-[-0.02em] text-[rgb(var(--fg))] mb-[24px] ml-0 w-[250px]"
