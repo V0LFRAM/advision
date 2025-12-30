@@ -56,8 +56,7 @@ export const LookSection = () => {
             text-[35px] xl:text-[44px] leading-[1] 
           "
           >
-            Take a
-            <TitleStroke text={"Closer Look"} />
+            Take a <TitleStroke text={"Closer Look"} />
             <br />
             At real homes we’ve enhanced
             <br />
@@ -122,8 +121,7 @@ export const LookSection = () => {
             text-[35px] xl:text-[44px] leading-[1] 
           "
           >
-            Take a
-            <TitleStroke text={"Closer Look"} />
+            Take a <TitleStroke text={"Closer Look"} />
             <br />
             At real homes we’ve enhanced
             <br />
