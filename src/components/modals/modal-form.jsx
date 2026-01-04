@@ -12,10 +12,6 @@ const ModalForm = ({ setIsOpenModalForm, formType }) => {
     const [isSuccessOpen, setIsSuccessOpen] = useState(false);
     const tabletScreen = useMediaQuery("(min-width: 768px)");
 
-    console.log(tabletScreen);
-    
-  
-  // ✅ Scroll Lock
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
