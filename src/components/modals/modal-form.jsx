@@ -18,7 +18,7 @@ const ModalForm = ({ setIsOpenModalForm, formType }) => {
   return (
     <div className="fixed inset-0 z-[1000] flex justify-end bg-black bg-opacity-70">
       {/* RIGHT PANEL */}
-      <div className="flex flex-col items-start w-full h-full bg-[rgb(var(--bg))] p-[24px] pb-[120px]">
+      <div className="flex flex-col items-start w-full h-full bg-[rgb(var(--bg))] p-[19px] pb-[120px]">
         {/* ✅ CLOSE BUTTON */}
         <button
           onClick={() => setIsOpenModalForm(false)}
@@ -41,11 +41,39 @@ const ModalForm = ({ setIsOpenModalForm, formType }) => {
         </button>
 
         {/* ✅ TITLE */}
-        <h2 className="font-inter uppercase font-medium text-[16px] leading-[120%] tracking-[-0.02em] text-[rgb(var(--fg))] mt-[104px] mb-[20px]">
-          Fill out the form — our specialist
-          <br />
-          will contact you within 1 hour.
-        </h2>
+        {formType === "contact" && (
+          <h2 className="font-inter uppercase font-medium text-[16px] leading-[120%] tracking-[-0.02em] text-[rgb(var(--fg))] mt-[104px] mb-[20px]">
+            Fill out the form — our specialist
+            <br />
+            will contact you within 1 hour.
+          </h2>
+        )}
+
+        {formType === "questionary" && (
+          <>
+            <h2 className="font-inter uppercase font-medium text-[16px] leading-[120%] tracking-[-0.02em] text-[rgb(var(--fg))] mt-[104px] mb-[20px]">
+              Book a Free On-Site Measurement
+            </h2>
+
+            <p
+              className="
+        max-w-[337px] 
+        w-full
+        xl:w-auto
+        font-inter font-normal
+        text-[16px] leading-[120%]
+        tracking-[-0.02em] 
+        text-[rgb(var(--fg))]
+        mb-[20px]
+      "
+            >
+              Want a clear estimate and expert advice?
+              <br />
+              Fill out the form below, and we’ll call you within 1 hour to confirm your request and
+              schedule a free on-site visit at your convenience.
+            </p>
+          </>
+        )}
 
         {/* ✅ CONTACT FORM (REUSE EXISTING) */}
         <div className="mb-[40px]">

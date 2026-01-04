@@ -39,7 +39,7 @@ export default function AccordionSection() {
   return (
     <section id="services" className="bg-[rgb(var(--bg))] text-[rgb(var(--fg))] w-full">
       {/* Заголовок секции */}
-      <div className="px-[20px] pt-[40px]">
+      <div className="px-[20px] pt-[120px] md:pt-[160px]">
         <h2
           style={{ fontFamily: "League Spartan, sans-serif" }}
           className="
@@ -79,7 +79,7 @@ export default function AccordionSection() {
                 <button
                   onClick={() => toggleAccordion(index)}
                   className={`transition-all duration-500 ease-in-out w-full flex justify-between items-center px-[20px] md:px-[80px] relative ${
-                    isActive ? "md:py-[20px] md:mt-[20px]" : "md:py-[20px]"
+                    isActive ? "md:py-[20px] md:mt-[20px]" : "md:py-[18px]"
                   }`}
                 >
                   <div className="flex md:items-center items-start gap-[30px] my-[12px] md:my-0">

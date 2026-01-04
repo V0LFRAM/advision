@@ -45,11 +45,11 @@ function TrustSection() {
           <div
             key={item.title}
             className="
-              flex flex-col gap-2
+              flex flex-col gap-1
               w-[161px] xl:w-[197px]
             "
           >
-            <h3 className="font-inter font-[500] text-[16px] leading-[100%] tracking-[-0.02em]">
+            <h3 className="font-inter font-[600] text-[16px] leading-[100%] tracking-[-0.02em] text-[#9B948A]">
               {item.title}
             </h3>
             <p className="font-inter font-normal text-[16px] leading-[100%] tracking-[-0.02em]">
