@@ -2,26 +2,23 @@
 import { useState, useRef } from "react";
 import { FiPaperclip, FiArrowUpRight } from "react-icons/fi";
 
-const QuestionaryForm = () => {
+const QuestionaryForm = ({setIsSuccessOpen}) => {
   const [sending, setSending] = useState(false);
   const [fileName, setFileName] = useState("");
-  const [status, setStatus] = useState(null); // 'success' | 'error' | null
   const fileInputRef = useRef(null);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setStatus(null);
     const form = new FormData(e.currentTarget);
     try {
       setSending(true);
       // TODO: замени на свой endpoint
       const res = await fetch("/api/contact", { method: "POST", body: form });
       if (!res.ok) throw new Error("Ошибка");
-      setStatus("success");
-      e.currentTarget.reset();
+
       setFileName("");
+      setIsSuccessOpen(true);
     } catch (err) {
-      setStatus("error");
     } finally {
       setSending(false);
     }
@@ -30,18 +27,18 @@ const QuestionaryForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-[372px] flex flex-col gap-4 xl:mt-[200px] xl:mr-auto xl:relative xl:left-[-80px]"
+      className="xl:w-[372px] w-[337px] flex flex-col gap-4 xl:mr-auto xl:relative"
     >
       <input
         name="fullName"
         placeholder="Full Name"
-        className="w-full h-[50px] border border-[#B7B0A6] bg-transparent px-4 py-5 placeholder:text-[#ffffff59] placeholder:text-lg focus:outline-none"
+        className="w-full h-[33px] xl:h-[50px] border border-[#B7B0A6] bg-transparent px-4 placeholder:text-[#9B948A] placeholder:text-lg focus:outline-none"
       />
 
       <input
         name="phone"
         placeholder="Phone Number"
-        className="w-full h-[50px] border border-[#B7B0A6] bg-transparent px-4 py-5 placeholder:text-[#ffffff59] placeholder:text-lg focus:outline-none"
+        className="w-full h-[33px] xl:h-[50px] border border-[#B7B0A6] bg-transparent px-4 placeholder:text-[#9B948A] placeholder:text-lg focus:outline-none"
       />
 
       <input
@@ -49,20 +46,20 @@ const QuestionaryForm = () => {
         name="email"
         placeholder="Email"
         required
-        className="w-full h-[50px] border border-[#B7B0A6] bg-transparent px-4 py-5 placeholder:text-[#ffffff59] placeholder:text-lg focus:outline-none"
+        className="w-full h-[33px] xl:h-[50px] border border-[#B7B0A6] bg-transparent px-4 placeholder:text-[#9B948A] placeholder:text-lg focus:outline-none"
       />
 
       <input
         name="projectAddress"
         placeholder="Project Address"
-        className="w-full h-[50px] border border-[#B7B0A6] bg-transparent px-4 py-5 placeholder:text-[#ffffff59] placeholder:text-lg focus:outline-none"
+        className="w-full h-[33px] xl:h-[50px] border border-[#B7B0A6] bg-transparent px-4 placeholder:text-[#9B948A] placeholder:text-lg focus:outline-none"
       />
 
       <div className="relative">
         <textarea
           name="message"
           placeholder="Describe Your Project"
-          className="w-full h-[140px] border border-[#B7B0A6] bg-transparent px-4 py-5 min-h-[160px] resize-y placeholder:text-[#ffffff59] placeholder:text-lg focus:outline-none"
+          className="w-full h-[128px] xl:h-[140px] border border-[#B7B0A6] bg-transparent px-4 resize-y placeholder:text-[#9B948A] placeholder:text-lg focus:outline-none"
         />
         <button
           type="button"
@@ -81,17 +78,6 @@ const QuestionaryForm = () => {
       </div>
 
       {fileName && <div className="text-sm text-[#ffffff59] pl-1">Attached: {fileName}</div>}
-
-      {status === "success" && (
-        <div className="text-green-500 border border-green-500 p-2 text-sm">
-          Message sent successfully!
-        </div>
-      )}
-      {status === "error" && (
-        <div className="text-red-500 border border-red-500 p-2 text-sm">
-          Something went wrong. Try again.
-        </div>
-      )}
 
       <button
         type="submit"
