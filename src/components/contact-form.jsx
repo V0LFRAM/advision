@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import { FiPaperclip, FiArrowUpRight } from "react-icons/fi";
 
-const ContactForm = ({setIsOpenModalForm, setIsSuccessOpen}) => {
+const ContactForm = ({ setIsOpenModalForm, setIsSuccessOpen }) => {
   const [sending, setSending] = useState(false);
   const [fileName, setFileName] = useState("");
   const [status, setStatus] = useState(null);
@@ -105,7 +105,7 @@ const ContactForm = ({setIsOpenModalForm, setIsSuccessOpen}) => {
         <button
           type="submit"
           disabled={sending}
-          className="flex items-center justify-between bg-[#A89F94] hover:bg-[#9A9186] text-white py-5 px-6 h-[50px] disabled:opacity-70"
+          className="flex items-center justify-between bg-[#A89F94] hover:bg-[#9A9186] text-[#DFE0DB] py-[8px] px-[11px] h-[34px] disabled:opacity-70"
         >
           <span>{sending ? "Sending..." : "Send"}</span>
           <FiArrowUpRight size={22} />

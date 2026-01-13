@@ -2,7 +2,7 @@
 import { useState, useRef } from "react";
 import { FiPaperclip, FiArrowUpRight } from "react-icons/fi";
 
-const QuestionaryForm = ({setIsSuccessOpen}) => {
+const QuestionaryForm = ({ setIsSuccessOpen }) => {
   const [sending, setSending] = useState(false);
   const [fileName, setFileName] = useState("");
   const fileInputRef = useRef(null);
@@ -82,7 +82,7 @@ const QuestionaryForm = ({setIsSuccessOpen}) => {
       <button
         type="submit"
         disabled={sending}
-        className="flex items-center justify-between h-[34px] md:max-h-[45px] bg-[#A89F94] hover:bg-[#9A9186] text-white text-xl md:text-2xl px-[8px] py-[11px] md:py-5 md:px-6 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+        className="flex items-center justify-between h-[34px] md:max-h-[45px] bg-[#A89F94] hover:bg-[#9A9186] text-[#DFE0DB] text-xl md:text-2xl px-[8px] py-[11px] md:py-5 md:px-6 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
       >
         <span className="font-inter font-normal text-[16px] leading-[100%] tracking-[-0.02em]">
           {sending ? "Sending..." : "Request My Free Measurement"}
