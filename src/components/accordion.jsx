@@ -39,12 +39,12 @@ export default function AccordionSection() {
   return (
     <section id="services" className="bg-[rgb(var(--bg))] text-[rgb(var(--fg))] w-full">
       {/* Заголовок секции */}
-      <div className="px-[20px] pt-[120px] md:pt-[160px]">
+      <div className="px-[20px] pt-[120px] lg:pt-[160px]">
         <h2
           style={{ fontFamily: "League Spartan, sans-serif" }}
           className="
-            font-league font-regular md:font-medium uppercase tracking-[-0.02em]
-            text-[35px] md:text-[44px] leading-[100%] md:ml-[640px] text-right md:text-left"
+            font-league font-regular lg:font-medium uppercase tracking-[-0.02em]
+            text-[35px] xl:text-[44px] leading-[100%] md:ml-[170px] lg:ml-[410px] xl:ml-[640px] text-right md:text-left"
         >
           OUR INTERIOR <br className="block md:hidden" />
           <span className="block text-left md:inline">
@@ -70,28 +70,28 @@ export default function AccordionSection() {
               `}
             >
               {/* Верхняя линия */}
-              <div className="absolute top-0 left-[20px] right-[20px] md:left-[80px] md:right-[80px] h-[0.5px] z-10 bg-[rgb(var(--fg))]"></div>
+              <div className="absolute top-0 left-[20px] right-[20px] lg:left-[80px] lg:right-[80px] h-[0.5px] z-10 bg-[rgb(var(--fg))]"></div>
 
               {/* Нижняя линия */}
-              <div className="absolute bottom-0 left-[20px] right-[20px] md:left-[80px] md:right-[80px] h-[0.5px] z-10 bg-[rgb(var(--fg))]"></div>
+              <div className="absolute bottom-0 left-[20px] right-[20px] lg:left-[80px] lg:right-[80px] h-[0.5px] z-10 bg-[rgb(var(--fg))]"></div>
               {/* Верхняя строка (номер + заголовок + стрелка) */}
               <div className="overflow-hidden relative z-20">
                 <button
                   onClick={() => toggleAccordion(index)}
-                  className={`transition-all duration-500 ease-in-out w-full flex justify-between items-center px-[20px] md:px-[80px] relative ${
-                    isActive ? "md:py-[20px] md:mt-[20px]" : "md:py-[18px]"
+                  className={`transition-all duration-500 ease-in-out w-full flex justify-between items-center px-[20px] lg:px-[80px] relative ${
+                    isActive ? "lg:py-[20px] lg:mt-[20px]" : "lg:py-[18px]"
                   }`}
                 >
-                  <div className="flex md:items-center items-start gap-[30px] my-[12px] md:my-0">
+                  <div className="flex lg:items-center items-start gap-[30px] my-[12px] lg:my-0">
                     <span className="font-inter text-[16px] leading-[100%] text-[rgb(var(--fg))]">
                       {String(item.id).padStart(2, "0")}
                     </span>
-                    <h3 className="font-inter text-[24px] md:text-[32px] md:ml-[535px] font-normal leading-[100%] text-left text-[rgb(var(--fg))]">
+                    <h3 className="font-inter text-[24px] lg:text-[32px] md:ml-[125px] lg:ml-[303px] xl:ml-[535px] font-normal leading-[100%] text-left text-[rgb(var(--fg))]">
                       {item.title}
                     </h3>
                   </div>
                   <svg
-                    className={`transition-transform duration-500 ease-in-out w-[22px] h-[22px] md:w-[22px] md:h-[22px] text-[rgb(var(--fg))] ${
+                    className={`transition-transform duration-500 ease-in-out w-[22px] h-[22px] lg:w-[22px] lg:h-[22px] text-[rgb(var(--fg))] ${
                       isActive ? "-rotate-[75deg]" : "rotate-0"
                     }`}
                     viewBox="0 0 22 20"
@@ -109,11 +109,11 @@ export default function AccordionSection() {
                 {/* Контент (картинка + текст) */}
                 <div
                   className={`grid transition-all duration-500 ease-in-out ${
-                    isActive ? "max-h-[600px] opacity-100 md:pb-[32px]" : "max-h-0 opacity-0"
+                    isActive ? "max-h-[600px] opacity-100 lg:pb-[32px]" : "max-h-0 opacity-0"
                   }`}
                 >
                   <div
-                    className={`flex items-start md:flex-row gap-[16px] px-[20px] md:px-[80px] transition-all duration-500`}
+                    className={`flex items-start lg:flex-row gap-[16px] px-[20px] lg:px-[80px] transition-all duration-500`}
                   >
                     <div className="flex-shrink-0 pb-[20px]">
                       <Image
@@ -121,10 +121,10 @@ export default function AccordionSection() {
                         alt={item.title}
                         width={161}
                         height={223}
-                        className="object-cover w-[161px] md:w-[233px] h-[223px] md:h-[155px]"
+                        className="object-cover w-[161px] lg:w-[233px] h-[223px] lg:h-[155px]"
                       />
                     </div>
-                    <p className="whitespace-pre-line font-inter font-normal text-[16px] leading-[115%] tracking-[-0.02em] md:text-[20px] md:ml-[334px] md:max-w-[523px] text-[rgb(var(--fg))] opacity-80">
+                    <p className="whitespace-pre-line font-inter font-normal text-[16px] leading-[115%] tracking-[-0.02em] lg:text-[20px] lg:ml-[104px] xl:ml-[334px] lg:max-w-[523px] text-[rgb(var(--fg))] opacity-80">
                       {item.text}
                     </p>
                   </div>
