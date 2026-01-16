@@ -8,7 +8,7 @@ import { useBreakpointValue } from "@chakra-ui/react";
 
 export function HeaderSection() {
   const [isOpen, setIsOpen] = useState(false);
-  const variant = useBreakpointValue({ base: false, xl: true });
+  const variant = useBreakpointValue({ base: false, lg: true });
 
   useEffect(() => {
     if (isOpen) {
@@ -60,7 +60,7 @@ export function HeaderSection() {
         {variant && <Nav />}
 
         {/* НОМЕР ТЕЛЕФОНА справа (только десктоп) */}
-        <div className="hidden xl:block">
+        <div className="hidden lg:block">
           <a
             href="tel:+17634855531"
             className="font-inter text-[16px] text-[rgb(var(--fg))] hover:opacity-80"
@@ -74,7 +74,7 @@ export function HeaderSection() {
           onClick={() => setIsOpen((s) => !s)}
           aria-expanded={isOpen}
           aria-label="Toggle menu"
-          className="xl:hidden flex items-center"
+          className="lg:hidden flex items-center"
         >
           <svg
             width="28"

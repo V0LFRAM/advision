@@ -108,7 +108,7 @@ export const LookSection = () => {
       </div>
 
       {/* Mobile */}
-      <div className="xl:hidden px-[19px] pr-[20px] relative">
+      <div className="xl:hidden px-[19px] pr-[20px] lg:px-[80px] relative">
         <h2
           style={{ fontFamily: "League Spartan, sans-serif" }}
           className="

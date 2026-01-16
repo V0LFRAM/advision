@@ -13,7 +13,7 @@ const HeroSection = () => {
   return (
     <>
       <section className="w-full">
-        <div className="pt-[66px] xl:pt-[88px] pl-[20px] pr-[20px] xl:pl-[82px] xl:pr-[78px] relative flex flex-col gap-y-10">
+        <div className="pt-[66px] xl:pt-[88px] pl-[20px] pr-[20px] lg:pl-[82px] lg:pr-[78px] relative flex flex-col gap-y-10">
           <h1 className="flex flex-wrap items-baseline gap-x-3">
             <div>
               <HeroTitleStroke text={"ACCENT"} />

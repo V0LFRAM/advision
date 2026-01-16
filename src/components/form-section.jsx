@@ -38,7 +38,9 @@ const FormSection = () => {
             Tell us about your project — we’ll contact you within 24 hours with a free quote or
             consultation.
           </p>
-          <ContactForm />
+          <div className="xl:mt-[200px] xl:mr-[300px]">
+            <ContactForm />
+          </div>
         </div>
       </div>
     </section>

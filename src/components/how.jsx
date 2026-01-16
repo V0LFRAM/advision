@@ -37,7 +37,7 @@ const steps = [
 const HowSection = () => {
   return (
     <section className="w-full">
-      <div className="px-[20px] xl:px-[78px]">
+      <div className="px-[20px] lg:px-[78px]">
         <h2
           className="
             xl:pb-[75px]

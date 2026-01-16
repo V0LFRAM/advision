@@ -11,9 +11,9 @@ export default function PrecisionSection() {
       <div className="absolute inset-0 -z-10 bg-[rgb(var(--bg))]" />
 
       {/* DESKTOP layout (xl and up) */}
-      <div className="hidden xl:flex w-full pl-[193px] pr-[80px] pt-[120px] relative z-20">
+      <div className="hidden lg:flex w-full pl-[193px] lg:pl-[93px] xl:pl-[193px] pr-[80px] pt-[120px] relative z-20">
         {/* Левая колонка с рисунком (ширина 544px) */}
-        <div className="w-[544px] flex-shrink-0 pt-[375px]">
+        <div className="lg:w-[244px] xl:w-[544px] flex-shrink-0 pt-[375px]">
           <Image
             src="/images/precision-corridor.png"
             alt="design corridor"
@@ -25,7 +25,7 @@ export default function PrecisionSection() {
         </div>
 
         {/* Правая колонка: заголовок, параграф, кнопка, нижний рисунок */}
-        <div className="flex flex-col pl-[60px]">
+        <div className="flex flex-col pl-[32px] xl:pl-[60px]">
           {/* Заголовок */}
           <h2
             className="uppercase tracking-[-0.01em] text-[35px] xl:text-[44px] leading-[1] relative mb-[20px] max-w-[602px]"
@@ -82,7 +82,7 @@ export default function PrecisionSection() {
       </div>
 
       {/* MOBILE layout (below xl) */}
-      <div className="xl:hidden flex flex-col w-full px-[18px] pt-[60px] pb-0 z-20">
+      <div className="lg:hidden flex flex-col w-full px-[18px] pt-[60px] pb-0 z-20">
         {/* Заголовок мобильной версии - разделен на две части */}
         <div className="mb-2">
           {/* Первая часть заголовка с отступом слева 22px */}
