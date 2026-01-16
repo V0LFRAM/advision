@@ -8,7 +8,7 @@ const Nav = () => {
   ];
 
   return (
-    <nav className="flex flex-col gap-[24px] mt-6 xl:mt-0 px-[21px] xl:flex-row xl:items-center xl:gap-[20px]">
+    <nav className="flex flex-col gap-[24px] mt-6 lg:mt-0 px-[21px] lg:flex-row lg:items-center lg:gap-[20px]">
       {navItems.map((item) => (
         <a
           key={item.text}
