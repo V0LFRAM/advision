@@ -91,7 +91,7 @@ const ModalForm = ({ setIsOpenModalForm, formType }) => {
           {/* ✅ CONTACT FORM (REUSE EXISTING) */}
           <div className="mb-[50px]">
             {formType === "contact" && !isSuccessOpen && (
-              <ContactForm setIsSuccessOpen={setIsSuccessOpen} />
+              <ContactForm setIsSuccessOpen={setIsSuccessOpen} width={'337px'} />
             )}
             {formType === "questionary" && !isSuccessOpen && (
               <QuestionaryForm setIsSuccessOpen={setIsSuccessOpen} />

@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import { FiPaperclip, FiArrowUpRight } from "react-icons/fi";
 
-const ContactForm = ({ setIsOpenModalForm, setIsSuccessOpen }) => {
+const ContactForm = ({ setIsOpenModalForm, setIsSuccessOpen, width }) => {
   const [sending, setSending] = useState(false);
   const [fileName, setFileName] = useState("");
   const [status, setStatus] = useState(null);
@@ -47,7 +47,7 @@ const ContactForm = ({ setIsOpenModalForm, setIsSuccessOpen }) => {
     <>
       <form
         onSubmit={handleSubmit}
-        className="xl:w-[372px] w-[337px] flex flex-col gap-4 xl:mr-auto xl:relative"
+        className={`xl:w-[372px] ${`w-[${width}]`} flex flex-col gap-4 xl:mr-auto xl:relative`} 
       >
         <input
           name="fullName"

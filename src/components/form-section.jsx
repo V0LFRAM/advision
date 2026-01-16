@@ -39,7 +39,7 @@ const FormSection = () => {
             consultation.
           </p>
           <div className="xl:mt-[200px] xl:mr-[300px]">
-            <ContactForm />
+            <ContactForm width={undefined} />
           </div>
         </div>
       </div>

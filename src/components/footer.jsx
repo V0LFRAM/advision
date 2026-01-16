@@ -1,27 +1,24 @@
+'use client';
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 function Footer() {
+  const { theme } = useTheme();
+  
   return (
-    <div className="bg-[rgb(var(--bg))] min-w-[375px] md:min-w-0 pt-[31px] md:pt-[60px] font-inter text-[16px] tracking-[-0.02em] font-normal leading-[19px] text-[rgb(var(--fg))] relative w-full">
-      <div className="flex flex-col md:flex-row justify-start md:justify-between md:items-start px-[20px] md:px-[80px] pt-[20px] md:pt-0">
-        <div className="mb-[41px] md:mb-0 ml-[5px] md:ml-0 w-[326px] h-[92px] relative">
+    <footer className="bg-[rgb(var(--bg))] min-w-[375px] md:min-w-0 pt-[31px] md:pt-[60px] font-inter text-[16px] tracking-[-0.02em] font-normal leading-[19px] text-[rgb(var(--fg))] relative w-full">
+      <div className="flex flex-col xl:flex-row justify-start xl:justify-between xl:items-start px-[20px] xl:px-[80px] pt-[20px] md:pt-0">
+        <div className="mb-[41px] md:mb-[20px] ml-[5px] md:ml-0 w-[326px] h-[92px] relative">
           <Image
-            src="/images/logo-main-light.png"
+            src={theme === "dark" ? "/images/logo-main-dark.png" : "/images/logo-main-light.png"}
             alt="EdVision Logo big"
             fill
-            className="object-contain dark:hidden"
-            priority
-          />
-          <Image
-            src="/images/logo-main-dark.png"
-            alt="EdVision Logo big"
-            fill
-            className="object-contain hidden dark:block"
+            className="object-contain"
             priority
           />
         </div>
 
-        <div className="flex flex-col md:flex-row-reverse justify-start items-start w-full">
+        <div className="flex flex-col md:gap-[20px] xl:flex-row-reverse justify-start items-start w-full">
           <div>
             <p className="w-[305px] h-[57px] tracking-[-0.02em] font-normal text-[rgb(var(--fg))]">
               EdVision LLC — custom finishes, accent walls, tile & bathroom remodeling in
@@ -30,17 +27,10 @@ function Footer() {
             <div className="flex flex-row justify-start gap-[11px] md:gap-[8px] mt-[11px] z-10">
               <div className="relative w-[25px] h-[25px]">
                 <Image
-                  src="/images/instagram-light.png"
+                  src={theme === "dark" ? "/images/instagram-dark.png" : "/images/instagram-light.png"}
                   alt="Instagram"
                   fill
-                  className="object-contain dark:hidden"
-                  priority
-                />
-                <Image
-                  src="/images/instagram-dark.png"
-                  alt="Instagram"
-                  fill
-                  className="object-contain hidden dark:block"
+                  className="object-contain"
                   priority
                 />
               </div>
@@ -82,17 +72,10 @@ function Footer() {
               <div className="flex flex-row items-center mt-[8px] gap-[7px]">
                 <div className="relative w-[20px] h-[20px]">
                   <Image
-                    src="/images/email-light.png"
+                    src={theme === "dark" ? "/images/email-dark.png" : "/images/email-light.png"}
                     alt="Envelope"
                     fill
-                    className="object-contain dark:hidden"
-                    priority
-                  />
-                  <Image
-                    src="/images/email-dark.png"
-                    alt="Envelope"
-                    fill
-                    className="object-contain hidden dark:block"
+                    className="object-contain"
                     priority
                   />
                 </div>
@@ -108,7 +91,7 @@ function Footer() {
       <div className="flex flex-col md:flex-row-reverse justify-start md:justify-between md:items-center md:text-[rgba(147,140,130,1)] mt-[28px] md:mt-[83px] pt-0 md:pt-[19px] pb-0 md:pb-[20px] border-t-0 md:border-t md:border-[rgb(var(--border))] w-full">
         <div className="flex flex-col md:flex-row items-start pl-[20px] pr-[200px]">
           <p className="mr-0 md:mr-[28px]">Socials</p>
-          <p className="whiteSpace-nowrap">Privacy Policy</p>
+          <p className="whiteSpace-nowrap w-[104px]">Privacy Policy</p>
         </div>
         <div className="mt-[40px] md:mt-0">
           <p className="w-full border-t border-[rgb(var(--border))] md:border-t-0 italic md:not-italic text-[10px] md:text-[16px] text-[rgba(147,140,130,1)] leading-[12px] px-[20px] md:px-[80px] pt-[6px] md:pt-0 pb-[8px] whitespace-nowrap">
@@ -116,7 +99,7 @@ function Footer() {
           </p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
 
