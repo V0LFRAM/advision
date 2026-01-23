@@ -27,7 +27,7 @@ export function HeaderSection() {
     <header
       className="
         relative w-full z-[50] border-b border-[rgb(var(--border))]
-        bg-[rgb(var(--bg))] md:py-[20px] md:px-[80px]
+        bg-[rgb(var(--bg))] lg:py-[20px] px-[20px] lg:px-[80px]
       "
     >
       {/* HEADER BAR */}
@@ -35,7 +35,6 @@ export function HeaderSection() {
         className="
           flex items-center justify-between
           h-[80px]
-          mx-[21px] md:mx-0
         "
       >
         {/* LOGO */}

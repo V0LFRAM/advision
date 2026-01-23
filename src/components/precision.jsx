@@ -4,7 +4,7 @@ import Image from "next/image";
 import { FiArrowUpRight } from "react-icons/fi";
 import { TitleStroke } from "./ui/title-stroke";
 
-export default function PrecisionSection() {
+export default function PrecisionSection({ openModal }) {
   return (
     <section className="w-full relative overflow-hidden">
       {/* background layer sits below page lines -> negative z */}
@@ -62,7 +62,10 @@ export default function PrecisionSection() {
           </p>
 
           {/* Кнопка — левый край совпадает с параграфом */}
-          <button className="relative z-30 w-fit flex items-center gap-3 bg-[#A89F94] hover:bg-[#92897F] transition-all px-8 py-3 text-[17px] font-medium">
+          <button
+            onClick={() => openModal("questionary")}
+            className="relative z-30 w-fit flex items-center gap-3 bg-[#A89F94] hover:bg-[#92897F] transition-all px-8 py-3 text-[17px] font-medium"
+          >
             Send Us Your Idea
             <FiArrowUpRight size={20} />
           </button>
@@ -152,7 +155,10 @@ export default function PrecisionSection() {
             within 24 hours.
           </p>
           {/* Кнопка с фиксированным размером 159x34px и выравниванием по левому краю */}
-          <button className="relative z-30 flex items-center justify-center gap-3 bg-[#A89F94] hover:bg-[#92897F] transition-all px-6 py-3 text-[16px] font-medium w-[159px] h-[34px] ml-0">
+          <button
+            onClick={() => openModal("questionary")}
+            className="relative z-30 flex items-center justify-center gap-3 bg-[#A89F94] hover:bg-[#92897F] transition-all px-6 py-3 text-[16px] font-medium w-[159px] h-[34px] ml-0"
+          >
             <span className="text-nowrap">Send Us Your Idea</span>
             <FiArrowUpRight size={20} />
           </button>

@@ -1,15 +1,13 @@
 "use client";
 import { useState } from "react";
 
+import Image from "next/image";
 import { Arrow } from "@/lib/icons/arrow";
 import { ThemeToggle } from "./ThemeToggle";
-import Image from "next/image";
+// import { ModalForm } from "./modals/modal-form";
 import { HeroTitleStroke } from "./ui/hero-title-stroke";
-import { ModalForm } from "./modals/modal-form";
 
-const HeroSection = () => {
-  const [isOpenModalForm, setIsOpenModalForm] = useState(false);
-  const [formType, setFormType] = useState(null); // "contact" | "questionary"
+const HeroSection = ({ openModal }) => {
   return (
     <>
       <section className="w-full">
@@ -63,10 +61,7 @@ const HeroSection = () => {
             </p>
             <div className="flex gap-[17px] xl:gap-[35px]">
               <button
-                onClick={() => {
-                  setFormType("contact");
-                  setIsOpenModalForm(true);
-                }}
+                onClick={() => openModal("contact")}
                 className="bg-[#9B948A] text-[16px] xl:text-[18px] w-[159px] xl:w-[197px] h-[34px] xl:h-[46px] flex items-center justify-center gap-2"
               >
                 Get a Free Quote
@@ -75,10 +70,7 @@ const HeroSection = () => {
                 </span>
               </button>
               <button
-                onClick={() => {
-                  setFormType("questionary");
-                  setIsOpenModalForm(true);
-                }}
+                onClick={() => openModal("questionary")}
                 className="border-[#9B948A] text-[16px] xl:text-[18px] border-[1px] w-[159px] xl:w-[197px] h-[34px] xl:h-[46px] flex items-center justify-center gap-2"
               >
                 Send Your Idea
@@ -112,7 +104,6 @@ const HeroSection = () => {
           />
         </div>
       </section>
-      {isOpenModalForm && <ModalForm setIsOpenModalForm={setIsOpenModalForm} formType={formType} />}
     </>
   );
 };
