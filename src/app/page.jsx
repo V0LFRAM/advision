@@ -15,6 +15,7 @@ import PrecisionSection from "@/components/precision";
 
 import { useState } from "react";
 import { ModalForm } from "@/components/modals/modal-form";
+import { RunningLine } from "@/components/running-line";
 
 export default function Home() {
   const [isOpenModalForm, setIsOpenModalForm] = useState(false);
@@ -37,6 +38,7 @@ export default function Home() {
       <PrecisionSection openModal={openModal} />
       <TrustSection />
       <FormSection />
+      <RunningLine />
       <Footer />
 
       {isOpenModalForm && <ModalForm formType={formType} setIsOpenModalForm={setIsOpenModalForm} />}
