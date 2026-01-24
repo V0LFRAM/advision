@@ -45,10 +45,10 @@ export const LookSection = () => {
   return (
     <section
       id="projects"
-      className="w-full pt-[120px] xl:pt-[180px] pb-[120px] xl:pb-[200px] overflow-hidden"
+      className="w-full pt-[120px] md:pt-[180px] pb-[120px] md:pb-[158px] overflow-hidden"
     >
       {/* Desktop */}
-      <div className="hidden xl:block px-[80px] xl:pr-[67px] relative">
+      <div className="hidden md:block px-[20px] lg:px-[80px] xl:pr-[67px] relative">
         <h2 className="mb-[60px]">
           <span
             className="
@@ -65,20 +65,26 @@ export const LookSection = () => {
         </h2>
 
         {/* 🔹 изменено: теперь отображаем именно три картинки по кругу */}
-        <div className="relative flex justify-between gap-[80px] items-center">
+        <div className="relative flex justify-between gap-[20px] lg:gap-[80px] items-center">
           {visibleItems.map((item, idx) => (
-            <div key={idx} className="relative transition-all duration-500">
+            <div
+              key={idx}
+              className={`
+      relative transition-all duration-500
+      ${idx === 1 ? "hidden xl:block" : "block"}
+    `}
+            >
               <Image
                 src={item.img}
                 alt={item.date}
                 width={373}
                 height={438}
-                className="object-cover w-[373px] h-[438px] z-[1] rounded-lg"
+                className="object-cover w-[373px] h-[438px] z-[1]"
               />
               <p
                 className="
                   font-inter font-normal text-[20px] leading-[100%] tracking-[-0.02em]
-                  text-[#DFE0DB] mt-[20px] text-center
+                  text-[#DFE0DB] mt-[10px] text-center
                 "
               >
                 {item.date}
@@ -108,11 +114,10 @@ export const LookSection = () => {
       </div>
 
       {/* Mobile */}
-      <div className="xl:hidden px-[19px] pr-[20px] lg:px-[80px] relative">
+      <div className="md:hidden px-[19px] pr-[20px] relative">
         <h2
-          style={{ fontFamily: "League Spartan, sans-serif" }}
           className="
-            text-left font-regular uppercase tracking-[-0.02em]
+            text-left font-league font-regular uppercase tracking-[-0.02em]
             text-[33px] leading-[100%] mb-[40px]
           "
         >
@@ -136,7 +141,7 @@ export const LookSection = () => {
             alt={lookItems[index].date}
             width={336}
             height={392}
-            className="object-cover w-[336px] h-[392px] z-[1] rounded-lg"
+            className="object-cover w-[336px] h-[392px] z-[1]"
           />
           <button
             onClick={prevSlide}

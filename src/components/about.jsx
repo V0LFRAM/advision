@@ -31,9 +31,7 @@ const About = () => {
             text-[35px] xl:text-[44px] leading-[1] 
           "
             >
-              Design that
-              <TitleStroke text={"Reflects"} />
-              You — Craftsmanship that Lasts
+              Design that <TitleStroke text={"Reflects"} /> You — Craftsmanship that Lasts
             </span>
           </h2>
           <p
