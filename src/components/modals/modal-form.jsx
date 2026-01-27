@@ -52,7 +52,7 @@ const ModalForm = ({ setIsOpenModalForm, formType }) => {
 
           {/* ✅ TITLE */}
           {formType === "contact" && !isSuccessOpen && (
-            <h2 className="font-inter uppercase font-medium text-[16px] leading-[120%] tracking-[-0.02em] text-[rgb(var(--fg))] mt-[104px] mb-[20px]">
+            <h2 className="font-inter uppercase font-medium text-[16px] leading-[120%] tracking-[-0.02em] text-[rgb(var(--fg))] mt-[50px] mb-[20px]">
               Fill out the form — our specialist
               <br />
               will contact you within 1 hour.
@@ -61,7 +61,7 @@ const ModalForm = ({ setIsOpenModalForm, formType }) => {
 
           {formType === "questionary" && !isSuccessOpen && (
             <>
-              <h2 className="font-inter uppercase font-medium text-[16px] leading-[120%] tracking-[-0.02em] text-[rgb(var(--fg))] mt-[104px] mb-[20px]">
+              <h2 className="font-inter uppercase font-medium text-[16px] leading-[120%] tracking-[-0.02em] text-[rgb(var(--fg))] mt-[50px] mb-[20px]">
                 Book a Free On-Site Measurement
               </h2>
 
@@ -91,7 +91,7 @@ const ModalForm = ({ setIsOpenModalForm, formType }) => {
           {/* ✅ CONTACT FORM (REUSE EXISTING) */}
           <div className="mb-[50px]">
             {formType === "contact" && !isSuccessOpen && (
-              <ContactForm setIsSuccessOpen={setIsSuccessOpen} width={'337px'} />
+              <ContactForm setIsSuccessOpen={setIsSuccessOpen} width={"337px"} />
             )}
             {formType === "questionary" && !isSuccessOpen && (
               <QuestionaryForm setIsSuccessOpen={setIsSuccessOpen} />

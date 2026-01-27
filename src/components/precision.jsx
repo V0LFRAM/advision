@@ -90,7 +90,7 @@ export default function PrecisionSection({ openModal }) {
         <div className="mb-2">
           {/* Первая часть заголовка с отступом слева 22px */}
           <h2
-            className="uppercase tracking-[-0.02em] text-[35px] leading-[90%] text-[rgb(var(--fg))] ml-[16px]"
+            className="uppercase tracking-[-0.02em] text-[35px] leading-[90%] text-[rgb(var(--fg))]"
             style={{
               fontFamily: '"League Spartan", sans-serif',
               fontWeight: 400,
@@ -139,7 +139,7 @@ export default function PrecisionSection({ openModal }) {
         {/* Контейнер параграфа и кнопки с выравниванием по левому краю */}
         <div className="w-full mx-0 mb-[28px]">
           <p
-            className="text-[16px] leading-[115%] tracking-[-0.02em] text-[rgb(var(--fg))] mb-[24px] ml-0 w-[250px]"
+            className="text-[16px] leading-[115%] tracking-[-0.02em] text-[rgb(var(--fg))] mb-[24px] ml-0 w-[250px] md:w-[80%]"
             style={{
               fontFamily: '"Inter", sans-serif',
               fontWeight: 400,
@@ -166,7 +166,7 @@ export default function PrecisionSection({ openModal }) {
 
         {/* Bottom image — должна занять всю ширину экрана (375px). Родитель имеет px-[20px], поэтому используем -mx-[20px] + w-screen */}
         <div className="-mx-[20px] flex justify-center">
-          <div className="relative w-[375px] h-[282px] overflow-hidden">
+          <div className="relative w-[375px] md:w-[728px] h-[282px] overflow-hidden">
             <Image
               src="/images/precision-hall.png"
               alt="design mobile hall"
