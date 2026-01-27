@@ -104,7 +104,7 @@ const HowSection = () => {
             return (
               <div
                 key={id}
-                className={`relative flex flex-col w-[203px] mb-[50px] ${isEven ? "self-start" : "self-end"}`}
+                className={`relative flex flex-col w-[203px] md:w-[45%] lg:w-[45%] mb-[50px] ${isEven ? "self-start" : "self-end"}`}
               >
                 <p
                   className={`
