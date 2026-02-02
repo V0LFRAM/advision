@@ -50,15 +50,15 @@ export default function Home() {
     <>
       <GridBack />
       <HeroSection openModal={openModal} isTimeoutHero={isTimeoutHero} />
-      <About />
-      <AccordionSection />
-      <LookSection />
-      <HowSection />
-      <PrecisionSection openModal={openModal} />
-      <TrustSection />
-      <FormSection />
-      <RunningLine />
-      <Footer />
+      {isTimeoutHero && <About />}
+      {isTimeoutHero && <AccordionSection />}
+      {isTimeoutHero && <LookSection />}
+      {isTimeoutHero && <HowSection />}
+      {isTimeoutHero && <PrecisionSection openModal={openModal} />}
+      {isTimeoutHero && <TrustSection />}
+      {isTimeoutHero && <FormSection />}
+      {isTimeoutHero && <RunningLine />}
+      {isTimeoutHero && <Footer />}
 
       {isOpenModalForm && <ModalForm formType={formType} setIsOpenModalForm={setIsOpenModalForm} />}
     </>
