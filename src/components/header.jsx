@@ -120,7 +120,7 @@ export function HeaderSection() {
           bg-[rgb(var(--bg))]
           transform transition-transform duration-500 ease-in-out
           ${isOpen ? "translate-x-0" : "translate-x-full"}
-          flex flex-col
+          flex flex-col xl:hidden
         `}
       >
         {/* LINE + LOGO */}

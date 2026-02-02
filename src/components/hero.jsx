@@ -136,7 +136,7 @@ const HeroSection = ({ openModal, isTimeoutHero }) => {
             <div className="flex gap-[17px] xl:gap-[35px]">
               <button
                 onClick={() => openModal("contact")}
-                className="bg-[#9B948A] text-[16px] xl:text-[18px] w-[159px] xl:w-[197px] h-[34px] xl:h-[46px] flex items-center justify-center gap-2"
+                className="bg-[#9B948A] text-[16px] xl:text-[18px] w-[159px] xl:w-[197px] h-[34px] xl:h-[46px] flex items-center justify-center gap-2 z-[10]"
               >
                 Get a Free Quote
                 <span className="mt-[2px]">
@@ -145,7 +145,7 @@ const HeroSection = ({ openModal, isTimeoutHero }) => {
               </button>
               <button
                 onClick={() => openModal("questionary")}
-                className="border-[#9B948A] text-[16px] xl:text-[18px] border-[1px] w-[159px] xl:w-[197px] h-[34px] xl:h-[46px] flex items-center justify-center gap-2"
+                className="border-[#9B948A] text-[16px] xl:text-[18px] border-[1px] w-[159px] xl:w-[197px] h-[34px] xl:h-[46px] flex items-center justify-center gap-2 z-[10]"
               >
                 Send Your Idea
                 <span className="mt-[2px]">
@@ -167,7 +167,7 @@ const HeroSection = ({ openModal, isTimeoutHero }) => {
           />
         </div>}
         
-        {isTimeoutHero && <div className="hidden lg:block absolute bottom-0 w-full min-h-[600px] max-h-[600px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] z-[1]">
+        {isTimeoutHero && <div className="hidden lg:block absolute bottom-0 w-[100vw] overflow-hidden min-h-[600px] max-h-[600px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] z-[1]">
           <Image
             src="/images/hero-image.png"
             alt="Hero Image"

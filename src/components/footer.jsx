@@ -31,17 +31,19 @@ function Footer() {
               Minneapolis and surrounding suburbs.{" "}
             </p>
             <div className="flex flex-row justify-start gap-[11px] md:gap-[8px] mt-[11px] z-10">
-              <div className="relative w-[25px] h-[25px]">
-                {mounted && (<Image
-                  src={
-                    theme === "dark" ? "/images/instagram-dark.png" : "/images/instagram-light.png"
-                  }
-                  alt="Instagram"
-                  fill
-                  className="object-contain"
-                  priority
-                />)}
-              </div>
+              <a href="https://www.instagram.com/edward_tiler?igsh=emhpb2ZmbXB2ZHUz" target="_blank" rel="noopener noreferrer" className="relative w-[25px] h-[25px]">
+                {mounted && (
+                  <Image
+                    src={
+                      theme === "dark" ? "/images/instagram-dark.png" : "/images/instagram-light.png"
+                    }
+                    alt="Instagram"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                  )}
+              </a>
               <svg
                 width="26"
                 height="26"
@@ -60,8 +62,8 @@ function Footer() {
           <div className="flex flex-col items-start mt-[28px] md:mt-0 mr-0 md:mr-[79px]">
             <div className="flex flex-col items-start">
               <p className="inline">Contacts:</p>
-              <div className="flex flex-row mt-[6px] gap-[11px]">
-                <svg
+                <a href="tel:+17634855531" className="flex mt-[6px] gap-[10px]">
+                  <svg
                   width="20"
                   height="20"
                   viewBox="0 0 20 20"
@@ -75,10 +77,11 @@ function Footer() {
                     fill="currentColor"
                   />
                 </svg>
-                <a href="tel:+17634855531">+17634855531</a>
-              </div>
-              <div className="flex flex-row items-center mt-[8px] gap-[7px]">
-                <div className="relative w-[20px] h-[20px]">
+                  +17634855531
+                  </a>
+                
+                <a href="mailto:edvisions.pro@gmail.com" className="lineHeight-20px flex items-center mt-[8px] gap-[10px]">
+                  <div className="relative w-[20px] h-[20px]">
                   {mounted && (<Image
                     src={theme === "dark" ? "/images/email-dark.png" : "/images/email-light.png"}
                     alt="Envelope"
@@ -87,10 +90,8 @@ function Footer() {
                     priority
                   />)}
                 </div>
-                <a href="mailto:edvisions.pro@gmail.com" className="lineHeight-20px">
                   edvisions.pro@gmail.com
                 </a>
-              </div>
             </div>
           </div>
         </div>
