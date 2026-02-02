@@ -17,6 +17,10 @@ function ThemeToggle() {
       onCheckedChange={() => setTheme(isDark ? "light" : "dark")}
       size="sm"
       aria-label="Toggle theme"
+      style={{
+        transform: "scale(0.8)",
+        minWidth: 0,
+      }}
     >
       <Switch.HiddenInput />
       <Switch.Control bg="#1E1E1C" _dark={{ bg: "#DFE0DB", _checked: { bg: "white" } }}>
