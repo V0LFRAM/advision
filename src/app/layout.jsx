@@ -2,6 +2,7 @@ import { Provider } from "@/components/ui/provider";
 import "./globals.css";
 
 import { Inter, League_Spartan } from "next/font/google";
+import { HeaderSection } from "@/components/header";
 
 export const inter = Inter({
   subsets: ["latin"],
@@ -29,7 +30,7 @@ export default function RootLayout({ children }) {
         className={`${inter.className} bg-[rgb(var(--bg))] text-[rgb(var(--fg))] h-auto relative`}
       >
         <Provider>
-          <header></header>
+          <HeaderSection />
           <main>{children}</main>
         </Provider>
       </body>

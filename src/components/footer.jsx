@@ -1,22 +1,27 @@
 "use client";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 function Footer() {
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   return (
     <footer className="bg-[rgb(var(--bg))] min-w-[375px] md:min-w-0 pt-[31px] md:pt-[60px] font-inter text-[16px] tracking-[-0.02em] font-normal leading-[19px] text-[rgb(var(--fg))] relative w-full">
       <div className="absolute top-0 left-0 w-full border-t border-[rgb(var(--border))]" />
       <div className="flex flex-col xl:flex-row justify-start xl:justify-between xl:items-start px-[20px] xl:px-[80px] pt-[20px] md:pt-0">
         <div className="mb-[41px] md:mb-[20px] ml-[5px] md:ml-0 w-[326px] h-[92px] relative">
-          <Image
+          {mounted && (
+            <Image
             src={theme === "dark" ? "/images/logo-main-dark.png" : "/images/logo-main-light.png"}
             alt="EdVision Logo big"
             fill
             className="object-contain"
             priority
-          />
+          />)}
         </div>
 
         <div className="flex flex-col md:gap-[20px] xl:flex-row-reverse justify-start items-start w-full">
@@ -27,7 +32,7 @@ function Footer() {
             </p>
             <div className="flex flex-row justify-start gap-[11px] md:gap-[8px] mt-[11px] z-10">
               <div className="relative w-[25px] h-[25px]">
-                <Image
+                {mounted && (<Image
                   src={
                     theme === "dark" ? "/images/instagram-dark.png" : "/images/instagram-light.png"
                   }
@@ -35,7 +40,7 @@ function Footer() {
                   fill
                   className="object-contain"
                   priority
-                />
+                />)}
               </div>
               <svg
                 width="26"
@@ -74,13 +79,13 @@ function Footer() {
               </div>
               <div className="flex flex-row items-center mt-[8px] gap-[7px]">
                 <div className="relative w-[20px] h-[20px]">
-                  <Image
+                  {mounted && (<Image
                     src={theme === "dark" ? "/images/email-dark.png" : "/images/email-light.png"}
                     alt="Envelope"
                     fill
                     className="object-contain"
                     priority
-                  />
+                  />)}
                 </div>
                 <a href="mailto:edvisions.pro@gmail.com" className="lineHeight-20px">
                   edvisions.pro@gmail.com

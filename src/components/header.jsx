@@ -6,9 +6,21 @@ import { NavContactsSideBar } from "./nav-contacts-side-bar";
 import { Nav } from "./navigation";
 import { useBreakpointValue } from "@chakra-ui/react";
 
+
 export function HeaderSection() {
   const [isOpen, setIsOpen] = useState(false);
   const variant = useBreakpointValue({ base: false, lg: true });
+  const [showHeader, setShowHeader] = useState(false);
+
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowHeader(true);
+    }, 7000); 
+
+    return () => clearTimeout(timer);
+  }, []);
+  
 
   useEffect(() => {
     if (isOpen) {
@@ -17,7 +29,6 @@ export function HeaderSection() {
       document.body.style.overflow = "";
     }
 
-    // Чистим при размонтировании
     return () => {
       document.body.style.overflow = "";
     };
@@ -25,17 +36,28 @@ export function HeaderSection() {
 
   return (
     <header
-      className="
+      className={`
         relative w-full z-[50] border-b border-[rgb(var(--border))]
-        bg-[rgb(var(--bg))] lg:py-[20px] px-[20px] lg:px-[80px]
-      "
+        bg-[rgb(var(--bg))]
+      `}
+      style={{ willChange: 'transform' }}
     >
+      <div 
+      className={`
+        lg:py-[20px] px-[20px] lg:px-[80px]
+        transition-transform duration-700 ease-in-out
+        ${showHeader ? 'translate-y-0' : '-translate-y-full'}
+      `}
+      style={{ willChange: 'transform' }}
+      >
       {/* HEADER BAR */}
       <div
         className="
-          flex items-center justify-between
-          h-[80px]
-        "
+          flex 
+          items-center 
+          justify-between
+          h-[57px]
+          "
       >
         {/* LOGO */}
         <div className="relative w-[69px] md:w-[99px] h-[40px] md:h-[57px]">
@@ -191,6 +213,8 @@ export function HeaderSection() {
         </div>
         <NavContactsSideBar />
       </div>
+      </div>
     </header>
   );
 }
+

@@ -1,50 +1,124 @@
 "use client";
-import { useState } from "react";
 
 import Image from "next/image";
+
+import { motion } from "framer-motion";
+
 import { Arrow } from "@/lib/icons/arrow";
 import { ThemeToggle } from "./ThemeToggle";
-// import { ModalForm } from "./modals/modal-form";
 import { HeroTitleStroke } from "./ui/hero-title-stroke";
+import { LoadingTextAnimated } from "./loading-text-animated";
 
-const HeroSection = ({ openModal }) => {
+import { useEffect, useState } from "react";
+import { GridBack } from "./ui/grid-back";
+
+const HeroSection = ({ openModal, isTimeoutHero }) => {
+  const [showStatement, setShowStatement] = useState(false); // 2 sekonds
+  const [showWalls, setShowWalls] = useState(false); // 3 sekonds
+  const [showThatMakeA, setShowThatMakeA] = useState(false); // 4 sekonds
+  const [showAccent, setShowAccent] = useState(false); // 5 sekonds
+  const [showThemeToggle, setShowThemeToggle] = useState(false); // 6 sekonds
+  const [showCustomTile, setShowCustomTile] = useState(false); // 7 sekonds
+
+  const [startScale, setStartScale] = useState(false);
+
+
+  useEffect(() => {
+    const sequence = [
+      { setter: setShowStatement, delay: 1500 },
+      { setter: setShowWalls, delay: 500 },
+      { setter: setShowThatMakeA, delay: 500 },
+      { setter: setShowAccent, delay: 500 },
+      { setter: setShowThemeToggle, delay: 500 },
+      { setter: setShowCustomTile, delay: 500 },
+    ];
+
+    let timers = [];
+
+    if (isTimeoutHero) {
+      sequence.forEach(({ setter }) => setter(false));
+      let total = 0;
+      sequence.forEach(({ setter, delay }) => {
+        total += delay;
+        timers.push(setTimeout(() => setter(true), total));
+      });
+    } else {
+      sequence.forEach(({ setter }) => setter(false));
+    }
+    return () => timers.forEach(clearTimeout);
+  }, [isTimeoutHero]);
+
+  useEffect(() => {
+      let timer;
+      if (isTimeoutHero) {
+        timer = setTimeout(() => setStartScale(true), 1000); 
+      } else {
+        setStartScale(false);
+      }
+      return () => clearTimeout(timer);
+    }, [isTimeoutHero]);
+
+
   return (
     <>
-      <section className="w-full">
-        <div className="pt-[66px] xl:pt-[88px] pl-[20px] pr-[20px] lg:pl-[82px] lg:pr-[78px] relative flex flex-col gap-y-10">
-          <h1 className="flex flex-wrap items-baseline gap-x-3">
+      <section className="w-full pt-[66px] xl:pt-[88px] h-[100vh] min-h-[700px] relative">
+        <motion.div
+          animate={{zIndex: 10, height: isTimeoutHero ? '358px' : 'calc(100vh - 57px)' }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="pl-[20px] pr-[20px] lg:pl-[82px] lg:pr-[78px] relative flex flex-col gap-y-10 z-10 bg-[rgb(var(--bg))] overflow-hidden"
+        >
+          <GridBack />
+
+          {!isTimeoutHero && 
+          <div className="w-full h-[100vh] flex items-center justify-center pb-[200px]">
+            <LoadingTextAnimated />
+          </div>}
+
+          {isTimeoutHero && <h1 className="flex flex-wrap items-baseline gap-x-3">
             <div>
-              <HeroTitleStroke text={"ACCENT"} />
+              <span style={{ visibility: showAccent ? "visible" : "hidden" }}>
+                <HeroTitleStroke text={"ACCENT"} />
+              </span>
               <span
                 className="
-              font-league font-[500] uppercase tracking-[-0.01em]
+              font-league font-[600] uppercase tracking-[-0.01em]
               text-[40px] xl:text-[80px] leading-[1] text-[rgb(var(--fg))] relative
             "
               >
-                Walls & Cust
-                <span className="relative inline-block">
-                  o
-                  <span className="absolute top-[-10px] right-[13.5px]">
+                <span style={{ visibility: showWalls ? "visible" : "hidden" }}>
+                  {"Walls & "} 
+                </span>
+
+                <span >
+                  <span style={{ visibility: showCustomTile ? "visible" : "hidden" }}>Cust</span> 
+                  <span className="relative inline-block">
+                  <span style={{ visibility: showCustomTile ? "visible" : "hidden" }}>o</span>
+                  <span style={{ visibility: showThemeToggle ? "visible" : "hidden" }} className="absolute top-[-10px] right-[13.5px] hidden xxl:block">
                     <ThemeToggle />
                   </span>
+                  </span>
+                  <span style={{ visibility: showCustomTile ? "visible" : "hidden" }}>m Tile</span>
                 </span>
-                m Tile
-              </span>
+            </span>
             </div>
 
-            <div className="ml-auto">
+            <div className="ml-auto mr-[20px]" >
               <span
-                className="
-              font-league font-[500] uppercase tracking-[-0.01em]
-              text-[40px] xl:text-[80px] leading-[1] text-[rgb(var(--fg))] mr-[15px]
-            "
+                style={{ visibility: showThatMakeA ? "visible" : "hidden" }}
+                  className="
+                font-league font-[600] uppercase tracking-[-0.01em]
+                text-[40px] xl:text-[80px] leading-[1] text-[rgb(var(--fg))] mr-[15px]
+              "
               >
                 That Make a
               </span>
-              <HeroTitleStroke text={"Statement"} />
+
+              <span style={{ visibility: showStatement ? "visible" : "hidden" }}>
+                <HeroTitleStroke text={"Statement"} />
+              </span>
             </div>
-          </h1>
-          <div className="flex gap-[24px] xl:gap-[50px] xl:ml-auto mb-[55px] flex-wrap">
+          </h1>}
+          {isTimeoutHero && <div style={{ visibility: showCustomTile ? "visible" : "hidden" }} className="flex gap-[24px] xl:gap-[50px] xl:ml-auto mb-[55px] flex-wrap">
             <p
               className="
               max-w-[440px] 
@@ -79,9 +153,9 @@ const HeroSection = ({ openModal }) => {
                 </span>
               </button>
             </div>
-          </div>
-        </div>
-        <div className="lg:hidden relative w-full min-h-[335px] max-h-[335px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+          </div>}
+        </motion.div>
+        {isTimeoutHero && <div className="lg:hidden relative w-full min-h-[335px] max-h-[335px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
           <Image
             src="/images/hero-mob.png"
             alt="Hero Image"
@@ -91,8 +165,9 @@ const HeroSection = ({ openModal }) => {
             sizes="100vw"
             className="object-cover"
           />
-        </div>
-        <div className="hidden lg:block relative w-full min-h-[600px] max-h-[600px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+        </div>}
+        
+        {isTimeoutHero && <div className="hidden lg:block absolute bottom-0 w-full min-h-[600px] max-h-[600px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] z-[1]">
           <Image
             src="/images/hero-image.png"
             alt="Hero Image"
@@ -101,8 +176,12 @@ const HeroSection = ({ openModal }) => {
             priority
             sizes="100vw"
             className="object-cover"
+            style={{
+              transform: startScale ? "scale(1.1)" : "scale(1)",
+              transition: "transform 4s cubic-bezier(.4,0,.2,1)"
+            }}
           />
-        </div>
+        </div>}
       </section>
     </>
   );
