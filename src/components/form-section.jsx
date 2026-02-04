@@ -1,8 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import { TitleStroke } from "./ui/title-stroke";
 import { ContactForm } from "./contact-form";
 
+import { useState } from "react";
+import { ModalForm } from "./modals/modal-form";
+
 const FormSection = () => {
+  const [isOpenModalForm, setIsOpenModalForm] = useState(false);
+  const [formType, setFormType] = useState(null);
+
   return (
     <section id="get-a-quote" className="w-full relative">
       <div className="px-[20px] xl:px-[80px] xl:flex ">
@@ -39,10 +47,23 @@ const FormSection = () => {
             consultation.
           </p>
           <div className="xl:mt-[200px] xl:mr-[300px]">
-            <ContactForm width={undefined} />
+            <ContactForm
+              onSuccess={() => {
+                setFormType("contact");
+                setIsOpenModalForm(true);
+              }}
+            />
           </div>
         </div>
       </div>
+      {/* ✅ MODAL */}
+      {isOpenModalForm && (
+        <ModalForm
+          setIsOpenModalForm={setIsOpenModalForm}
+          formType={formType}
+          openAsSuccess={true}
+        />
+      )}
     </section>
   );
 };

@@ -7,8 +7,8 @@ import { QuestionaryForm } from "../questionary-form";
 import { FormEndSection } from "../form-end";
 import { useMediaQuery } from "@chakra-ui/react";
 
-const ModalForm = ({ setIsOpenModalForm, formType }) => {
-  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
+const ModalForm = ({ setIsOpenModalForm, formType, openAsSuccess = false }) => {
+  const [isSuccessOpen, setIsSuccessOpen] = useState(openAsSuccess);
   const tabletScreen = useMediaQuery("(min-width: 768px)");
 
   useEffect(() => {
@@ -91,7 +91,7 @@ const ModalForm = ({ setIsOpenModalForm, formType }) => {
           {/* ✅ CONTACT FORM (REUSE EXISTING) */}
           <div className="mb-[50px]">
             {formType === "contact" && !isSuccessOpen && (
-              <ContactForm setIsSuccessOpen={setIsSuccessOpen} width={"337px"} />
+              <ContactForm onSuccess={() => setIsSuccessOpen(true)} width="337px" />
             )}
             {formType === "questionary" && !isSuccessOpen && (
               <QuestionaryForm setIsSuccessOpen={setIsSuccessOpen} />
