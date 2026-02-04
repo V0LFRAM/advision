@@ -1,18 +1,24 @@
 import Image from "next/image";
+import { useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+
 import { TitleStroke } from "./ui/title-stroke";
 
 const textMock = [
   {
+    index: 1,
     num: "120+",
     title: "Projects Completed",
     text: "From cozy homes to stylish apartments across whole World.",
   },
   {
+    index: 2,
     num: "8+",
     title: "Years of Experience",
     text: "Interior finishing you can rely on — built with precision.",
   },
   {
+    index: 3,
     num: "24h",
     title: "Design Proposal",
     text: "Send us a photo — we’ll reply with ideas & estimate in a day.",
@@ -20,21 +26,132 @@ const textMock = [
 ];
 
 const About = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-20% 0px" });
+  const [animated, setAnimated] = useState(false);
+  
+  const [showCraftsmanship, setShowCraftsmanship] = useState(false);
+  const [showYou, setShowYou] = useState(false); 
+  const [showDesignThat, setShowDesignThat] = useState(false);
+  const [showThatLasts, setShowThatLasts] = useState(false);
+  const [showReflects, setShowReflects] = useState(false); 
+  const [showContent, setShowContent] = useState(false); 
+  const [showText, setShowText] = useState(false); 
+  const [showMore, setShowMore] = useState(false);
+
+
+  const [shownTextMock, setShownTextMock] = useState([false, false, false]);
+  // Счётчики для анимации чисел
+  const [counters, setCounters] = useState([1, 1, 1]);
+
+  useEffect(() => {
+    if (isInView && !animated) setAnimated(true);
+  }, [isInView, animated]);   
+
+
+  useEffect(() => {
+    const sequence = [
+      { setter: setShowCraftsmanship, delay: 500 },
+      { setter: setShowYou, delay: 500 },
+      { setter: setShowDesignThat, delay: 500 },
+      { setter: setShowThatLasts, delay: 500 },
+      { setter: setShowReflects, delay: 500 },
+      { setter: setShowContent, delay: 500 },
+      { setter: setShowText, delay: 500 },
+      { setter: setShowMore, delay: 500 },
+      { setter: (v) => setShownTextMock([true, false, false]), delay: 500 },
+      { setter: (v) => setShownTextMock([true, true, false]), delay: 1500 },
+      { setter: (v) => setShownTextMock([true, true, true]), delay: 1500 },
+    ];
+
+    let timers = [];
+
+    if (animated) {
+      sequence.forEach(({ setter }) => setter(false));
+      setShownTextMock([false, false, false]);
+      setCounters([1, 1, 1]);
+      let total = 0;
+      sequence.forEach(({ setter, delay }) => {
+        total += delay;
+        timers.push(setTimeout(() => setter(true), total));
+      });
+      let textTotal = sequence.slice(0, 8).reduce((acc, cur) => acc + cur.delay, 0);
+      for (let i = 0; i < textMock.length; i++) {
+        timers.push(setTimeout(() => {
+          setShownTextMock((prev) => prev.map((val, idx) => idx <= i ? true : val));
+        }, textTotal + 500 * (i + 1)));
+      }
+    } else {
+      sequence.forEach(({ setter }) => setter(false));
+      setShownTextMock([false, false, false]);
+      setCounters([1, 1, 1]);
+    }
+    return () => timers.forEach(clearTimeout);
+  }, [animated]);
+
+  // Анимация счёта для каждого числа
+  useEffect(() => {
+    textMock.forEach((item, idx) => {
+      if (shownTextMock[idx]) {
+        let start = 1;
+        let end = parseInt(item.num);
+        if (isNaN(end)) return;
+        let startTime = null;
+        let raf;
+        const duration = 700; // ms
+        function animateCount(ts) {
+          if (!startTime) startTime = ts;
+          const elapsed = ts - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const value = Math.floor(start + (end - start) * progress);
+          setCounters(prev => prev.map((v, i) => i === idx ? value : v));
+          if (progress < 1) {
+            raf = requestAnimationFrame(animateCount);
+          } else {
+            setCounters(prev => prev.map((v, i) => i === idx ? end : v));
+          }
+        }
+        raf = requestAnimationFrame(animateCount);
+        return () => cancelAnimationFrame(raf);
+      }
+    });
+  }, [shownTextMock]);
+
   return (
-    <section id="about-us" className="w-full">
+    <section ref={ref} id="about-us" className="w-full" >
       <div className="py-[120px] px-[20px] xl:px-[80px] flex flex-wrap gap-[20px] justify-between">
         <div>
           <h2 className="flex flex-wrap items-baseline xl:block gap-x-3 max-w-[700px] mb-[20px]">
             <span
               className="
-            font-league font-[500] uppercase tracking-[-0.01em]
-            text-[35px] xl:text-[44px] leading-[1] 
-          "
+                font-league font-[500] uppercase tracking-[-0.01em]
+                text-[35px] xl:text-[44px] leading-[1] 
+              "
             >
-              Design that <TitleStroke text={"Reflects"} /> You — Craftsmanship that Lasts
+              <span style={{ visibility: showDesignThat ? "visible" : "hidden" }}>
+                {'Design that '}
+              </span>
+               
+              <span style={{ visibility: showReflects ? "visible" : "hidden" }}>
+                <TitleStroke text={"Reflects"} /> 
+              </span>
+              
+              <span style={{ visibility: showYou ? "visible" : "hidden" }}>
+                {' You —  '}
+              </span>
+              
+              <span style={{ visibility: showCraftsmanship ? "visible" : "hidden" }}>
+                {'Craftsmanship '}
+              </span>
+
+               <span style={{ visibility: showThatLasts ? "visible" : "hidden" }}>
+                {'that Lasts '}
+              </span>
+              
             </span>
           </h2>
           <p
+            style={{ visibility: showContent ? "visible" : "hidden" }}
             className="
             font-league font-[500]  tracking-[-0.02em]
             text-[16px] xl:text-[20px] leading-[1] max-w-[700px] mb-[20px]
@@ -45,6 +162,7 @@ const About = () => {
             remodels that elevate everyday spaces.
           </p>
           <p
+            style={{ visibility: showText ? "visible" : "hidden" }}
             className="
             font-league font-[500]  tracking-[-0.02em]
             text-[16px] xl:text-[20px] leading-[1]  max-w-[700px]
@@ -55,7 +173,10 @@ const About = () => {
             and deliver — with attention to detail and commitment to quality.
           </p>
         </div>
-        <div className="lg:hidden relative w-full h-[260px]">
+        <div 
+          style={{ visibility: showContent ? "visible" : "hidden" }}
+          className="lg:hidden relative w-full h-[260px]" 
+        >
           <Image
             src="/images/about-mob.png"
             alt="About Image"
@@ -66,7 +187,10 @@ const About = () => {
             className="object-cover"
           />
         </div>
-        <div className="hidden lg:block relative w-[378] h-[460px]">
+        <div 
+          style={{ visibility: showText ? "visible" : "hidden" }}
+          className="hidden lg:block relative w-[378] h-[460px]"
+        >
           <Image
             src="/images/about-image.png"
             alt="About Image"
@@ -79,6 +203,7 @@ const About = () => {
         </div>
         <div className="w-full ">
           <span
+            style={{ visibility: showMore ? "visible" : "hidden" }}
             className="font-league font-normal tracking-[-0.01em]
             text-[35px] xl:text-[44px] leading-[1] text-[#9B948A] mb-[28px]"
           >
@@ -88,13 +213,20 @@ const About = () => {
             {textMock.map((item, index) => (
               <li
                 key={index}
+                style={{ visibility: shownTextMock[index] ? "visible" : "hidden" }}
                 className="mb-[20px] last:mb-0 flex flex-col xl:flex-col gap-[10px] xl:gap-[20px] w-[160px] xl:w-[220px]"
               >
                 <span
                   className=" tracking-[-0.02em]
                   text-[65px] xl:text-[80px] leading-[1] text-[#DFE0DB] mb-[8px]"
                 >
-                  {item.num}
+                  {item.index === 1
+                    ? `${counters[0]}+`
+                    : item.index === 2
+                    ? `${counters[1]}+`
+                    : item.index === 3
+                    ? `${counters[2]}${item.num.replace(/\d+/,'')}`
+                    : item.num}
                 </span>
                 <div>
                   <h3

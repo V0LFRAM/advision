@@ -27,11 +27,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="uk" suppressHydrationWarning>
       <body
-        className={`${inter.className} bg-[rgb(var(--bg))] text-[rgb(var(--fg))] h-auto relative`}
+        className={`${inter.className} bg-[rgb(var(--bg))] text-[rgb(var(--fg))] h-auto relative max-w-[100vw] overflow-y-hidden!important`}
       >
         <Provider>
           <HeaderSection />
-          <main>{children}</main>
+          <main className="">{children}</main>
         </Provider>
       </body>
     </html>

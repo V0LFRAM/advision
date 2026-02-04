@@ -16,7 +16,7 @@ export function HeaderSection() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowHeader(true);
-    }, 7000); 
+    }, 3000); 
 
     return () => clearTimeout(timer);
   }, []);
@@ -38,7 +38,7 @@ export function HeaderSection() {
     <header
       className={`
         relative w-full z-[50] border-b border-[rgb(var(--border))]
-        bg-[rgb(var(--bg))]
+        bg-[rgb(var(--bg))] max-w-full
       `}
       style={{ willChange: 'transform' }}
     >
