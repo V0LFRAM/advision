@@ -36,8 +36,9 @@ function TrustSection() {
         className="
           grid
           grid-cols-2 
-          xl:grid-cols-5 
-          gap-y-[20px] gap-x-[14px] xl:gap-[30px]
+          md:grid-cols-3 
+          lg:grid-cols-5 
+          gap-y-[20px] gap-x-[14px] lg:gap-[20px] xl:gap-[30px]
           justify-items-start
         "
       >
@@ -46,10 +47,10 @@ function TrustSection() {
             key={item.title}
             className="
               flex flex-col gap-1
-              w-[161px] xl:w-[197px]
+              w-[161px] md:w-[200px] lg:w-[161px] xl:w-[197px]
             "
           >
-            <h3 className="font-inter font-[600] text-[16px] leading-[100%] tracking-[-0.02em] text-[#9B948A]">
+            <h3 className="font-inter font-[600] text-[16px] leading-[100%] tracking-[-0.02em] text-[#9B948A] mb-2">
               {item.title}
             </h3>
             <p className="font-inter font-normal text-[16px] leading-[100%] tracking-[-0.02em]">

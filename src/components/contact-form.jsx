@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import { FiPaperclip, FiArrowUpRight } from "react-icons/fi";
 
-const ContactForm = ({ setIsOpenModalForm, setIsSuccessOpen, width }) => {
+const ContactForm = ({ onSuccess, width }) => {
   const [sending, setSending] = useState(false);
   const [fileName, setFileName] = useState("");
   const [status, setStatus] = useState(null);
@@ -30,7 +30,7 @@ const ContactForm = ({ setIsOpenModalForm, setIsSuccessOpen, width }) => {
         setFileName("");
 
         // 🔧 CHANGE: открываем success modal
-        setIsSuccessOpen(true);
+        onSuccess?.();
       } else {
         // 🔧 CHANGE: ошибка ТОЛЬКО если реально не ok
         setStatus("error");
@@ -47,7 +47,7 @@ const ContactForm = ({ setIsOpenModalForm, setIsSuccessOpen, width }) => {
     <>
       <form
         onSubmit={handleSubmit}
-        className={`xl:w-[372px] ${`w-[${width}]`} flex flex-col gap-4 xl:mr-auto xl:relative`} 
+        className={`xl:w-[372px] ${`w-[${width}]`} flex flex-col gap-4 xl:mr-auto xl:relative`}
       >
         <input
           name="fullName"
