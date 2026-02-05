@@ -45,10 +45,10 @@ export default function AccordionSection() {
 
   useEffect(() => {
     const sequence = [
-      { setter: setShowInMinneapolis, delay: 500 },
-      { setter: setShowOurInteriorFinishing, delay: 500 },
-      { setter: setShowServices, delay: 500 },
-      { setter: setShowContent, delay: 500 },
+      { setter: setShowInMinneapolis, delay: 400 },
+      { setter: setShowOurInteriorFinishing, delay: 400 },
+      { setter: setShowServices, delay: 400 },
+      { setter: setShowContent, delay: 400 },
     ];
 
     let timers = [];

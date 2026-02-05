@@ -49,10 +49,10 @@ const HowSection = () => {
 
   useEffect(() => {
     const sequence = [
-      { setter: setShowHowWe, delay: 500 },
-      { setter: setShowWork, delay: 500 },
-      { setter: setShowContent, delay: 500 },
-      { setter: setShowAnimations, delay: 500 },
+      { setter: setShowHowWe, delay: 400 },
+      { setter: setShowWork, delay: 400 },
+      { setter: setShowContent, delay: 400 },
+      { setter: setShowAnimations, delay: 400 },
     ];
 
     let timers = [];
