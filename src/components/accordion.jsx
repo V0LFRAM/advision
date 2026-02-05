@@ -42,9 +42,6 @@ export default function AccordionSection() {
   const [showOurInteriorFinishing, setShowOurInteriorFinishing] = useState(false); 
   const [showServices, setShowServices] = useState(false); 
   const [showContent, setShowContent] = useState(false); 
-  const [showThemeToggle, setShowThemeToggle] = useState(false); 
-  const [showCustomTile, setShowCustomTile] = useState(false);
-
 
   useEffect(() => {
     const sequence = [
@@ -52,8 +49,6 @@ export default function AccordionSection() {
       { setter: setShowOurInteriorFinishing, delay: 500 },
       { setter: setShowServices, delay: 500 },
       { setter: setShowContent, delay: 500 },
-      { setter: setShowThemeToggle, delay: 500 },
-      { setter: setShowCustomTile, delay: 500 },
     ];
 
     let timers = [];

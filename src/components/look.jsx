@@ -1,10 +1,24 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
+
 import { TitleStroke } from "./ui/title-stroke";
 
 const lookItems = [
+  {
+    img: "/images/look1.png",
+    date: "January 2025",
+  },
+  {
+    img: "/images/look2.png",
+    date: "August 2024",
+  },
+  {
+    img: "/images/look3.png",
+    date: "March 2024",
+  },
   {
     img: "/images/look1.png",
     date: "January 2025",
@@ -22,7 +36,43 @@ const lookItems = [
 export const LookSection = () => {
   const [index, setIndex] = useState(0);
 
-  // 🔹 изменено: теперь просто цикличное переключение
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-40% 0px" });
+
+  const [showSolutions, setShowSolutions] = useState(false); 
+  const [showRealHomes, setShowRealHomes] = useState(false); 
+  const [showWithCustomFinishing, setShowWithCustomFinishing] = useState(false); 
+  const [showTakeA, setShowTakeA] = useState(false); 
+  const [showWeveEnhanced, setShowWeveEnhanced] = useState(false);
+  const [showAt, setShowAt] = useState(false);
+  const [showCloserLook, setShowCloserLook] = useState(false);
+
+  useEffect(() => {
+    const sequence = [
+      { setter: setShowSolutions, delay: 500 },
+      { setter: setShowRealHomes, delay: 500 },
+      { setter: setShowWithCustomFinishing, delay: 500 },
+      { setter: setShowTakeA, delay: 500 },
+      { setter: setShowWeveEnhanced, delay: 500 },
+      { setter: setShowAt, delay: 500 },
+      { setter: setShowCloserLook, delay: 500 },
+    ];
+
+    let timers = [];
+
+    if (isInView) {
+      sequence.forEach(({ setter }) => setter(false));
+      let total = 0;
+      sequence.forEach(({ setter, delay }) => {
+        total += delay;
+        timers.push(setTimeout(() => setter(true), total));
+      });
+    } else {
+      sequence.forEach(({ setter }) => setter(false));
+    }
+    return () => timers.forEach(clearTimeout);
+  }, [isInView]);
+
   const nextSlide = () => {
     setIndex((prev) => (prev + 1) % lookItems.length);
   };
@@ -31,19 +81,20 @@ export const LookSection = () => {
     setIndex((prev) => (prev - 1 + lookItems.length) % lookItems.length);
   };
 
-  // 🔸 добавлено: функция для расчёта трёх видимых элементов по кругу
   const getVisibleItems = () => {
     const total = lookItems.length;
     const left = (index - 1 + total) % total;
     const center = index;
-    const right = (index + 1) % total;
-    return [lookItems[left], lookItems[center], lookItems[right]];
+    const centerTwo = (index + 1) % total; // visible ≥1920px
+    const right = (index + 2) % total;
+    return [lookItems[left], lookItems[center], lookItems[centerTwo], lookItems[right]];
   };
 
-  const visibleItems = getVisibleItems(); // 🔸 добавлено
+  const visibleItems = getVisibleItems(); 
 
   return (
-    <section
+    <section 
+      ref={ref}
       id="projects"
       className="w-full pt-[120px] md:pt-[180px] pb-[120px] md:pb-[158px] overflow-hidden"
     >
@@ -56,23 +107,45 @@ export const LookSection = () => {
             text-[35px] xl:text-[44px] leading-[1] 
           "
           >
-            Take a <TitleStroke text={"Closer Look"} />
+            <span style={{ visibility: showTakeA ? "visible" : "hidden" }}>
+              {'Take a '} 
+            </span>
+            <span style={{ visibility: showCloserLook ? "visible" : "hidden" }}>
+              <TitleStroke text={"Closer Look"} />
+            </span>
             <br />
-            At real homes we’ve enhanced
+            <span style={{ visibility: showAt ? "visible" : "hidden" }}>
+              {'At '} 
+            </span>
+            <span style={{ visibility: showRealHomes ? "visible" : "hidden" }}>
+              {'real homes '}
+            </span>
+            <span style={{ visibility: showWeveEnhanced ? "visible" : "hidden" }}>
+              {'we’ve enhanced'}
+            </span>
             <br />
-            with custom finishing solutions
+            <span style={{ visibility: showWithCustomFinishing ? "visible" : "hidden" }}>
+              {'with custom finishing '}
+            </span>
+            
+            <span style={{ visibility: showSolutions ? "visible" : "hidden" }}>
+              {'solutions'}
+            </span>
           </span>
         </h2>
 
-        {/* 🔹 изменено: теперь отображаем именно три картинки по кругу */}
-        <div className="relative flex justify-between gap-[20px] lg:gap-[80px] items-center">
+        <div 
+          className={`relative flex justify-between gap-[20px] lg:gap-[80px] items-center transition-all duration-700 ease-out
+          ${showCloserLook ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'}`}
+        >
           {visibleItems.map((item, idx) => (
             <div
               key={idx}
               className={`
-      relative transition-all duration-500
-      ${idx === 1 ? "hidden xl:block" : "block"}
-    `}
+                relative transition-all duration-500
+                ${idx === 1 ? "hidden xl:block" : "block"}
+                ${idx === 2 ? "hidden 2xl:block" : ""}
+              `}
             >
               <Image
                 src={item.img}
@@ -92,7 +165,6 @@ export const LookSection = () => {
             </div>
           ))}
 
-          {/* 🔸 добавлены стрелки поверх всех изображений */}
           <button
             onClick={prevSlide}
             className="
@@ -127,11 +199,30 @@ export const LookSection = () => {
             text-[35px] xl:text-[44px] leading-[1] 
           "
           >
-            Take a <TitleStroke text={"Closer Look"} />
+            <span style={{ visibility: showTakeA ? "visible" : "hidden" }}>
+              {'Take a '} 
+            </span>
+            
+            <span style={{ visibility: showCloserLook ? "visible" : "hidden" }}>
+              <TitleStroke text={"Closer Look"} />
+            </span>
             <br />
-            At real homes we’ve enhanced
+            <span style={{ visibility: showAt ? "visible" : "hidden" }}>
+              {'At '} 
+            </span>
+            <span style={{ visibility: showRealHomes ? "visible" : "hidden" }}>
+              {'real homes '}
+            </span>
+            <span style={{ visibility: showWeveEnhanced ? "visible" : "hidden" }}>
+              {'we’ve enhanced'}
+            </span>
             <br />
-            with custom finishing solutions
+            <span style={{ visibility: showWithCustomFinishing ? "visible" : "hidden" }}>
+              {'with custom finishing '}
+            </span>
+            <span style={{ visibility: showSolutions ? "visible" : "hidden" }}>
+              {'solutions'}
+            </span>
           </span>
         </h2>
 
