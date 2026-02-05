@@ -19,18 +19,7 @@ const lookItems = [
     img: "/images/look3.png",
     date: "March 2024",
   },
-  {
-    img: "/images/look1.png",
-    date: "January 2025",
-  },
-  {
-    img: "/images/look2.png",
-    date: "August 2024",
-  },
-  {
-    img: "/images/look3.png",
-    date: "March 2024",
-  },
+
 ];
 
 export const LookSection = () => {
@@ -49,13 +38,13 @@ export const LookSection = () => {
 
   useEffect(() => {
     const sequence = [
-      { setter: setShowSolutions, delay: 500 },
-      { setter: setShowRealHomes, delay: 500 },
-      { setter: setShowWithCustomFinishing, delay: 500 },
-      { setter: setShowTakeA, delay: 500 },
-      { setter: setShowWeveEnhanced, delay: 500 },
-      { setter: setShowAt, delay: 500 },
-      { setter: setShowCloserLook, delay: 500 },
+      { setter: setShowSolutions, delay: 400 },
+      { setter: setShowRealHomes, delay: 400 },
+      { setter: setShowWithCustomFinishing, delay: 400 },
+      { setter: setShowTakeA, delay: 400 },
+      { setter: setShowWeveEnhanced, delay: 400 },
+      { setter: setShowAt, delay: 400 },
+      { setter: setShowCloserLook, delay: 400 },
     ];
 
     let timers = [];

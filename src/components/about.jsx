@@ -51,14 +51,14 @@ const About = () => {
 
   useEffect(() => {
     const sequence = [
-      { setter: setShowCraftsmanship, delay: 500 },
-      { setter: setShowYou, delay: 500 },
-      { setter: setShowDesignThat, delay: 500 },
-      { setter: setShowThatLasts, delay: 500 },
-      { setter: setShowReflects, delay: 500 },
-      { setter: setShowContent, delay: 500 },
-      { setter: setShowText, delay: 500 },
-      { setter: setShowMore, delay: 500 },
+      { setter: setShowCraftsmanship, delay: 400 },
+      { setter: setShowYou, delay: 400 },
+      { setter: setShowDesignThat, delay: 400 },
+      { setter: setShowThatLasts, delay: 400 },
+      { setter: setShowReflects, delay: 400 },
+      { setter: setShowContent, delay: 400 },
+      { setter: setShowText, delay: 400 },
+      { setter: setShowMore, delay: 400 },
     ];
     let timers = [];
     if (animated) {
@@ -71,7 +71,7 @@ const About = () => {
         total += delay;
         timers.push(setTimeout(() => setter(true), total));
       });
-      const afterMore = total + 500;
+      const afterMore = total + 400;
       timers.push(setTimeout(() => {
         setShownTextMock([true, false, false]);
         setActiveCounterIdx(0);
