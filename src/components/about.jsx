@@ -27,7 +27,7 @@ const textMock = [
 
 const About = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-20% 0px" });
+  const isInView = useInView(ref, { once: true, margin: "-40% 0px" });
   const [animated, setAnimated] = useState(false);
   
   const [showCraftsmanship, setShowCraftsmanship] = useState(false);
@@ -41,8 +41,8 @@ const About = () => {
 
 
   const [shownTextMock, setShownTextMock] = useState([false, false, false]);
-  // Счётчики для анимации чисел
   const [counters, setCounters] = useState([1, 1, 1]);
+  const [activeCounterIdx, setActiveCounterIdx] = useState(null);
 
   useEffect(() => {
     if (isInView && !animated) setAnimated(true);
@@ -59,68 +59,69 @@ const About = () => {
       { setter: setShowContent, delay: 500 },
       { setter: setShowText, delay: 500 },
       { setter: setShowMore, delay: 500 },
-      { setter: (v) => setShownTextMock([true, false, false]), delay: 500 },
-      { setter: (v) => setShownTextMock([true, true, false]), delay: 1500 },
-      { setter: (v) => setShownTextMock([true, true, true]), delay: 1500 },
     ];
-
     let timers = [];
-
     if (animated) {
       sequence.forEach(({ setter }) => setter(false));
       setShownTextMock([false, false, false]);
       setCounters([1, 1, 1]);
+      setActiveCounterIdx(null);
       let total = 0;
       sequence.forEach(({ setter, delay }) => {
         total += delay;
         timers.push(setTimeout(() => setter(true), total));
       });
-      let textTotal = sequence.slice(0, 8).reduce((acc, cur) => acc + cur.delay, 0);
-      for (let i = 0; i < textMock.length; i++) {
-        timers.push(setTimeout(() => {
-          setShownTextMock((prev) => prev.map((val, idx) => idx <= i ? true : val));
-        }, textTotal + 500 * (i + 1)));
-      }
+      const afterMore = total + 500;
+      timers.push(setTimeout(() => {
+        setShownTextMock([true, false, false]);
+        setActiveCounterIdx(0);
+      }, afterMore));
     } else {
       sequence.forEach(({ setter }) => setter(false));
       setShownTextMock([false, false, false]);
       setCounters([1, 1, 1]);
+      setActiveCounterIdx(null);
     }
     return () => timers.forEach(clearTimeout);
   }, [animated]);
 
-  // Анимация счёта для каждого числа
   useEffect(() => {
-    textMock.forEach((item, idx) => {
-      if (shownTextMock[idx]) {
-        let start = 1;
-        let end = parseInt(item.num);
-        if (isNaN(end)) return;
-        let startTime = null;
-        let raf;
-        const duration = 700; // ms
-        function animateCount(ts) {
-          if (!startTime) startTime = ts;
-          const elapsed = ts - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const value = Math.floor(start + (end - start) * progress);
-          setCounters(prev => prev.map((v, i) => i === idx ? value : v));
-          if (progress < 1) {
-            raf = requestAnimationFrame(animateCount);
-          } else {
-            setCounters(prev => prev.map((v, i) => i === idx ? end : v));
-          }
+    if (activeCounterIdx === null) return;
+    if (!shownTextMock[activeCounterIdx]) return;
+    let rafId;
+    let start = 1;
+    let end = parseInt(textMock[activeCounterIdx].num);
+    if (isNaN(end)) end = 1;
+    let startTime = null;
+    const duration = 700;
+    function animateCount(ts) {
+      if (!startTime) startTime = ts;
+      const elapsed = ts - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const value = Math.floor(start + (end - start) * progress);
+      setCounters(prev => prev.map((v, i) => i === activeCounterIdx ? value : v));
+      if (progress < 1) {
+        rafId = requestAnimationFrame(animateCount);
+      } else {
+        setCounters(prev => prev.map((v, i) => i === activeCounterIdx ? end : v));
+        if (activeCounterIdx < textMock.length - 1) {
+          setTimeout(() => {
+            setShownTextMock(prev => prev.map((val, idx) => idx <= activeCounterIdx + 1 ? true : val));
+            setActiveCounterIdx(activeCounterIdx + 1);
+          }, 100); 
         }
-        raf = requestAnimationFrame(animateCount);
-        return () => cancelAnimationFrame(raf);
       }
-    });
-  }, [shownTextMock]);
+    }
+    rafId = requestAnimationFrame(animateCount);
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, [activeCounterIdx, shownTextMock]);
 
   return (
-    <section ref={ref} id="about-us" className="w-full" >
+    <section  id="about-us" className="w-full" >
       <div className="py-[120px] px-[20px] xl:px-[80px] flex flex-wrap gap-[20px] justify-between">
-        <div>
+        <div ref={ref}>
           <h2 className="flex flex-wrap items-baseline xl:block gap-x-3 max-w-[700px] mb-[20px]">
             <span
               className="
@@ -205,11 +206,11 @@ const About = () => {
           <span
             style={{ visibility: showMore ? "visible" : "hidden" }}
             className="font-league font-normal tracking-[-0.01em]
-            text-[35px] xl:text-[44px] leading-[1] text-[#9B948A] mb-[28px]"
+            text-[35px] xl:text-[44px] leading-[1] text-[#9B948A]"
           >
             more
           </span>
-          <ul className="flex flex-wrap gap-[12px] xl:gap-[146px] [&>li:last-child]:ml-auto xl:[&>li:last-child]:ml-[112px]">
+          <ul className="flex flex-wrap gap-[12px] mt-[28px] xl:gap-[146px] [&>li:last-child]:ml-auto xl:[&>li:last-child]:ml-[112px]">
             {textMock.map((item, index) => (
               <li
                 key={index}
@@ -247,12 +248,16 @@ const About = () => {
           </ul>
         </div>
       </div>
-      <Image
+      {/* <Image
         src="/images/about-bottom-decor.png"
         alt="Decor"
         width={1920}
         height={100}
         className="w-full h-auto xl:block hidden"
+        style={{
+                transform: isInViewImage ? "scale(1.1)" : "scale(1)",
+                transition: "transform 4s cubic-bezier(.4,0,.2,1)",
+              }}
       />
       <Image
         src="/images/about-bottom-decor-mob.png"
@@ -260,7 +265,7 @@ const About = () => {
         width={1920}
         height={100}
         className="w-full h-auto xl:hidden"
-      />
+      /> */}
     </section>
   );
 };

@@ -15,6 +15,7 @@ import PrecisionSection from "@/components/precision";
 
 import { ModalForm } from "@/components/modals/modal-form";
 import { RunningLine } from "@/components/running-line";
+import { ImageSection } from "@/components/ui/image-section";
 
 export default function Home() {
   const [isOpenModalForm, setIsOpenModalForm] = useState(false);
@@ -48,9 +49,10 @@ export default function Home() {
 
   return (
     <>
-      <GridBack />
+      {/* <GridBack /> */}
       <HeroSection openModal={openModal} isTimeoutHero={isTimeoutHero} />
       {isTimeoutHero && <About />}
+      {isTimeoutHero && <ImageSection />}
       {isTimeoutHero && <AccordionSection />}
       {isTimeoutHero && <LookSection />}
       {isTimeoutHero && <HowSection />}

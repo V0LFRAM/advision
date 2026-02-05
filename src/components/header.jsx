@@ -37,7 +37,6 @@ export function HeaderSection() {
         relative w-full z-[50] border-b border-[rgb(var(--border))]
         bg-[rgb(var(--bg))] max-w-full
       `}
-      style={{ willChange: "transform" }}
     >
       <div
         className={`
@@ -45,7 +44,6 @@ export function HeaderSection() {
         transition-transform duration-700 ease-in-out
         ${showHeader ? "translate-y-0" : "-translate-y-full"}
       `}
-        style={{ willChange: "transform" }}
       >
         {/* HEADER BAR */}
         <div
@@ -109,14 +107,14 @@ export function HeaderSection() {
           </button>
         </div>
 
-        {/* MOBILE MENU */}
-        <div
-          className={`
-          fixed inset-0
-          h-screen
+      {/* MOBILE MENU */}
+      {<div
+        className={`
+          absolute top-0 right-0
+          h-screen w-full
           bg-[rgb(var(--bg))]
           transform transition-transform duration-500 ease-in-out
-          ${isOpen ? "translate-x-0" : "translate-x-full"}
+          ${isOpen ? "translate-x-0 " : "translate-x-full "}
           flex flex-col xl:hidden
         `}
         >
@@ -204,12 +202,12 @@ export function HeaderSection() {
               </svg>
             </div>
 
-            <div className="mr-[20px]">
-              <ThemeToggle />
-            </div>
+          <div className="mr-[20px]">
+            <ThemeToggle />
           </div>
-          <NavContactsSideBar />
         </div>
+        <NavContactsSideBar />
+      </div>}
       </div>
     </header>
   );
