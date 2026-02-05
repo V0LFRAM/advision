@@ -17,12 +17,12 @@ import { GridBack } from "./ui/grid-back";
 const HeroSection = ({ openModal, isTimeoutHero }) => {
   const variant = useBreakpointValue({ base: false, lg: true });
 
-  const [showStatement, setShowStatement] = useState(false); 
-  const [showWalls, setShowWalls] = useState(false); 
-  const [showThatMakeA, setShowThatMakeA] = useState(false); 
-  const [showAccent, setShowAccent] = useState(false); 
-  const [showThemeToggle, setShowThemeToggle] = useState(false); 
-  const [showCustomTile, setShowCustomTile] = useState(false);
+  const [showStatement, setShowStatement] = useState(false); // 2 sekonds
+  const [showWalls, setShowWalls] = useState(false); // 3 sekonds
+  const [showThatMakeA, setShowThatMakeA] = useState(false); // 4 sekonds
+  const [showAccent, setShowAccent] = useState(false); // 5 sekonds
+  const [showThemeToggle, setShowThemeToggle] = useState(false); // 6 sekonds
+  const [showCustomTile, setShowCustomTile] = useState(false); // 7 sekonds
 
   const [startScale, setStartScale] = useState(true);
 
@@ -72,7 +72,7 @@ const HeroSection = ({ openModal, isTimeoutHero }) => {
           <GridBack />
 
           {!isTimeoutHero && (
-            <div className="w-full h-[100vh] flex items-center justify-center pb-[200px]">
+            <div className="w-full h-[80vh] flex items-center justify-center pb-[200px]">
               <LoadingTextAnimated />
             </div>
           )}

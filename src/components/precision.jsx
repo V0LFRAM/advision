@@ -4,91 +4,173 @@ import Image from "next/image";
 import { FiArrowUpRight } from "react-icons/fi";
 import { TitleStroke } from "./ui/title-stroke";
 
+import { useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
+import { useBreakpointValue } from "@chakra-ui/react";
+
+
 export default function PrecisionSection({ openModal }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-40% 0px" });
+  const variant = useBreakpointValue({ base: false, lg: true });
+
+  const [showPrecision, setShowPrecision] = useState(false); 
+  const [showMobileTextTwo, setShowMobileTextTwo] = useState(false);
+  const [showText, setShowText] = useState(false); 
+  const [showLoved, setShowLoved] = useState(false); 
+  const [showDescription, setShowDescription] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+  const [showHallImage, setShowHallImage] = useState(false);
+  const [showImage, setShowImage] = useState(false);
+
+  useEffect(() => {
+    let sequence;
+    if (variant) {
+      sequence = [
+        { setter: setShowPrecision, delay: 500 },
+        { setter: setShowText, delay: 500 },
+        { setter: setShowLoved, delay: 500 },
+        { setter: setShowDescription, delay: 500 },
+        { setter: setShowButton, delay: 500 },
+        { setter: setShowHallImage, delay: 500 },
+        { setter: setShowImage, delay: 500 },
+      ]
+    } else {
+      sequence = [  
+        { setter: setShowImage, delay: 500 },
+        { setter: setShowMobileTextTwo, delay: 700 },
+        { setter: setShowLoved, delay: 500 },
+        { setter: setShowText, delay: 500 },
+        { setter: setShowPrecision, delay: 500 },
+
+        { setter: setShowDescription, delay: 500 },
+        { setter: setShowButton, delay: 500 },
+        { setter: setShowHallImage, delay: 500 },
+      ] 
+    }
+    
+    let timers = [];
+
+    if (isInView) {
+      sequence.forEach(({ setter }) => setter(false));
+      let total = 0;
+      sequence.forEach(({ setter, delay }) => {
+        total += delay;
+        timers.push(setTimeout(() => setter(true), total));
+      });
+    } else {
+      sequence.forEach(({ setter }) => setter(false));
+    }
+    return () => timers.forEach(clearTimeout);
+  }, [isInView]);
+
   return (
-    <section className="w-full relative overflow-hidden">
-      {/* background layer sits below page lines -> negative z */}
+    <section ref={ref} className="w-full relative overflow-hidden xl:h-[100vh]">
       <div className="absolute inset-0 -z-10 bg-[rgb(var(--bg))]" />
 
       {/* DESKTOP layout (xl and up) */}
-      <div className="hidden lg:flex w-full pl-[193px] lg:pl-[93px] xl:pl-[193px] pr-[80px] pt-[120px] relative z-20">
-        {/* Левая колонка с рисунком (ширина 544px) */}
-        <div className="lg:w-[244px] xl:w-[544px] flex-shrink-0 pt-[375px]">
+      <div className="hidden lg:flex w-full pl-[193px] lg:pl-[93px] xl:pl-[80px] pr-[80px] pt-[120px] relative z-20">
+        <div 
+          style={{visibility: showImage ? 'visible': 'hidden'}}
+          className="lg:w-[244px] xl:w-[544px] flex-shrink-0 pt-[255px]">
           <Image
             src="/images/precision-corridor.png"
             alt="design corridor"
-            width={197}
-            height={253}
+            width={310}
+            height={398}
             className="object-cover"
             priority
+            style={{
+                transform: showImage ?  "scale(0.8) translateX(-40px)" : "scale(1) translateX(0px)",
+                transition: "transform 4s cubic-bezier(.4,0,.2,1)",
+              }}
           />
         </div>
 
-        {/* Правая колонка: заголовок, параграф, кнопка, нижний рисунок */}
         <div className="flex flex-col pl-[32px] xl:pl-[60px]">
-          {/* Заголовок */}
           <h2
-            className="uppercase tracking-[-0.01em] text-[35px] xl:text-[44px] leading-[1] relative mb-[20px] max-w-[602px]"
+            className="uppercase tracking-[-0.01em] text-[35px] xl:text-[44px] leading-[1] relative mb-[20px]"
             style={{
               fontFamily:
                 '"League Spartan", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
               fontWeight: 500,
             }}
           >
-            Have a Design in Mind or
-            <br />
-            SOMETHING YOU{" "}
-            <span className="inline-block align-baseline">
-              <TitleStroke text={"LOVED"} />
+            <span 
+              className="xl:ml-[40px] xl:block xl:w-[660px]"
+              style={{ visibility: showText ? "visible" : "hidden" }}
+            >
+              Have a Design in Mind or
+              <br />
+                {"SOMETHING YOU "}
+                <span 
+                  className="inline-block align-baseline"
+                  style={{ visibility: showLoved ? "visible" : "hidden" }}>
+                  <TitleStroke text={"LOVED"} />
+                </span>
+              {" Online?"}
             </span>
-            <br />
-            {/* 3-я и 4-я строки с отступом слева -40px (на 40px левее) */}
-            <span className="block pl-[-40px]">LET US BRING IT TO LIFE WITH STYLE</span>
+            
+            <span 
+              style={{ visibility: showText ? "visible" : "hidden" }}
+              className="block pl-[-40px]" 
+            >
+              {"LET US BRING IT TO LIFE WITH STYLE"}
+            </span>
             <span className="block pl-[-40px]">
-              AND{" "}
-              <span className="inline-block align-baseline">
+              <span 
+                style={{ visibility: showText ? "visible" : "hidden" }}
+              >
+                {"AND "}
+              </span>
+              <span 
+                style={{ visibility: showPrecision ? "visible" : "hidden" }}
+                className="inline-block align-baseline">
                 <TitleStroke text={"precision"} />
               </span>
             </span>
           </h2>
+          <div className="xl:flex xl:flex-col items-end">
+            <div className="relative">
+              <p 
+                style={{ visibility: showDescription ? "visible" : "hidden" }}
+                className="text-[18px] xl:text-[20px] leading-[1.55] text-[rgb(var(--fg))] mb-6 max-w-[517px]">
+                Whether you've saved a design from Pinterest, spotted something amazing on Instagram, or
+                simply imagined how your perfect wall or bathroom should look — we're ready to help make
+                it real. Just send us a photo, sketch, or even a few keywords — and we'll take it from
+                there. You'll receive a clear plan, expert recommendations, and a transparent quote —
+                all within 24 hours.
+              </p>
 
-          {/* Параграф */}
-          <p className="text-[18px] leading-[1.55] text-[rgb(var(--fg))] mb-6 max-w-[517px]">
-            Whether you've saved a design from Pinterest, spotted something amazing on Instagram, or
-            simply imagined how your perfect wall or bathroom should look — we're ready to help make
-            it real. Just send us a photo, sketch, or even a few keywords — and we'll take it from
-            there. You'll receive a clear plan, expert recommendations, and a transparent quote —
-            all within 24 hours.
-          </p>
+              <button
+                onClick={() => openModal("questionary")}
+                className="relative z-30 w-fit flex items-center gap-3 bg-[#A89F94] hover:bg-[#92897F] transition-all px-8 py-3 text-[17px] font-medium"
+                style={{ visibility: showButton ? "visible" : "hidden" }}
+              >
+                Send Us Your Idea
+                <FiArrowUpRight size={20} />
+              </button>
+              <div
+               style={{visibility: showHallImage ? 'visible': 'hidden'}}
+               className="mt-[60px] absolute w-[622px] h-[332px]">
+                <Image
+                  src="/images/precision-hall.png"
+                  alt="design hall"
+                  width={623}
+                  height={332}
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
 
-          {/* Кнопка — левый край совпадает с параграфом */}
-          <button
-            onClick={() => openModal("questionary")}
-            className="relative z-30 w-fit flex items-center gap-3 bg-[#A89F94] hover:bg-[#92897F] transition-all px-8 py-3 text-[17px] font-medium"
-          >
-            Send Us Your Idea
-            <FiArrowUpRight size={20} />
-          </button>
-
-          {/* Нижняя картинка — смещена вправо, должна доходить до правого края страницы */}
-          <div className="mt-[60px] ml-auto">
-            <Image
-              src="/images/precision-hall.png"
-              alt="design hall"
-              width={623}
-              height={332}
-              className="object-cover"
-              priority
-            />
           </div>
         </div>
       </div>
 
       {/* MOBILE layout (below xl) */}
       <div className="lg:hidden flex flex-col w-full px-[18px] pt-[60px] pb-0 z-20">
-        {/* Заголовок мобильной версии - разделен на две части */}
         <div className="mb-2">
-          {/* Первая часть заголовка с отступом слева 22px */}
           <h2
             className="uppercase tracking-[-0.02em] text-[35px] leading-[90%] text-[rgb(var(--fg))]"
             style={{
@@ -97,46 +179,77 @@ export default function PrecisionSection({ openModal }) {
               fontStyle: "regular",
             }}
           >
-            HAVE A DESIGN IN MIND OR SOMETHING
+          <span 
+              className="xl:ml-[40px] xl:block xl:w-[660px]"
+              style={{ visibility: showText ? "visible" : "hidden" }}
+            >
+            HAVE A DESIGN IN MIND OR 
+            
+            SOMETHING
             <br />
-            YOU {/* Уменьшаем размер компонента TitleStroke для соответствия высоте букв */}
-            <span className="inline-block align-baseline scale-[0.9] origin-left">
+            {"YOU "}
+            </span>
+            <span 
+            className="inline-block align-baseline scale-[0.9] origin-left"
+            style={{ visibility: showLoved ? "visible" : "hidden" }}
+            >
               <TitleStroke text={"LOVED"} />
             </span>
-            {""}
-            ONLINE?
+            <span 
+              className="xl:ml-[40px] xl:block xl:w-[660px]"
+              style={{ visibility: showText ? "visible" : "hidden" }}
+            >
+            {"ONLINE?"}
+            </span>
           </h2>
 
-          {/* Вторая часть заголовка */}
           <h2
             className="uppercase tracking-[-0.02em] text-[35px] leading-[90%] text-[rgb(var(--fg))]"
             style={{
               fontFamily: '"League Spartan", sans-serif',
               fontWeight: 400,
               fontStyle: "regular",
+              visibility: showMobileTextTwo ? "visible" : "hidden"
             }}
           >
             LET US BRING IT TO LIFE WITH STYLE
             <br />
-            AND {/* Уменьшаем размер компонента TitleStroke для соответствия высоте букв */}
-            <span className="inline-block align-baseline scale-[0.9] origin-left">
+            {" AND "}
+            <span 
+              style={{ visibility: showPrecision ? "visible" : "hidden" }}
+              className="inline-block align-baseline scale-[0.9] origin-left">
               <TitleStroke text={"PRECISION"} />
             </span>
           </h2>
         </div>
 
-        {/* Верхняя мини-картинка на мобильном - верх на уровне верха букв нижней строки заголовка */}
-        <div className="mx-auto mb-6">
-          <Image
-            src="/images/precision-corridor.png"
-            alt="design mobile corridor"
-            width={72}
-            height={87}
-            className="object-cover absolute right-[20px] top-[225px]" /* Подогнано под нижнюю строку заголовка */
-          />
+        <div className="mx-auto mb-6 w-full h-[465px] absolute">
+          <div
+            style={{
+              position: 'absolute',
+              left: showImage ? 'auto' : 0,
+              right: showImage ? 20 : 'auto',
+              top: showImage ? 160 : 20,
+              width: showImage ? 72 : '100vw',
+              height: showImage ? 87 : '100%',
+              transition: 'all 2s cubic-bezier(.4,0,.2,1)',
+              zIndex: 2,
+              overflow: 'hidden',
+            }}
+          >
+            <Image
+              src="/images/precision-corridor.png"
+              alt="design mobile corridor"
+              fill
+              className="object-cover"
+              style={{
+                transition: 'all 2s cubic-bezier(.4,0,.2,1)',
+                objectPosition: 'center',
+              }}
+            />
+          </div>
         </div>
 
-        {/* Контейнер параграфа и кнопки с выравниванием по левому краю */}
         <div className="w-full mx-0 mb-[28px]">
           <p
             className="text-[16px] leading-[115%] tracking-[-0.02em] text-[rgb(var(--fg))] mb-[24px] ml-0 w-[250px] md:w-[80%]"
@@ -144,6 +257,7 @@ export default function PrecisionSection({ openModal }) {
               fontFamily: '"Inter", sans-serif',
               fontWeight: 400,
               fontStyle: "normal",
+              visibility: showDescription ? "visible" : "hidden"
             }}
           >
             Whether you've saved a design from Pinterest, spotted something amazing on Instagram, or
@@ -154,8 +268,8 @@ export default function PrecisionSection({ openModal }) {
             You'll receive a clear plan, expert recommendations, and a transparent quote — all
             within 24 hours.
           </p>
-          {/* Кнопка с фиксированным размером 159x34px и выравниванием по левому краю */}
           <button
+            style={{ visibility: showButton ? "visible" : "hidden" }}
             onClick={() => openModal("questionary")}
             className="relative z-30 flex items-center justify-center gap-3 bg-[#A89F94] hover:bg-[#92897F] transition-all px-6 py-3 text-[16px] font-medium w-[159px] h-[34px] ml-0"
           >
@@ -164,9 +278,11 @@ export default function PrecisionSection({ openModal }) {
           </button>
         </div>
 
-        {/* Bottom image — должна занять всю ширину экрана (375px). Родитель имеет px-[20px], поэтому используем -mx-[20px] + w-screen */}
-        <div className="-mx-[20px] flex justify-center">
-          <div className="relative w-[375px] md:w-[728px] h-[282px] overflow-hidden">
+        <div 
+          style={{visibility: showHallImage ? 'visible': 'hidden'}}
+          className="-mx-[20px] flex justify-center"
+        >
+          <div className="relative w-[100vw] md:w-[728px] h-[282px] overflow-hidden">
             <Image
               src="/images/precision-hall.png"
               alt="design mobile hall"

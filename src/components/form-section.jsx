@@ -12,7 +12,7 @@ const FormSection = () => {
   const [formType, setFormType] = useState(null);
 
   return (
-    <section id="get-a-quote" className="w-full relative">
+    <section id="your-idea" className="w-full relative">
       <div className="px-[20px] xl:px-[80px] xl:flex ">
         <div className="hidden xl:block ">
           <Image
