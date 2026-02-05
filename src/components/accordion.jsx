@@ -147,7 +147,6 @@ export default function AccordionSection() {
                     />
                   </svg>
                 </button>
-                {/* Контент (картинка + текст) */}
                 <div
                   className={`grid transition-all duration-500 ease-in-out ${
                     isActive ? "max-h-[600px] opacity-100 lg:pb-[32px]" : "max-h-0 opacity-0"

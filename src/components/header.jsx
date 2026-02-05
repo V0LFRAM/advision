@@ -72,10 +72,8 @@ export function HeaderSection() {
             />
           </div>
 
-          {/* ЦЕНТРАЛЬНОЕ МЕНЮ (только десктоп) */}
-          {variant && <Nav />}
+          {variant && showHeader && <Nav />}
 
-          {/* НОМЕР ТЕЛЕФОНА справа (только десктоп) */}
           <div className="hidden lg:block">
             <a
               href="tel:+17634855531"
@@ -118,7 +116,6 @@ export function HeaderSection() {
           flex flex-col xl:hidden
         `}
         >
-          {/* LINE + LOGO */}
           <div className="flex items-center justify-between h-[80px] px-[21px] border-b border-[rgb(var(--border))]">
             <div className="relative w-[69px] h-[40px]">
               <Image
@@ -135,7 +132,6 @@ export function HeaderSection() {
               />
             </div>
 
-            {/* CROSS */}
             <button
               onClick={() => setIsOpen(false)}
               aria-label="Close menu"
@@ -158,8 +154,7 @@ export function HeaderSection() {
             </button>
           </div>
 
-          {/* LINKS */}
-          {!variant && <Nav />}
+          {!variant && showHeader && <Nav />}
 
           {/* SOCIALS + TOGGLE */}
           <div
@@ -170,7 +165,6 @@ export function HeaderSection() {
           "
           >
             <div className="flex items-center gap-[10px]">
-              {/* Instagram */}
               <div className="relative w-[24px] h-[24px]">
                 <Image
                   src="/images/instagram-light.png"
@@ -186,7 +180,6 @@ export function HeaderSection() {
                 />
               </div>
 
-              {/* Facebook */}
               <svg
                 width="22"
                 height="21"

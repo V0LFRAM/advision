@@ -49,7 +49,7 @@ export default function Home() {
 
   return (
     <>
-      {/* <GridBack />  */}
+      <GridBack /> 
       <HeroSection openModal={openModal} isTimeoutHero={isTimeoutHero} />
       {isTimeoutHero && <About />}
       {isTimeoutHero && <ImageSection />}
