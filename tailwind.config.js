@@ -15,6 +15,10 @@ module.exports = {
         league: ["var(--font-league)", "sans-serif"],
       },
       letterSpacing: { tight001: "-0.01em" },
+        transitionDuration: {
+          1500: '1500ms',
+          2000: '2000ms',
+        },
     },
     screens: {
       sm: "640px",

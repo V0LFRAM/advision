@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { TitleStroke } from "./ui/title-stroke";
 
+import { useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
+
 const steps = [
   {
     id: "01",
@@ -35,32 +38,80 @@ const steps = [
 ];
 
 const HowSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-40% 0px" });
+
+
+  const [showHowWe, setShowHowWe] = useState(false); 
+  const [showWork, setShowWork] = useState(false); 
+  const [showContent, setShowContent] = useState(false);  
+  const [showAnimations, setShowAnimations] = useState(false);
+
+  useEffect(() => {
+    const sequence = [
+      { setter: setShowHowWe, delay: 500 },
+      { setter: setShowWork, delay: 500 },
+      { setter: setShowContent, delay: 500 },
+      { setter: setShowAnimations, delay: 500 },
+    ];
+
+    let timers = [];
+
+    if (isInView) {
+      sequence.forEach(({ setter }) => setter(false));
+      let total = 0;
+      sequence.forEach(({ setter, delay }) => {
+        total += delay;
+        timers.push(setTimeout(() => setter(true), total));
+      });
+    } else {
+      sequence.forEach(({ setter }) => setter(false));
+    }
+    return () => timers.forEach(clearTimeout);
+  }, [isInView]);
+
   return (
-    <section className="w-full">
+    <section ref={ref} className="w-full min-h-[80vh]">
       <div className="px-[20px] lg:px-[78px]">
         <h2
           className="
             xl:pb-[75px]
+            text-center
           "
         >
           <span
+            style={{ visibility: showHowWe ? "visible" : "hidden" }}
             className="
             font-[500] uppercase tracking-[-0.01em]
             text-[35px] xl:text-[44px] leading-[1] 
           "
           >
-            HOW WE <TitleStroke text={"WORK"} />
+            {'HOW WE '}
+            <span
+            style={{ visibility: showWork ? "visible" : "hidden" }}>
+              <TitleStroke text={"WORK"} />
+            </span>
           </span>
         </h2>
 
         {/* Desktop grid */}
-        <div className="hidden xl:grid grid-cols-5 gap-[74px]">
+        <div 
+          className={`hidden xl:grid grid-cols-5 gap-[74px] xl:mt-[75px] transition-all duration-700 ease-in-out
+          ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'}`}
+          
+          >
           {steps.map(({ id, title, text, img }, index) => {
             const isEven = (index + 1) % 2 === 0;
             return (
               <div
                 key={id}
-                className={`relative flex flex-col gap-4 w-[197px] ${isEven ? "mt-[79px]" : "mt-[185px]"}`}
+                className={`relative flex flex-col gap-4 w-[197px] transition-all duration-2000 ease-in-out`}
+                style={{
+                  marginTop: showAnimations
+                    ? (isEven ? 79 : 185)
+                    : 132,
+                  willChange: 'margin-top',
+                }}
               >
                 {/* Большое число над правым краем */}
                 <span
