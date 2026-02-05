@@ -15,10 +15,10 @@ const FormSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-30% 0px" });
 
-  const [showReady, setShowReady] = useState(false); 
-  const [showFreeQuote, setShowFreeQuote] = useState(false); 
-  const [showTellUsAbout, setShowTellUsAbout] = useState(false); 
-  const [showForm, setShowForm] = useState(false); 
+  const [showReady, setShowReady] = useState(false);
+  const [showFreeQuote, setShowFreeQuote] = useState(false);
+  const [showTellUsAbout, setShowTellUsAbout] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   const [showImages, setShowImages] = useState(false);
 
   useEffect(() => {
@@ -46,12 +46,9 @@ const FormSection = () => {
   }, [isInView]);
 
   return (
-    <section ref={ref} id="your-idea" className="w-full relative">
+    <section ref={ref} id="get-a-quote" className="w-full relative">
       <div className="px-[20px] xl:px-[80px] xl:flex ">
-        <div 
-          className="hidden xl:block "
-          style={{ visibility: showImages ? "visible" : "hidden" }}
-          >
+        <div className="hidden xl:block " style={{ visibility: showImages ? "visible" : "hidden" }}>
           <Image
             src="/images/form.png"
             alt="Decor"
@@ -66,18 +63,20 @@ const FormSection = () => {
               className="uppercase tracking-[-0.01em]
               text-[35px] xl:text-[44px] leading-[1] relative mb-[20px] xl:ml-auto max-w-[602px] "
             >
-              <span style={{ visibility: showReady? "visible" : "hidden" }}>
+              <span style={{ visibility: showReady ? "visible" : "hidden" }}>
                 Ready to Transform Your Space? Let’s Start With a
               </span>
-              <span 
+              <span
                 style={{ visibility: showFreeQuote ? "visible" : "hidden" }}
-                className="absolute bottom-[-35px] xl:bottom-[-45px] right-[0px] ">
+                className="absolute bottom-[-35px] xl:bottom-[-45px] right-[0px] "
+              >
                 <TitleStroke text={"Free Quote"} />
               </span>
             </h2>
-            <div 
+            <div
               style={{ visibility: showImages ? "visible" : "hidden" }}
-              className="relative w-[72px] h-[87px] xl:w-[227px] xl:h-[250px] xl:absolute xl:right-0 xl:bottom-[343px]">
+              className="relative w-[72px] h-[87px] xl:w-[227px] xl:h-[250px] xl:absolute xl:right-0 xl:bottom-[343px]"
+            >
               <Image
                 src="/images/form-mob.png"
                 alt="Decor"
@@ -86,14 +85,15 @@ const FormSection = () => {
                 className="w-full h-auto"
               />
             </div>
-            <p 
+            <p
               style={{ visibility: showTellUsAbout ? "visible" : "hidden" }}
-              className="font-'mobile-body' text-[16px] xl:font-'inter'  xl:text-[20px] max-w-[200px] xl:max-w-[540px] block ml-auto xl:ml-0 relative top-[-30px] xl:top-[50px]">
+              className="font-'mobile-body' text-[16px] xl:font-'inter'  xl:text-[20px] max-w-[200px] xl:max-w-[540px] block ml-auto xl:ml-0 relative top-[-30px] xl:top-[50px]"
+            >
               Tell us about your project — we’ll contact you within 24 hours with a free quote or
               consultation.
             </p>
           </div>
-          <div 
+          <div
             className="xl:mt-[200px] xl:mr-[300px]"
             style={{ visibility: showForm ? "visible" : "hidden" }}
           >

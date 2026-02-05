@@ -8,16 +8,15 @@ import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import { useBreakpointValue } from "@chakra-ui/react";
 
-
 export default function PrecisionSection({ openModal }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-40% 0px" });
   const variant = useBreakpointValue({ base: false, lg: true });
 
-  const [showPrecision, setShowPrecision] = useState(false); 
+  const [showPrecision, setShowPrecision] = useState(false);
   const [showMobileTextTwo, setShowMobileTextTwo] = useState(false);
-  const [showText, setShowText] = useState(false); 
-  const [showLoved, setShowLoved] = useState(false); 
+  const [showText, setShowText] = useState(false);
+  const [showLoved, setShowLoved] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [showHallImage, setShowHallImage] = useState(false);
@@ -34,9 +33,9 @@ export default function PrecisionSection({ openModal }) {
         { setter: setShowButton, delay: 400 },
         { setter: setShowHallImage, delay: 400 },
         { setter: setShowImage, delay: 400 },
-      ]
+      ];
     } else {
-      sequence = [  
+      sequence = [
         { setter: setShowImage, delay: 400 },
         { setter: setShowMobileTextTwo, delay: 700 },
         { setter: setShowLoved, delay: 400 },
@@ -45,9 +44,9 @@ export default function PrecisionSection({ openModal }) {
         { setter: setShowDescription, delay: 400 },
         { setter: setShowButton, delay: 400 },
         { setter: setShowHallImage, delay: 400 },
-      ] 
+      ];
     }
-    
+
     let timers = [];
 
     if (isInView) {
@@ -64,14 +63,15 @@ export default function PrecisionSection({ openModal }) {
   }, [isInView]);
 
   return (
-    <section ref={ref} className="w-full relative overflow-hidden xl:h-[100vh]">
+    <section ref={ref} id="your-idea" className="w-full relative overflow-hidden xl:h-[100vh]">
       <div className="absolute inset-0 -z-10 bg-[rgb(var(--bg))]" />
 
       {/* DESKTOP layout (xl and up) */}
       <div className="hidden lg:flex w-full pl-[193px] lg:pl-[93px] xl:pl-[80px] pr-[80px] pt-[120px] relative z-20">
-        <div 
-          style={{visibility: showImage ? 'visible': 'hidden'}}
-          className="lg:w-[244px] xl:w-[544px] flex-shrink-0 pt-[255px]">
+        <div
+          style={{ visibility: showImage ? "visible" : "hidden" }}
+          className="lg:w-[244px] xl:w-[544px] flex-shrink-0 pt-[255px]"
+        >
           <Image
             src="/images/precision-corridor.png"
             alt="design corridor"
@@ -80,9 +80,9 @@ export default function PrecisionSection({ openModal }) {
             className="object-cover"
             priority
             style={{
-                transform: showImage ?  "scale(0.8) translateX(-40px)" : "scale(1) translateX(0px)",
-                transition: "transform 2s cubic-bezier(.4,0,.2,1)",
-              }}
+              transform: showImage ? "scale(0.8) translateX(-40px)" : "scale(1) translateX(0px)",
+              transition: "transform 2s cubic-bezier(.4,0,.2,1)",
+            }}
           />
         </div>
 
@@ -95,50 +95,49 @@ export default function PrecisionSection({ openModal }) {
               fontWeight: 500,
             }}
           >
-            <span 
+            <span
               className="xl:ml-[40px] xl:block xl:w-[660px]"
               style={{ visibility: showText ? "visible" : "hidden" }}
             >
               Have a Design in Mind or
               <br />
-                {"SOMETHING YOU "}
-                <span 
-                  className="inline-block align-baseline"
-                  style={{ visibility: showLoved ? "visible" : "hidden" }}>
-                  <TitleStroke text={"LOVED"} />
-                </span>
+              {"SOMETHING YOU "}
+              <span
+                className="inline-block align-baseline"
+                style={{ visibility: showLoved ? "visible" : "hidden" }}
+              >
+                <TitleStroke text={"LOVED"} />
+              </span>
               {" Online?"}
             </span>
-            
-            <span 
+
+            <span
               style={{ visibility: showText ? "visible" : "hidden" }}
-              className="block pl-[-40px]" 
+              className="block pl-[-40px]"
             >
               {"LET US BRING IT TO LIFE WITH STYLE"}
             </span>
             <span className="block pl-[-40px]">
-              <span 
-                style={{ visibility: showText ? "visible" : "hidden" }}
-              >
-                {"AND "}
-              </span>
-              <span 
+              <span style={{ visibility: showText ? "visible" : "hidden" }}>{"AND "}</span>
+              <span
                 style={{ visibility: showPrecision ? "visible" : "hidden" }}
-                className="inline-block align-baseline">
+                className="inline-block align-baseline"
+              >
                 <TitleStroke text={"precision"} />
               </span>
             </span>
           </h2>
           <div className="xl:flex xl:flex-col items-end">
             <div className="relative">
-              <p 
+              <p
                 style={{ visibility: showDescription ? "visible" : "hidden" }}
-                className="text-[18px] xl:text-[20px] leading-[1.55] text-[rgb(var(--fg))] mb-6 max-w-[517px]">
-                Whether you've saved a design from Pinterest, spotted something amazing on Instagram, or
-                simply imagined how your perfect wall or bathroom should look — we're ready to help make
-                it real. Just send us a photo, sketch, or even a few keywords — and we'll take it from
-                there. You'll receive a clear plan, expert recommendations, and a transparent quote —
-                all within 24 hours.
+                className="text-[18px] xl:text-[20px] leading-[1.55] text-[rgb(var(--fg))] mb-6 max-w-[517px]"
+              >
+                Whether you've saved a design from Pinterest, spotted something amazing on
+                Instagram, or simply imagined how your perfect wall or bathroom should look — we're
+                ready to help make it real. Just send us a photo, sketch, or even a few keywords —
+                and we'll take it from there. You'll receive a clear plan, expert recommendations,
+                and a transparent quote — all within 24 hours.
               </p>
 
               <button
@@ -150,8 +149,9 @@ export default function PrecisionSection({ openModal }) {
                 <FiArrowUpRight size={20} />
               </button>
               <div
-               style={{visibility: showHallImage ? 'visible': 'hidden'}}
-               className="mt-[60px] absolute w-[622px] h-[332px]">
+                style={{ visibility: showHallImage ? "visible" : "hidden" }}
+                className="mt-[60px] absolute w-[622px] h-[332px]"
+              >
                 <Image
                   src="/images/precision-hall.png"
                   alt="design hall"
@@ -162,7 +162,6 @@ export default function PrecisionSection({ openModal }) {
                 />
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -178,27 +177,25 @@ export default function PrecisionSection({ openModal }) {
               fontStyle: "regular",
             }}
           >
-          <span 
+            <span
               className="xl:ml-[40px] xl:block xl:w-[660px]"
               style={{ visibility: showText ? "visible" : "hidden" }}
             >
-            HAVE A DESIGN IN MIND OR 
-            
-            SOMETHING
-            <br />
-            {"YOU "}
+              HAVE A DESIGN IN MIND OR SOMETHING
+              <br />
+              {"YOU "}
             </span>
-            <span 
-            className="inline-block align-baseline scale-[0.9] origin-left"
-            style={{ visibility: showLoved ? "visible" : "hidden" }}
+            <span
+              className="inline-block align-baseline scale-[0.9] origin-left"
+              style={{ visibility: showLoved ? "visible" : "hidden" }}
             >
               <TitleStroke text={"LOVED"} />
             </span>
-            <span 
+            <span
               className="xl:ml-[40px] xl:block xl:w-[660px]"
               style={{ visibility: showText ? "visible" : "hidden" }}
             >
-            {"ONLINE?"}
+              {"ONLINE?"}
             </span>
           </h2>
 
@@ -208,15 +205,16 @@ export default function PrecisionSection({ openModal }) {
               fontFamily: '"League Spartan", sans-serif',
               fontWeight: 400,
               fontStyle: "regular",
-              visibility: showMobileTextTwo ? "visible" : "hidden"
+              visibility: showMobileTextTwo ? "visible" : "hidden",
             }}
           >
             LET US BRING IT TO LIFE WITH STYLE
             <br />
             {" AND "}
-            <span 
+            <span
               style={{ visibility: showPrecision ? "visible" : "hidden" }}
-              className="inline-block align-baseline scale-[0.9] origin-left">
+              className="inline-block align-baseline scale-[0.9] origin-left"
+            >
               <TitleStroke text={"PRECISION"} />
             </span>
           </h2>
@@ -225,15 +223,15 @@ export default function PrecisionSection({ openModal }) {
         <div className="mx-auto mb-6 w-full h-[465px] absolute">
           <div
             style={{
-              position: 'absolute',
-              left: showImage ? 'auto' : 0,
-              right: showImage ? 20 : 'auto',
+              position: "absolute",
+              left: showImage ? "auto" : 0,
+              right: showImage ? 20 : "auto",
               top: showImage ? 160 : 20,
-              width: showImage ? 72 : '100vw',
-              height: showImage ? 87 : '100%',
-              transition: 'all 2s cubic-bezier(.4,0,.2,1)',
+              width: showImage ? 72 : "100vw",
+              height: showImage ? 87 : "100%",
+              transition: "all 2s cubic-bezier(.4,0,.2,1)",
               zIndex: 2,
-              overflow: 'hidden',
+              overflow: "hidden",
             }}
           >
             <Image
@@ -242,8 +240,8 @@ export default function PrecisionSection({ openModal }) {
               fill
               className="object-cover"
               style={{
-                transition: 'all 2s cubic-bezier(.4,0,.2,1)',
-                objectPosition: 'center',
+                transition: "all 2s cubic-bezier(.4,0,.2,1)",
+                objectPosition: "center",
               }}
             />
           </div>
@@ -256,7 +254,7 @@ export default function PrecisionSection({ openModal }) {
               fontFamily: '"Inter", sans-serif',
               fontWeight: 400,
               fontStyle: "normal",
-              visibility: showDescription ? "visible" : "hidden"
+              visibility: showDescription ? "visible" : "hidden",
             }}
           >
             Whether you've saved a design from Pinterest, spotted something amazing on Instagram, or
@@ -277,8 +275,8 @@ export default function PrecisionSection({ openModal }) {
           </button>
         </div>
 
-        <div 
-          style={{visibility: showHallImage ? 'visible': 'hidden'}}
+        <div
+          style={{ visibility: showHallImage ? "visible" : "hidden" }}
           className="-mx-[20px] flex justify-center"
         >
           <div className="relative w-[100vw] md:w-[728px] h-[282px] overflow-hidden">
