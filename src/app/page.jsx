@@ -33,15 +33,15 @@ export default function Home() {
       setIsTimeoutHero(true);
     }, 2000); 
 
-    if (!isTimeoutHero) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    // if (!isTimeoutHero) {
+    //   document.body.style.overflow = "hidden";
+    // } else {
+    //   document.body.style.overflow = "";
+    // }
 
     return () => {
       document.body.style.overflow = "";
-      clearTimeout(timer);
+      // clearTimeout(timer);
     };
 
   }, [!isTimeoutHero]);
