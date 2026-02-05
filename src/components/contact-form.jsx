@@ -8,6 +8,7 @@ const ContactForm = ({ onSuccess, width }) => {
   const [fileName, setFileName] = useState("");
   const [status, setStatus] = useState(null);
   const fileInputRef = useRef(null);
+  const formRef = useRef(null);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -29,6 +30,9 @@ const ContactForm = ({ onSuccess, width }) => {
 
         setFileName("");
 
+        // ✅ СБРОС ФОРМЫ
+        formRef.current?.reset();
+
         // 🔧 CHANGE: открываем success modal
         onSuccess?.();
       } else {
@@ -46,6 +50,7 @@ const ContactForm = ({ onSuccess, width }) => {
   return (
     <>
       <form
+        ref={formRef}
         onSubmit={handleSubmit}
         className={`xl:w-[372px] ${`w-[${width}]`} flex flex-col gap-4 xl:mr-auto xl:relative`}
       >
