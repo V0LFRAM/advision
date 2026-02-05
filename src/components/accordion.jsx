@@ -1,6 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useInView } from "framer-motion";
+
 
 const accordionItems = [
   {
@@ -32,12 +34,49 @@ const accordionItems = [
 export default function AccordionSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-40% 0px" });
+
+
+  const [showInMinneapolis, setShowInMinneapolis] = useState(false); 
+  const [showOurInteriorFinishing, setShowOurInteriorFinishing] = useState(false); 
+  const [showServices, setShowServices] = useState(false); 
+  const [showContent, setShowContent] = useState(false); 
+  const [showThemeToggle, setShowThemeToggle] = useState(false); 
+  const [showCustomTile, setShowCustomTile] = useState(false);
+
+
+  useEffect(() => {
+    const sequence = [
+      { setter: setShowInMinneapolis, delay: 500 },
+      { setter: setShowOurInteriorFinishing, delay: 500 },
+      { setter: setShowServices, delay: 500 },
+      { setter: setShowContent, delay: 500 },
+      { setter: setShowThemeToggle, delay: 500 },
+      { setter: setShowCustomTile, delay: 500 },
+    ];
+
+    let timers = [];
+
+    if (isInView) {
+      sequence.forEach(({ setter }) => setter(false));
+      let total = 0;
+      sequence.forEach(({ setter, delay }) => {
+        total += delay;
+        timers.push(setTimeout(() => setter(true), total));
+      });
+    } else {
+      sequence.forEach(({ setter }) => setter(false));
+    }
+    return () => timers.forEach(clearTimeout);
+  }, [isInView]);
+
   const toggleAccordion = (index) => {
     setActiveIndex(index === activeIndex ? null : index);
   };
 
   return (
-    <section id="services" className="bg-[rgb(var(--bg))] text-[rgb(var(--fg))] w-full">
+    <section ref={ref} id="services" className="bg-[rgb(var(--bg))] text-[rgb(var(--fg))] w-full">
       {/* Заголовок секции */}
       <div className="px-[20px] pt-[120px] lg:pt-[160px]">
         <h2
@@ -46,20 +85,30 @@ export default function AccordionSection() {
             font-league font-regular lg:font-medium uppercase tracking-[-0.02em]
             text-[35px] xl:text-[44px] leading-[100%] md:ml-[170px] lg:ml-[410px] xl:ml-[640px] text-right md:text-left"
         >
-          OUR INTERIOR <br className="block md:hidden" />
-          <span className="block text-left md:inline">
-            FINISHING&nbsp;
-            <span className="text-transparent [-webkit-text-stroke:1px_rgb(var(--fg))]">
+          <span style={{ visibility: showOurInteriorFinishing ? "visible" : "hidden" }}>
+            OUR INTERIOR <br className="block md:hidden" />
+            </span>
+            <span className="block text-left md:inline" 
+            style={{ visibility: showOurInteriorFinishing ? "visible" : "hidden" }}>
+              FINISHING&nbsp;
+            
+            <span style={{ visibility: showServices ? "visible" : "hidden" }} 
+            className="text-transparent [-webkit-text-stroke:1px_rgb(var(--fg))]">
               SERVICES
             </span>
             <br />
-            IN MINNEAPOLIS
+            <span style={{ visibility: showInMinneapolis ? "visible" : "hidden" }}>
+              {'IN MINNEAPOLIS '}
+            </span>
+            
           </span>
         </h2>
       </div>
 
-      {/* Контейнер аккордеона */}
-      <div className="flex flex-col mt-[40px]">
+      <div
+        className={`flex flex-col mt-[40px] transition-all duration-700 ease-out
+          ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'}`}
+      >
         {accordionItems.map((item, index) => {
           const isActive = index === activeIndex;
           return (
@@ -69,12 +118,9 @@ export default function AccordionSection() {
                 ${isActive ? "bg-[rgb(var(--acc))]" : "bg-transparent"}
               `}
             >
-              {/* Верхняя линия */}
               <div className="absolute top-0 left-[20px] right-[20px] lg:left-[80px] lg:right-[80px] h-[0.5px] z-10 bg-[rgb(var(--fg))]"></div>
 
-              {/* Нижняя линия */}
               <div className="absolute bottom-0 left-[20px] right-[20px] lg:left-[80px] lg:right-[80px] h-[0.5px] z-10 bg-[rgb(var(--fg))]"></div>
-              {/* Верхняя строка (номер + заголовок + стрелка) */}
               <div className="overflow-hidden relative z-20">
                 <button
                   onClick={() => toggleAccordion(index)}
