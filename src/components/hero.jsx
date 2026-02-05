@@ -8,11 +8,15 @@ import { Arrow } from "@/lib/icons/arrow";
 import { ThemeToggle } from "./ThemeToggle";
 import { HeroTitleStroke } from "./ui/hero-title-stroke";
 import { LoadingTextAnimated } from "./loading-text-animated";
+import { useBreakpointValue } from "@chakra-ui/react";
+
 
 import { useEffect, useState } from "react";
 import { GridBack } from "./ui/grid-back";
 
 const HeroSection = ({ openModal, isTimeoutHero }) => {
+  const variant = useBreakpointValue({ base: false, lg: true });
+
   const [showStatement, setShowStatement] = useState(false); // 2 sekonds
   const [showWalls, setShowWalls] = useState(false); // 3 sekonds
   const [showThatMakeA, setShowThatMakeA] = useState(false); // 4 sekonds
@@ -61,7 +65,7 @@ const HeroSection = ({ openModal, isTimeoutHero }) => {
 
   return (
     <>
-      <section className="w-full pt-[66px] xl:pt-[88px] h-[calc(100vh - 57px)] min-h-[700px] relative">
+      <section className={`w-full pt-[66px] xl:pt-[88px] h-[100vh] ${variant ? "min-h-[700px]" : ""} relative`}>
         <motion.div
           animate={{zIndex: 10, height: isTimeoutHero ? '358px' : 'calc(100vh - 57px)' }}
           transition={{ duration: 0.8, ease: "easeInOut" }}

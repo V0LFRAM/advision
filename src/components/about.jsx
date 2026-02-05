@@ -27,7 +27,7 @@ const textMock = [
 
 const About = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-20% 0px" });
+  const isInView = useInView(ref, { once: true, margin: "20% 0px" });
   const [animated, setAnimated] = useState(false);
   
   const [showCraftsmanship, setShowCraftsmanship] = useState(false);
@@ -41,7 +41,6 @@ const About = () => {
 
 
   const [shownTextMock, setShownTextMock] = useState([false, false, false]);
-  // Счётчики для анимации чисел
   const [counters, setCounters] = useState([1, 1, 1]);
 
   useEffect(() => {
@@ -59,7 +58,7 @@ const About = () => {
       { setter: setShowContent, delay: 500 },
       { setter: setShowText, delay: 500 },
       { setter: setShowMore, delay: 500 },
-      { setter: (v) => setShownTextMock([true, false, false]), delay: 500 },
+      { setter: (v) => setShownTextMock([true, false, false]), delay: 1500 },
       { setter: (v) => setShownTextMock([true, true, false]), delay: 1500 },
       { setter: (v) => setShownTextMock([true, true, true]), delay: 1500 },
     ];
@@ -89,7 +88,6 @@ const About = () => {
     return () => timers.forEach(clearTimeout);
   }, [animated]);
 
-  // Анимация счёта для каждого числа
   useEffect(() => {
     textMock.forEach((item, idx) => {
       if (shownTextMock[idx]) {
@@ -98,7 +96,7 @@ const About = () => {
         if (isNaN(end)) return;
         let startTime = null;
         let raf;
-        const duration = 700; // ms
+        const duration = 1500; // ms
         function animateCount(ts) {
           if (!startTime) startTime = ts;
           const elapsed = ts - startTime;
@@ -118,9 +116,9 @@ const About = () => {
   }, [shownTextMock]);
 
   return (
-    <section ref={ref} id="about-us" className="w-full" >
+    <section  id="about-us" className="w-full" >
       <div className="py-[120px] px-[20px] xl:px-[80px] flex flex-wrap gap-[20px] justify-between">
-        <div>
+        <div ref={ref}>
           <h2 className="flex flex-wrap items-baseline xl:block gap-x-3 max-w-[700px] mb-[20px]">
             <span
               className="
