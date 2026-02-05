@@ -19,7 +19,18 @@ const lookItems = [
     img: "/images/look3.png",
     date: "March 2024",
   },
-
+  {
+    img: "/images/look4.png",
+    date: "January 2024",
+  },
+  {
+    img: "/images/look5.png",
+    date: "November 2023",
+  },
+  {
+    img: "/images/look6.png",
+    date: "July 2023",
+  },
 ];
 
 export const LookSection = () => {
@@ -28,10 +39,10 @@ export const LookSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-40% 0px" });
 
-  const [showSolutions, setShowSolutions] = useState(false); 
-  const [showRealHomes, setShowRealHomes] = useState(false); 
-  const [showWithCustomFinishing, setShowWithCustomFinishing] = useState(false); 
-  const [showTakeA, setShowTakeA] = useState(false); 
+  const [showSolutions, setShowSolutions] = useState(false);
+  const [showRealHomes, setShowRealHomes] = useState(false);
+  const [showWithCustomFinishing, setShowWithCustomFinishing] = useState(false);
+  const [showTakeA, setShowTakeA] = useState(false);
   const [showWeveEnhanced, setShowWeveEnhanced] = useState(false);
   const [showAt, setShowAt] = useState(false);
   const [showCloserLook, setShowCloserLook] = useState(false);
@@ -79,10 +90,10 @@ export const LookSection = () => {
     return [lookItems[left], lookItems[center], lookItems[centerTwo], lookItems[right]];
   };
 
-  const visibleItems = getVisibleItems(); 
+  const visibleItems = getVisibleItems();
 
   return (
-    <section 
+    <section
       ref={ref}
       id="projects"
       className="w-full pt-[120px] md:pt-[180px] pb-[120px] md:pb-[158px] overflow-hidden"
@@ -96,36 +107,30 @@ export const LookSection = () => {
             text-[35px] xl:text-[44px] leading-[1] 
           "
           >
-            <span style={{ visibility: showTakeA ? "visible" : "hidden" }}>
-              {'Take a '} 
-            </span>
+            <span style={{ visibility: showTakeA ? "visible" : "hidden" }}>{"Take a "}</span>
             <span style={{ visibility: showCloserLook ? "visible" : "hidden" }}>
               <TitleStroke text={"Closer Look"} />
             </span>
             <br />
-            <span style={{ visibility: showAt ? "visible" : "hidden" }}>
-              {'At '} 
-            </span>
+            <span style={{ visibility: showAt ? "visible" : "hidden" }}>{"At "}</span>
             <span style={{ visibility: showRealHomes ? "visible" : "hidden" }}>
-              {'real homes '}
+              {"real homes "}
             </span>
             <span style={{ visibility: showWeveEnhanced ? "visible" : "hidden" }}>
-              {'we’ve enhanced'}
+              {"we’ve enhanced"}
             </span>
             <br />
             <span style={{ visibility: showWithCustomFinishing ? "visible" : "hidden" }}>
-              {'with custom finishing '}
+              {"with custom finishing "}
             </span>
-            
-            <span style={{ visibility: showSolutions ? "visible" : "hidden" }}>
-              {'solutions'}
-            </span>
+
+            <span style={{ visibility: showSolutions ? "visible" : "hidden" }}>{"solutions"}</span>
           </span>
         </h2>
 
-        <div 
+        <div
           className={`relative flex justify-between gap-[20px] lg:gap-[80px] items-center transition-all duration-700 ease-out
-          ${showCloserLook ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'}`}
+          ${showCloserLook ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8 pointer-events-none"}`}
         >
           {visibleItems.map((item, idx) => (
             <div
@@ -188,30 +193,24 @@ export const LookSection = () => {
             text-[35px] xl:text-[44px] leading-[1] 
           "
           >
-            <span style={{ visibility: showTakeA ? "visible" : "hidden" }}>
-              {'Take a '} 
-            </span>
-            
+            <span style={{ visibility: showTakeA ? "visible" : "hidden" }}>{"Take a "}</span>
+
             <span style={{ visibility: showCloserLook ? "visible" : "hidden" }}>
               <TitleStroke text={"Closer Look"} />
             </span>
             <br />
-            <span style={{ visibility: showAt ? "visible" : "hidden" }}>
-              {'At '} 
-            </span>
+            <span style={{ visibility: showAt ? "visible" : "hidden" }}>{"At "}</span>
             <span style={{ visibility: showRealHomes ? "visible" : "hidden" }}>
-              {'real homes '}
+              {"real homes "}
             </span>
             <span style={{ visibility: showWeveEnhanced ? "visible" : "hidden" }}>
-              {'we’ve enhanced'}
+              {"we’ve enhanced"}
             </span>
             <br />
             <span style={{ visibility: showWithCustomFinishing ? "visible" : "hidden" }}>
-              {'with custom finishing '}
+              {"with custom finishing "}
             </span>
-            <span style={{ visibility: showSolutions ? "visible" : "hidden" }}>
-              {'solutions'}
-            </span>
+            <span style={{ visibility: showSolutions ? "visible" : "hidden" }}>{"solutions"}</span>
           </span>
         </h2>
 
