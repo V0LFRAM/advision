@@ -1,4 +1,6 @@
 import { TitleStroke } from "./ui/title-stroke";
+import { useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
 
 const trustItems = [
   {
@@ -24,11 +26,56 @@ const trustItems = [
 ];
 
 function TrustSection() {
+   const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-40% 0px" });
+
+  const [showWhyPeople, setShowWhyPeople] = useState(false); 
+  const [showTrust, setShowTrust] = useState(false); 
+
+  const [shownTrustItems, setShownTrustItems] = useState(Array(trustItems.length).fill(false));
+
+  useEffect(() => {
+    const sequence = [
+      { setter: setShowWhyPeople, delay: 500 },
+      { setter: setShowTrust, delay: 500 },
+    ];
+
+    let timers = [];
+
+    if (isInView) {
+      sequence.forEach(({ setter }) => setter(false));
+      setShownTrustItems(Array(trustItems.length).fill(false));
+      let total = 0;
+      sequence.forEach(({ setter, delay }) => {
+        total += delay;
+        timers.push(setTimeout(() => setter(true), total));
+      });
+      const afterContent = total + 300;
+      trustItems.forEach((_, idx) => {
+        timers.push(setTimeout(() => {
+          setShownTrustItems(prev => prev.map((v, i) => i <= idx ? true : v));
+        }, afterContent + idx * 500));
+      });
+    } else {
+      sequence.forEach(({ setter }) => setter(false));
+      setShownTrustItems(Array(trustItems.length).fill(false));
+    }
+    return () => timers.forEach(clearTimeout);
+  }, [isInView]);
+
   return (
-    <section className="w-full pt-[120px] xl:pt-[180px] pb-[120px] xl:pb-[200px] px-[20px] xl:pl-[80px] xl:pr-[67px]">
+    <section ref={ref} className="w-full pt-[120px] xl:pt-[180px] pb-[120px] xl:pb-[200px] px-[20px] xl:pl-[80px] xl:pr-[67px]">
       <h2 className="pb-[40px] xl:pb-[50px]">
         <span className="font-league font-[500] uppercase tracking-[-0.01em] text-[35px] xl:text-[44px] leading-[1]">
-          Why people <TitleStroke text="Trust" /> Us
+          <span style={{ visibility: showWhyPeople ? "visible" : "hidden" }}>
+            {"Why people "}
+          </span>
+          <span style={{ visibility: showTrust ? "visible" : "hidden" }}>
+            <TitleStroke text="Trust" /> 
+          </span>
+          <span style={{ visibility: showWhyPeople ? "visible" : "hidden" }}>
+            {" Us"}
+          </span>
         </span>
       </h2>
 
@@ -42,13 +89,15 @@ function TrustSection() {
           justify-items-start
         "
       >
-        {trustItems.map((item) => (
+        {trustItems.map((item, idx) => (
           <div
             key={item.title}
-            className="
-              flex flex-col gap-1
-              w-[161px] md:w-[200px] lg:w-[161px] xl:w-[197px]
-            "
+            style={{
+              opacity: shownTrustItems[idx] ? 1 : 0,
+              transform: shownTrustItems[idx] ? 'translateY(0)' : 'translateY(30px)',
+              transition: 'opacity 0.5s, transform 0.5s',
+            }}
+            className="flex flex-col gap-1 w-[161px] md:w-[200px] lg:w-[161px] xl:w-[197px]"
           >
             <h3 className="font-inter font-[600] text-[16px] leading-[100%] tracking-[-0.02em] text-[#9B948A] mb-2">
               {item.title}
