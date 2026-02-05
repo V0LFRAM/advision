@@ -1,4 +1,4 @@
-const Nav = () => {
+const Nav = ({ setIsOpen }) => {
   const navItems = [
     { text: "About us", link: "#about-us" },
     { text: "Services", link: "#services" },
@@ -11,6 +11,7 @@ const Nav = () => {
     <nav className="flex flex-col gap-[24px] mt-6 lg:mt-0 px-[21px] lg:flex-row lg:items-center lg:gap-[20px]">
       {navItems.map((item) => (
         <a
+          onClick={()=> setIsOpen(false)}
           key={item.text}
           href={item.link}
           className="
