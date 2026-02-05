@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const DURATION = 5000;
+const DURATION = 2000;
 
 const LoadingTextAnimated = () => {
   const [progress, setProgress] = useState(0);

@@ -20,7 +20,7 @@ const HeroSection = ({ openModal, isTimeoutHero }) => {
   const [showThemeToggle, setShowThemeToggle] = useState(false); // 6 sekonds
   const [showCustomTile, setShowCustomTile] = useState(false); // 7 sekonds
 
-  const [startScale, setStartScale] = useState(false);
+  const [startScale, setStartScale] = useState(true);
 
   useEffect(() => {
     const sequence = [
@@ -59,7 +59,7 @@ const HeroSection = ({ openModal, isTimeoutHero }) => {
 
   return (
     <>
-      <section className="w-full pt-[66px] xl:pt-[88px] h-[100vh] min-h-[700px] relative">
+      <section className="w-full pt-[66px] xl:pt-[88px] h-[calc(100vh - 57px)] min-h-[700px] relative">
         <motion.div
           animate={{ zIndex: 10, height: isTimeoutHero ? "358px" : "calc(100vh - 57px)" }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
