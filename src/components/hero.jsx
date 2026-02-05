@@ -13,12 +13,12 @@ import { useEffect, useState } from "react";
 import { GridBack } from "./ui/grid-back";
 
 const HeroSection = ({ openModal, isTimeoutHero }) => {
-  const [showStatement, setShowStatement] = useState(false); // 2 sekonds
-  const [showWalls, setShowWalls] = useState(false); // 3 sekonds
-  const [showThatMakeA, setShowThatMakeA] = useState(false); // 4 sekonds
-  const [showAccent, setShowAccent] = useState(false); // 5 sekonds
-  const [showThemeToggle, setShowThemeToggle] = useState(false); // 6 sekonds
-  const [showCustomTile, setShowCustomTile] = useState(false); // 7 sekonds
+  const [showStatement, setShowStatement] = useState(false);
+  const [showWalls, setShowWalls] = useState(false); 
+  const [showThatMakeA, setShowThatMakeA] = useState(false); 
+  const [showAccent, setShowAccent] = useState(false); 
+  const [showThemeToggle, setShowThemeToggle] = useState(false); 
+  const [showCustomTile, setShowCustomTile] = useState(false);
 
   const [startScale, setStartScale] = useState(true);
 
@@ -59,7 +59,7 @@ const HeroSection = ({ openModal, isTimeoutHero }) => {
 
   return (
     <>
-      <section className="w-full pt-[66px] xl:pt-[88px] h-[calc(100vh - 57px)] min-h-[700px] relative">
+      <section className="w-full pt-[66px] xl:pt-[88px] h-[100vh] min-h-[700px] relative">
         <motion.div
           animate={{ zIndex: 10, height: isTimeoutHero ? "358px" : "calc(100vh - 57px)" }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -165,7 +165,7 @@ const HeroSection = ({ openModal, isTimeoutHero }) => {
           )}
         </motion.div>
         {isTimeoutHero && (
-          <div className="lg:hidden relative w-full min-h-[335px] max-h-[335px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+          <div className="lg:hidden relative w-full min-h-[335px] max-h-[335px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] absolute bottom-0">
             <Image
               src="/images/hero-mob.png"
               alt="Hero Image"
