@@ -82,7 +82,7 @@ export default function PrecisionSection({ openModal }) {
             priority
             style={{
                 transform: showImage ?  "scale(0.8) translateX(-40px)" : "scale(1) translateX(0px)",
-                transition: "transform 4s cubic-bezier(.4,0,.2,1)",
+                transition: "transform 2s cubic-bezier(.4,0,.2,1)",
               }}
           />
         </div>
