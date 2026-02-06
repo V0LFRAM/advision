@@ -38,7 +38,7 @@ export function HeaderSection() {
   return (
     <header
       className={`
-        relative w-full z-[50] border-b border-[rgb(var(--border))]
+        relative h-[80px] lg:h-[100px] w-full z-[50] border-b border-[rgb(var(--border))]
         bg-[rgb(var(--bg))] max-w-full
       `}
     >
