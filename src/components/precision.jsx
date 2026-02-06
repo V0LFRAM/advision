@@ -26,24 +26,24 @@ export default function PrecisionSection({ openModal }) {
     let sequence;
     if (variant) {
       sequence = [
-        { setter: setShowPrecision, delay: 400 },
-        { setter: setShowText, delay: 400 },
-        { setter: setShowLoved, delay: 400 },
-        { setter: setShowDescription, delay: 400 },
-        { setter: setShowButton, delay: 400 },
-        { setter: setShowHallImage, delay: 400 },
-        { setter: setShowImage, delay: 400 },
+        { setter: setShowPrecision, delay: 300 },
+        { setter: setShowText, delay: 300 },
+        { setter: setShowLoved, delay: 300 },
+        { setter: setShowDescription, delay: 300 },
+        { setter: setShowButton, delay: 300 },
+        { setter: setShowHallImage, delay: 300 },
+        { setter: setShowImage, delay: 300 },
       ];
     } else {
       sequence = [
-        { setter: setShowImage, delay: 400 },
+        { setter: setShowImage, delay: 300 },
         { setter: setShowMobileTextTwo, delay: 700 },
-        { setter: setShowLoved, delay: 400 },
-        { setter: setShowText, delay: 400 },
-        { setter: setShowPrecision, delay: 400 },
-        { setter: setShowDescription, delay: 400 },
-        { setter: setShowButton, delay: 400 },
-        { setter: setShowHallImage, delay: 400 },
+        { setter: setShowLoved, delay: 300 },
+        { setter: setShowText, delay: 300 },
+        { setter: setShowPrecision, delay: 300 },
+        { setter: setShowDescription, delay: 300 },
+        { setter: setShowButton, delay: 300 },
+        { setter: setShowHallImage, delay: 300 },
       ];
     }
 

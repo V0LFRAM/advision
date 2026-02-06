@@ -51,14 +51,14 @@ const About = () => {
 
   useEffect(() => {
     const sequence = [
-      { setter: setShowCraftsmanship, delay: 400 },
-      { setter: setShowYou, delay: 400 },
-      { setter: setShowDesignThat, delay: 400 },
-      { setter: setShowThatLasts, delay: 400 },
-      { setter: setShowReflects, delay: 400 },
-      { setter: setShowContent, delay: 400 },
-      { setter: setShowText, delay: 400 },
-      { setter: setShowMore, delay: 400 },
+      { setter: setShowCraftsmanship, delay: 300 },
+      { setter: setShowYou, delay: 300 },
+      { setter: setShowDesignThat, delay: 300 },
+      { setter: setShowThatLasts, delay: 300 },
+      { setter: setShowReflects, delay: 300 },
+      { setter: setShowContent, delay: 300 },
+      { setter: setShowText, delay: 300 },
+      { setter: setShowMore, delay: 300 },
     ];
     let timers = [];
     if (animated) {

@@ -36,8 +36,8 @@ function TrustSection() {
 
   useEffect(() => {
     const sequence = [
-      { setter: setShowWhyPeople, delay: 400 },
-      { setter: setShowTrust, delay: 400 },
+      { setter: setShowWhyPeople, delay: 300 },
+      { setter: setShowTrust, delay: 300 },
     ];
 
     let timers = [];
