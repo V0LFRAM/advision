@@ -50,13 +50,13 @@ export const LookSection = () => {
 
   useEffect(() => {
     const sequence = [
-      { setter: setShowSolutions, delay: 400 },
-      { setter: setShowRealHomes, delay: 400 },
-      { setter: setShowWithCustomFinishing, delay: 400 },
-      { setter: setShowTakeA, delay: 400 },
-      { setter: setShowWeveEnhanced, delay: 400 },
-      { setter: setShowAt, delay: 400 },
-      { setter: setShowCloserLook, delay: 400 },
+      { setter: setShowSolutions, delay: 300 },
+      { setter: setShowRealHomes, delay: 300 },
+      { setter: setShowWithCustomFinishing, delay: 300 },
+      { setter: setShowTakeA, delay: 300 },
+      { setter: setShowWeveEnhanced, delay: 300 },
+      { setter: setShowAt, delay: 300 },
+      { setter: setShowCloserLook, delay: 300 },
     ];
 
     let timers = [];
@@ -205,7 +205,7 @@ export const LookSection = () => {
       <div className="md:hidden px-[19px] pr-[20px] relative">
         <h2
           className="
-            text-left font-league font-regular uppercase tracking-[-0.02em]
+            text-left font-regular uppercase tracking-[-0.02em]
             text-[33px] leading-[100%] mb-[40px]
           "
         >

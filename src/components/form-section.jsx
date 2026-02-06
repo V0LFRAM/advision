@@ -23,11 +23,11 @@ const FormSection = () => {
 
   useEffect(() => {
     const sequence = [
-      { setter: setShowReady, delay: 400 },
-      { setter: setShowFreeQuote, delay: 400 },
-      { setter: setShowTellUsAbout, delay: 400 },
-      { setter: setShowForm, delay: 400 },
-      { setter: setShowImages, delay: 400 },
+      { setter: setShowReady, delay: 300 },
+      { setter: setShowFreeQuote, delay: 300 },
+      { setter: setShowTellUsAbout, delay: 300 },
+      { setter: setShowForm, delay: 300 },
+      { setter: setShowImages, delay: 300 },
     ];
 
     let timers = [];
