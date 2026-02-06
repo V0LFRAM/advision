@@ -64,11 +64,11 @@ const HeroSection = ({ openModal, isTimeoutHero }) => {
   return (
     <>
     {!isTimeoutHero && (
-      <div className="w-full h-[100vh] flex items-center justify-center">
+      <div className="w-full h-[90vh] flex items-center justify-center">
         <LoadingTextAnimated />
       </div>
     )}
-      <section className={`w-full pt-[66px] xl:pt-[88px] h-[100vh] ${variant ? "min-h-[700px]" : ""} relative`}>
+      <section className={`w-full pt-[66px] xl:pt-[88px] h-[90vh] ${variant ? "min-h-[700px]" : ""} relative`}>
         <motion.div
           animate={{ zIndex: 10, height: isTimeoutHero ? "358px" : "calc(100vh - 100px)" }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
