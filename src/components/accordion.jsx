@@ -35,7 +35,7 @@ export default function AccordionSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-40% 0px" });
+  const isInView = useInView(ref, { once: true, margin: "-30% 0px" });
 
 
   const [showInMinneapolis, setShowInMinneapolis] = useState(false); 
@@ -159,6 +159,7 @@ export default function AccordionSection() {
                       <Image
                         src={item.img}
                         alt={item.title}
+                        quality={100}
                         width={161}
                         height={223}
                         className="object-cover w-[161px] lg:w-[233px] h-[223px] lg:h-[155px]"

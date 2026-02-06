@@ -36,6 +36,7 @@ const NavContactsSideBar = () => {
             fill
             className="object-contain dark:hidden"
             priority
+            quality={100}
           />
           <Image
             src="/images/email-dark.png"
@@ -43,6 +44,7 @@ const NavContactsSideBar = () => {
             fill
             className="object-contain hidden dark:block"
             priority
+            quality={100}
           />
         </div>
         <a href="mailto:edvisions.pro@gmail.com" className="leading-[20px] text-[16px]">

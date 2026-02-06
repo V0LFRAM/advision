@@ -19,6 +19,7 @@ function Footer() {
             src={theme === "dark" ? "/images/logo-main-dark.png" : "/images/logo-main-light.png"}
             alt="EdVision Logo big"
             fill
+            quality={100}
             className="object-contain"
             priority
           />)}
@@ -39,6 +40,7 @@ function Footer() {
                     }
                     alt="Instagram"
                     fill
+                    quality={100}
                     className="object-contain"
                     priority
                   />
@@ -86,6 +88,7 @@ function Footer() {
                     src={theme === "dark" ? "/images/email-dark.png" : "/images/email-light.png"}
                     alt="Envelope"
                     fill
+                    quality={100}
                     className="object-contain"
                     priority
                   />)}

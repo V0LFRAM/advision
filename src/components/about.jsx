@@ -27,7 +27,7 @@ const textMock = [
 
 const About = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-40% 0px" });
+  const isInView = useInView(ref, { once: true, margin: "-30% 0px" });
   const [animated, setAnimated] = useState(false);
   
   const [showCraftsmanship, setShowCraftsmanship] = useState(false);
@@ -248,24 +248,6 @@ const About = () => {
           </ul>
         </div>
       </div>
-      {/* <Image
-        src="/images/about-bottom-decor.png"
-        alt="Decor"
-        width={1920}
-        height={100}
-        className="w-full h-auto xl:block hidden"
-        style={{
-                transform: isInViewImage ? "scale(1.1)" : "scale(1)",
-                transition: "transform 4s cubic-bezier(.4,0,.2,1)",
-              }}
-      />
-      <Image
-        src="/images/about-bottom-decor-mob.png"
-        alt="Decor"
-        width={1920}
-        height={100}
-        className="w-full h-auto xl:hidden"
-      /> */}
     </section>
   );
 };

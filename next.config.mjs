@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: false, // Опционально, для строгого режима
+    reactStrictMode: true,
     images: {
     domains: [], 
     loader: 'default', 
   },
+  images: {
+  qualities: [75, 100],
+}
 };
 
 

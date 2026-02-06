@@ -27,7 +27,7 @@ const trustItems = [
 
 function TrustSection() {
    const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-40% 0px" });
+  const isInView = useInView(ref, { once: true, margin: "-30% 0px" });
 
   const [showWhyPeople, setShowWhyPeople] = useState(false); 
   const [showTrust, setShowTrust] = useState(false); 
@@ -36,8 +36,8 @@ function TrustSection() {
 
   useEffect(() => {
     const sequence = [
-      { setter: setShowWhyPeople, delay: 500 },
-      { setter: setShowTrust, delay: 500 },
+      { setter: setShowWhyPeople, delay: 400 },
+      { setter: setShowTrust, delay: 400 },
     ];
 
     let timers = [];

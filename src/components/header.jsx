@@ -44,7 +44,7 @@ export function HeaderSection() {
     >
       <div
         className={`
-        lg:py-[20px] px-[20px] lg:px-[80px]
+        lg:py-[10px] px-[20px] lg:px-[80px]
         transition-transform duration-700 ease-in-out
         ${showHeader ? "translate-y-0" : "-translate-y-full"}
       `}
@@ -55,7 +55,7 @@ export function HeaderSection() {
           flex 
           items-center 
           justify-between
-          h-[57px]
+          h-[80px]
           "
         >
           {/* LOGO */}
@@ -66,6 +66,7 @@ export function HeaderSection() {
               fill
               className="object-contain dark:hidden"
               priority
+              quality={100}
             />
             <Image
               src="/images/logo-big-dark.png"
@@ -73,6 +74,7 @@ export function HeaderSection() {
               fill
               className="object-contain hidden dark:block"
               priority
+              quality={100}
             />
           </div>
 
@@ -127,12 +129,14 @@ export function HeaderSection() {
                 alt="Logo"
                 fill
                 className="object-contain dark:hidden"
+                quality={100}
               />
               <Image
                 src="/images/logo-big-dark.png"
                 alt="Logo"
                 fill
                 className="object-contain hidden dark:block"
+                quality={100}
               />
             </div>
 
@@ -175,12 +179,14 @@ export function HeaderSection() {
                   alt="Instagram"
                   fill
                   className="object-contain dark:hidden"
+                  quality={100}
                 />
                 <Image
                   src="/images/instagram-dark.png"
                   alt="Instagram"
                   fill
                   className="object-contain hidden dark:block"
+                  quality={100}
                 />
               </div>
 

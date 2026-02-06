@@ -54,6 +54,7 @@ const FormSection = () => {
             alt="Decor"
             width={1920}
             height={100}
+            quality={100}
             className="w-[487px] h-[895px]"
           />
         </div>
@@ -82,6 +83,7 @@ const FormSection = () => {
                 alt="Decor"
                 width={1920}
                 height={100}
+                quality={100}
                 className="w-full h-auto"
               />
             </div>

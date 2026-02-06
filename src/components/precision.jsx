@@ -10,7 +10,7 @@ import { useBreakpointValue } from "@chakra-ui/react";
 
 export default function PrecisionSection({ openModal }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-40% 0px" });
+  const isInView = useInView(ref, { once: true, margin: "-30% 0px" });
   const variant = useBreakpointValue({ base: false, lg: true });
 
   const [showPrecision, setShowPrecision] = useState(false);
@@ -63,7 +63,7 @@ export default function PrecisionSection({ openModal }) {
   }, [isInView]);
 
   return (
-    <section ref={ref} id="your-idea" className="w-full relative overflow-hidden xl:h-[100vh]">
+    <section ref={ref} id="your-idea" className="w-full relative overflow-hidden lg:h-[80vh] xl:h-[100vh]">
       <div className="absolute inset-0 -z-10 bg-[rgb(var(--bg))]" />
 
       {/* DESKTOP layout (xl and up) */}
@@ -79,6 +79,7 @@ export default function PrecisionSection({ openModal }) {
             height={398}
             className="object-cover"
             priority
+            quality={100}
             style={{
               transform: showImage ? "scale(0.8) translateX(-40px)" : "scale(1) translateX(0px)",
               transition: "transform 2s cubic-bezier(.4,0,.2,1)",
@@ -159,6 +160,7 @@ export default function PrecisionSection({ openModal }) {
                   height={332}
                   className="object-cover"
                   priority
+                  quality={100}
                 />
               </div>
             </div>
@@ -238,6 +240,7 @@ export default function PrecisionSection({ openModal }) {
               src="/images/precision-corridor.png"
               alt="design mobile corridor"
               fill
+              quality={100}
               className="object-cover"
               style={{
                 transition: "all 2s cubic-bezier(.4,0,.2,1)",
@@ -285,6 +288,7 @@ export default function PrecisionSection({ openModal }) {
               alt="design mobile hall"
               fill
               className="object-cover"
+              quality={100}
               style={{
                 objectPosition: "calc(100% + 19px) center",
               }}

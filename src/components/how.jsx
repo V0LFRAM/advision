@@ -39,7 +39,7 @@ const steps = [
 
 const HowSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-40% 0px" });
+  const isInView = useInView(ref, { once: true, margin: "-30% 0px" });
 
 
   const [showHowWe, setShowHowWe] = useState(false); 
@@ -140,7 +140,7 @@ const HowSection = () => {
                   </h3>
                   <p className="font-inter text-[14px] leading-[1.4] mb-[12px]">{text}</p>
                   <div className="w-[197px] h-[165px] relative">
-                    <Image src={img} alt={title} fill className="object-cover" />
+                    <Image src={img} alt={title} fill quality={100} className="object-cover" />
                   </div>
                 </div>
               </div>
@@ -181,7 +181,7 @@ const HowSection = () => {
                   <h3 className="font-inter font-[500] text-[16px] mb-2 text-[#9B948A]">{title}</h3>
                   <p className="font-inter text-[14px] leading-[1.4] mb-4">{text}</p>
                   <div className="w-full h-[180px] relative">
-                    <Image src={img} alt={title} fill className="object-cover" />
+                    <Image src={img} alt={title} quality={100} fill className="object-cover" />
                   </div>
                 </div>
               </div>

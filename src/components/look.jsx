@@ -37,7 +37,8 @@ export const LookSection = () => {
   const [index, setIndex] = useState(0);
 
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-40% 0px" });
+  const isInView = useInView(ref, { once: true, margin: "-30% 0px" });
+  const [customSize, setCustomSize] = useState(null);
 
   const [showSolutions, setShowSolutions] = useState(false);
   const [showRealHomes, setShowRealHomes] = useState(false);
@@ -73,6 +74,15 @@ export const LookSection = () => {
     return () => timers.forEach(clearTimeout);
   }, [isInView]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setCustomSize(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const nextSlide = () => {
     setIndex((prev) => (prev + 1) % lookItems.length);
   };
@@ -85,9 +95,22 @@ export const LookSection = () => {
     const total = lookItems.length;
     const left = (index - 1 + total) % total;
     const center = index;
-    const centerTwo = (index + 1) % total; // visible ≥1920px
+    const centerTwo =  (index + 1) % total; // visible ≥1920px
     const right = (index + 2) % total;
+
+  if (customSize < 768) {
+    return [lookItems[left]];
+  } else if (customSize <= 1024) {
+    return [lookItems[left], lookItems[center]];
+  } else if (customSize <= 1280) {
+    return [lookItems[left], lookItems[center], lookItems[centerTwo]];
+  } else if (customSize <= 1536) {
+    return [lookItems[left], lookItems[center], lookItems[centerTwo]];
+  } else if (customSize <= 1920) {
     return [lookItems[left], lookItems[center], lookItems[centerTwo], lookItems[right]];
+  } else {
+    return [lookItems[left], lookItems[center], lookItems[centerTwo], lookItems[right]];
+  }
   };
 
   const visibleItems = getVisibleItems();
@@ -137,8 +160,6 @@ export const LookSection = () => {
               key={idx}
               className={`
                 relative transition-all duration-500
-                ${idx === 1 ? "hidden xl:block" : "block"}
-                ${idx === 2 ? "hidden 2xl:block" : ""}
               `}
             >
               <Image
@@ -147,6 +168,7 @@ export const LookSection = () => {
                 width={373}
                 height={438}
                 className="object-cover w-[373px] h-[438px] z-[1]"
+                quality={100}
               />
               <p
                 className="
@@ -165,7 +187,7 @@ export const LookSection = () => {
               absolute left-[20px] top-1/2 -translate-y-1/2 z-[10]
             "
           >
-            <Image src="/lib/icons/chevron-left.png" alt="Previous" width={40} height={40} />
+            <Image src="/lib/icons/chevron-left.png" alt="Previous" quality={100} width={40} height={40} />
           </button>
 
           <button
@@ -174,7 +196,7 @@ export const LookSection = () => {
               absolute right-[20px] top-1/2 -translate-y-1/2 z-[10]
             "
           >
-            <Image src="/lib/icons/chevron-right.png" alt="Next" width={40} height={40} />
+            <Image src="/lib/icons/chevron-right.png" quality={100} alt="Next" width={40} height={40} />
           </button>
         </div>
       </div>
@@ -221,18 +243,19 @@ export const LookSection = () => {
             width={336}
             height={392}
             className="object-cover w-[336px] h-[392px] z-[1]"
+            quality={100}
           />
           <button
             onClick={prevSlide}
             className="absolute left-[12px] top-1/2 -translate-y-1/2 z-[10]"
           >
-            <Image src="/lib/icons/chevron-left.png" alt="Previous" width={32} height={32} />
+            <Image src="/lib/icons/chevron-left.png" quality={100} alt="Previous" width={32} height={32} />
           </button>
           <button
             onClick={nextSlide}
             className="absolute right-[12px] top-1/2 -translate-y-1/2 z-[10]"
           >
-            <Image src="/lib/icons/chevron-right.png" alt="Next" width={32} height={32} />
+            <Image src="/lib/icons/chevron-right.png" quality={100} alt="Next" width={32} height={32} />
           </button>
         </div>
 

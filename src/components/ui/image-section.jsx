@@ -5,7 +5,7 @@ import { useRef } from "react";
 
 const ImageSection = () => {
     const ref = useRef(null);
-    const isInViewImage = useInView(ref, { once: true, margin: "-40% 0px" });
+    const isInViewImage = useInView(ref, { once: true, margin: "-30% 0px" });
     
   return (
     <section ref={ref}>
@@ -14,6 +14,7 @@ const ImageSection = () => {
             alt="Decor"
             width={1920}
             height={100}
+            quality={100}
             className="w-full h-auto xl:block hidden"
             style={{
                 transform: isInViewImage ? "scale(1.1)" : "scale(1)",
@@ -25,6 +26,7 @@ const ImageSection = () => {
             alt="Decor"
             width={1920}
             height={100}
+            quality={100}
             className="w-full h-auto xl:hidden"
             style={{
                 transform: isInViewImage ? "scale(1.1)" : "scale(1)",

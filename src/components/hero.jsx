@@ -63,19 +63,18 @@ const HeroSection = ({ openModal, isTimeoutHero }) => {
 
   return (
     <>
+    {!isTimeoutHero && (
+      <div className="w-full h-[100vh] flex items-center justify-center">
+        <LoadingTextAnimated />
+      </div>
+    )}
       <section className={`w-full pt-[66px] xl:pt-[88px] h-[100vh] ${variant ? "min-h-[700px]" : ""} relative`}>
         <motion.div
-          animate={{ zIndex: 10, height: isTimeoutHero ? "358px" : "calc(100vh - 57px)" }}
+          animate={{ zIndex: 10, height: isTimeoutHero ? "358px" : "calc(100vh - 100px)" }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
           className="pl-[20px] pr-[20px] lg:pl-[82px] lg:pr-[78px] relative flex flex-col gap-y-10 z-10 bg-[rgb(var(--bg))] overflow-hidden"
         >
           <GridBack />
-
-          {!isTimeoutHero && (
-            <div className="w-full h-[80vh] flex items-center justify-center pb-[200px]">
-              <LoadingTextAnimated />
-            </div>
-          )}
 
           {isTimeoutHero && (
             <h1 className="flex flex-wrap items-baseline gap-x-3">
@@ -169,7 +168,7 @@ const HeroSection = ({ openModal, isTimeoutHero }) => {
           )}
         </motion.div>
         {isTimeoutHero && (
-          <div className="lg:hidden relative w-full min-h-[335px] max-h-[335px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] absolute bottom-0">
+          <div className="lg:hiddenw w-full min-h-[335px] max-h-[335px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] absolute bottom-0">
             <Image
               src="/images/hero-mob.png"
               alt="Hero Image"
