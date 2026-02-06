@@ -28,12 +28,12 @@ const HeroSection = ({ openModal, isTimeoutHero }) => {
 
   useEffect(() => {
     const sequence = [
-      { setter: setShowStatement, delay: 1500 },
-      { setter: setShowWalls, delay: 500 },
-      { setter: setShowThatMakeA, delay: 500 },
-      { setter: setShowAccent, delay: 500 },
-      { setter: setShowThemeToggle, delay: 500 },
-      { setter: setShowCustomTile, delay: 500 },
+      { setter: setShowStatement, delay: 1300 },
+      { setter: setShowWalls, delay: 400 },
+      { setter: setShowThatMakeA, delay: 400 },
+      { setter: setShowAccent, delay: 400 },
+      { setter: setShowThemeToggle, delay: 400 },
+      { setter: setShowCustomTile, delay: 400 },
     ];
 
     let timers = [];

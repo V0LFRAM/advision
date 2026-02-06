@@ -31,7 +31,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsTimeoutHero(true);
-    }, 2000); 
+    }, 1800); 
 
     if (!isTimeoutHero) {
       document.body.style.overflow = "hidden";
