@@ -205,7 +205,7 @@ export const LookSection = () => {
       <div className="md:hidden px-[19px] pr-[20px] relative">
         <h2
           className="
-            text-left font-league font-regular uppercase tracking-[-0.02em]
+            text-left font-regular uppercase tracking-[-0.02em]
             text-[33px] leading-[100%] mb-[40px]
           "
         >
