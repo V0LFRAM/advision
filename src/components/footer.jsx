@@ -16,13 +16,14 @@ function Footer() {
         <div className="mb-[41px] md:mb-[20px] ml-[5px] md:ml-0 w-[326px] h-[92px] relative">
           {mounted && (
             <Image
-            src={theme === "dark" ? "/images/logo-main-dark.png" : "/images/logo-main-light.png"}
-            alt="EdVision Logo big"
-            fill
-            quality={100}
-            className="object-contain"
-            priority
-          />)}
+              src={theme === "dark" ? "/images/logo-main-dark.svg" : "/images/logo-main-light.svg"}
+              alt="EdVision Logo main"
+              fill
+              quality={100}
+              className="object-contain"
+              priority
+            />
+          )}
         </div>
 
         <div className="flex flex-col md:gap-[20px] xl:flex-row-reverse justify-start items-start w-full">
@@ -32,11 +33,18 @@ function Footer() {
               Minneapolis and surrounding suburbs.{" "}
             </p>
             <div className="flex flex-row justify-start gap-[11px] md:gap-[8px] mt-[11px] z-10">
-              <a href="https://www.instagram.com/edward_tiler?igsh=emhpb2ZmbXB2ZHUz" target="_blank" rel="noopener noreferrer" className="relative w-[25px] h-[25px]">
+              <a
+                href="https://www.instagram.com/edward_tiler?igsh=emhpb2ZmbXB2ZHUz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative w-[25px] h-[25px]"
+              >
                 {mounted && (
                   <Image
                     src={
-                      theme === "dark" ? "/images/instagram-dark.png" : "/images/instagram-light.png"
+                      theme === "dark"
+                        ? "/images/instagram-dark.png"
+                        : "/images/instagram-light.png"
                     }
                     alt="Instagram"
                     fill
@@ -44,7 +52,7 @@ function Footer() {
                     className="object-contain"
                     priority
                   />
-                  )}
+                )}
               </a>
               <svg
                 width="26"
@@ -64,8 +72,8 @@ function Footer() {
           <div className="flex flex-col items-start mt-[28px] md:mt-0 mr-0 md:mr-[79px]">
             <div className="flex flex-col items-start">
               <p className="inline">Contacts:</p>
-                <a href="tel:+17634855531" className="flex mt-[6px] gap-[10px]">
-                  <svg
+              <a href="tel:+17634855531" className="flex mt-[6px] gap-[10px]">
+                <svg
                   width="20"
                   height="20"
                   viewBox="0 0 20 20"
@@ -79,22 +87,27 @@ function Footer() {
                     fill="currentColor"
                   />
                 </svg>
-                  +17634855531
-                  </a>
-                
-                <a href="mailto:edvisions.pro@gmail.com" className="lineHeight-20px flex items-center mt-[8px] gap-[10px]">
-                  <div className="relative w-[20px] h-[20px]">
-                  {mounted && (<Image
-                    src={theme === "dark" ? "/images/email-dark.png" : "/images/email-light.png"}
-                    alt="Envelope"
-                    fill
-                    quality={100}
-                    className="object-contain"
-                    priority
-                  />)}
+                +17634855531
+              </a>
+
+              <a
+                href="mailto:edvisions.pro@gmail.com"
+                className="lineHeight-20px flex items-center mt-[8px] gap-[10px]"
+              >
+                <div className="relative w-[20px] h-[20px]">
+                  {mounted && (
+                    <Image
+                      src={theme === "dark" ? "/images/email-dark.png" : "/images/email-light.png"}
+                      alt="Envelope"
+                      fill
+                      quality={100}
+                      className="object-contain"
+                      priority
+                    />
+                  )}
                 </div>
-                  edvisions.pro@gmail.com
-                </a>
+                edvisions.pro@gmail.com
+              </a>
             </div>
           </div>
         </div>
