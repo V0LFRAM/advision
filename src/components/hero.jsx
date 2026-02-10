@@ -1,27 +1,23 @@
 "use client";
 
 import Image from "next/image";
-
 import { motion } from "framer-motion";
-
 import { Arrow } from "@/lib/icons/arrow";
 import { ThemeToggle } from "./ThemeToggle";
 import { HeroTitleStroke } from "./ui/hero-title-stroke";
 import { LoadingTextAnimated } from "./loading-text-animated";
 import { useBreakpointValue } from "@chakra-ui/react";
-
-
 import { useEffect, useState } from "react";
 import { GridBack } from "./ui/grid-back";
 
 const HeroSection = ({ openModal, isTimeoutHero }) => {
   const variant = useBreakpointValue({ base: false, lg: true });
 
-  const [showStatement, setShowStatement] = useState(false); 
-  const [showWalls, setShowWalls] = useState(false); 
+  const [showStatement, setShowStatement] = useState(false);
+  const [showWalls, setShowWalls] = useState(false);
   const [showThatMakeA, setShowThatMakeA] = useState(false);
-  const [showAccent, setShowAccent] = useState(false); 
-  const [showThemeToggle, setShowThemeToggle] = useState(false); 
+  const [showAccent, setShowAccent] = useState(false);
+  const [showThemeToggle, setShowThemeToggle] = useState(false);
   const [showCustomTile, setShowCustomTile] = useState(false);
 
   const [startScale, setStartScale] = useState(true);
@@ -63,12 +59,14 @@ const HeroSection = ({ openModal, isTimeoutHero }) => {
 
   return (
     <>
-    {!isTimeoutHero && (
-      <div className="w-full h-[90vh] flex items-center justify-center">
-        <LoadingTextAnimated />
-      </div>
-    )}
-      <section className={`w-full pt-[66px] xl:pt-[88px] h-[90vh] ${variant ? "min-h-[700px]" : ""} relative`}>
+      {!isTimeoutHero && (
+        <div className="w-full h-[90vh] flex items-center justify-center">
+          <LoadingTextAnimated />
+        </div>
+      )}
+      <section
+        className={`w-full pt-[66px] xl:pt-[88px] h-[90vh] ${variant ? "min-h-[700px]" : ""} relative`}
+      >
         <motion.div
           animate={{ zIndex: 10, height: isTimeoutHero ? "358px" : "calc(100vh - 100px)" }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -145,28 +143,39 @@ const HeroSection = ({ openModal, isTimeoutHero }) => {
                 bathroom remodels
               </p>
               <div className="flex gap-[17px] xl:gap-[35px]">
+                {/* Кнопка 1: Get a Free Quote */}
                 <button
                   onClick={() => openModal("contact")}
-                  className="bg-[#9B948A] text-[16px] xl:text-[18px] w-[159px] xl:w-[197px] h-[34px] xl:h-[46px] flex items-center justify-center gap-2 z-[10]"
+                  className="group relative overflow-hidden border-[#9B948A] border-[1px] text-[16px] xl:text-[18px] w-[159px] xl:w-[197px] h-[34px] xl:h-[46px] flex items-center justify-center gap-2 z-[10]"
                 >
-                  Get a Free Quote
-                  <span className="mt-[2px]">
-                    <Arrow />
+                  <span className="relative z-20 flex items-center gap-2 text-white group-hover:text-[rgb(var(--fg))] transition-colors duration-1000">
+                    Get a Free Quote
+                    <span className="mt-[2px] transition-transform duration-1000 ease-in-out group-hover:rotate-45 origin-center">
+                      <Arrow />
+                    </span>
                   </span>
+                  <div className="absolute inset-0 bg-[#9B948A] z-0" />
+                  <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-[rgb(var(--bg))] rounded-full transition-transform duration-1000 ease-in-out scale-0 group-hover:scale-[30] z-10" />
                 </button>
+
+                {/* Кнопка 2: Send Your Idea */}
                 <button
                   onClick={() => openModal("questionary")}
-                  className="border-[#9B948A] text-[16px] xl:text-[18px] border-[1px] w-[159px] xl:w-[197px] h-[34px] xl:h-[46px] flex items-center justify-center gap-2 z-[10]"
+                  className="group relative overflow-hidden border-[#9B948A] border-[1px] text-[16px] xl:text-[18px] w-[159px] xl:w-[197px] h-[34px] xl:h-[46px] flex items-center justify-center gap-2 z-[10]"
                 >
-                  Send Your Idea
-                  <span className="mt-[2px]">
-                    <Arrow />
+                  <span className="relative z-20 flex items-center gap-2 text-[rgb(var(--fg))] group-hover:text-white transition-colors duration-1000">
+                    Send Your Idea
+                    <span className="mt-[2px] transition-transform duration-1000 ease-in-out group-hover:rotate-45 origin-center">
+                      <Arrow />
+                    </span>
                   </span>
+                  <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-[#9B948A] rounded-full transition-transform duration-1000 ease-in-out scale-0 group-hover:scale-[30] z-10" />
                 </button>
               </div>
             </div>
           )}
         </motion.div>
+
         {isTimeoutHero && (
           <div className="lg:hiddenw w-full min-h-[335px] max-h-[335px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] absolute bottom-0">
             <Image
