@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { FiPaperclip, FiArrowUpRight } from "react-icons/fi";
+import { FiPaperclip } from "react-icons/fi";
+import { Arrow } from "@/lib/icons/arrow"; // Импорт вашей иконки
 
 const ContactForm = ({ onSuccess, width }) => {
   const [sending, setSending] = useState(false);
@@ -19,7 +20,6 @@ const ContactForm = ({ onSuccess, width }) => {
     const formData = new FormData(e.currentTarget);
 
     try {
-      // 🔧 CHANGE: обычный fetch без throw
       const res = await fetch("/api/contact", {
         method: "POST",
         body: formData,
@@ -27,20 +27,13 @@ const ContactForm = ({ onSuccess, width }) => {
 
       if (res.ok) {
         setStatus("success");
-
         setFileName("");
-
-        // ✅ СБРОС ФОРМЫ
         formRef.current?.reset();
-
-        // 🔧 CHANGE: открываем success modal
         onSuccess?.();
       } else {
-        // 🔧 CHANGE: ошибка ТОЛЬКО если реально не ok
         setStatus("error");
       }
     } catch (err) {
-      // 🔧 CHANGE: catch — только для сетевых ошибок
       setStatus("error");
     } finally {
       setSending(false);
@@ -57,13 +50,13 @@ const ContactForm = ({ onSuccess, width }) => {
         <input
           name="fullName"
           placeholder="Full Name"
-          className="w-full h-[33px] xl:h-[50px] border border-[#B7B0A6] bg-transparent px-4 placeholder:text-[#9B948A]"
+          className="w-full h-[33px] xl:h-[50px] border border-[#B7B0A6] bg-transparent px-4 placeholder:text-[#9B948A] text-[#DFE0DB]"
         />
 
         <input
           name="phone"
           placeholder="Phone Number"
-          className="w-full h-[33px] xl:h-[50px] border border-[#B7B0A6] bg-transparent px-4 placeholder:text-[#9B948A]"
+          className="w-full h-[33px] xl:h-[50px] border border-[#B7B0A6] bg-transparent px-4 placeholder:text-[#9B948A] text-[#DFE0DB]"
         />
 
         <input
@@ -71,20 +64,20 @@ const ContactForm = ({ onSuccess, width }) => {
           name="email"
           required
           placeholder="Email"
-          className="w-full h-[33px] xl:h-[50px] border border-[#B7B0A6] bg-transparent px-4 placeholder:text-[#9B948A]"
+          className="w-full h-[33px] xl:h-[50px] border border-[#B7B0A6] bg-transparent px-4 placeholder:text-[#9B948A] text-[#DFE0DB]"
         />
 
         <div className="relative">
           <textarea
             name="message"
             placeholder="Describe Your Project"
-            className="w-full h-[128px] xl:h-[140px] border border-[#B7B0A6] bg-transparent px-4 resize-y placeholder:text-[#9B948A]"
+            className="w-full h-[128px] xl:h-[140px] border border-[#B7B0A6] bg-transparent px-4 pt-2 resize-y placeholder:text-[#9B948A] text-[#DFE0DB]"
           />
 
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="absolute bottom-[20px] right-[12px] text-[#B7B0A6]"
+            className="absolute bottom-[20px] right-[12px] text-[#B7B0A6] hover:text-[#DFE0DB] transition-colors"
           >
             <FiPaperclip size={18} />
           </button>
@@ -100,20 +93,31 @@ const ContactForm = ({ onSuccess, width }) => {
 
         {fileName && <div className="text-sm text-[#ffffff59]">Attached: {fileName}</div>}
 
-        {/* 🔧 CHANGE: ошибка показывается ТОЛЬКО при реальном fail */}
         {status === "error" && (
           <div className="text-red-500 border border-red-500 p-2 text-sm">
             Something went wrong. Try again.
           </div>
         )}
 
+        {/* ОБНОВЛЕННАЯ КНОПКА С АНИМАЦИЕЙ */}
         <button
           type="submit"
           disabled={sending}
-          className="flex items-center justify-between bg-[#A89F94] hover:bg-[#9A9186] text-[#DFE0DB] py-[8px] px-[11px] h-[34px] disabled:opacity-70"
+          className="group relative overflow-hidden flex items-center justify-between border border-[#A89F94] h-[34px] xl:h-[46px] px-[11px] disabled:opacity-70"
         >
-          <span>{sending ? "Sending..." : "Send"}</span>
-          <FiArrowUpRight size={22} />
+          {/* Контент кнопки */}
+          <span className="relative z-20 flex items-center justify-between w-full text-[#DFE0DB] group-hover:text-[rgb(var(--fg))] transition-colors duration-1000">
+            <span>{sending ? "Sending..." : "Send"}</span>
+            <span className="transition-transform duration-1000 ease-in-out group-hover:rotate-45 origin-center">
+              <Arrow />
+            </span>
+          </span>
+
+          {/* Основной фон (серый) */}
+          <div className="absolute inset-0 bg-[#A89F94] z-0" />
+
+          {/* Пустота (круг), расширяющаяся из центра левого края */}
+          <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-[rgb(var(--bg))] rounded-full transition-transform duration-1000 ease-in-out scale-0 group-hover:scale-[35] z-10" />
         </button>
       </form>
     </>

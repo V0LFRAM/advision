@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FiArrowUpRight } from "react-icons/fi";
+import { Arrow } from "@/lib/icons/arrow"; // Импорт новой стрелки
 import { TitleStroke } from "./ui/title-stroke";
 
 import { useEffect, useRef, useState } from "react";
@@ -63,7 +63,11 @@ export default function PrecisionSection({ openModal }) {
   }, [isInView]);
 
   return (
-    <section ref={ref} id="your-idea" className="w-full relative overflow-hidden lg:h-[80vh] xl:h-[100vh]">
+    <section
+      ref={ref}
+      id="your-idea"
+      className="w-full relative overflow-hidden lg:h-[80vh] xl:h-[100vh]"
+    >
       <div className="absolute inset-0 -z-10 bg-[rgb(var(--bg))]" />
 
       {/* DESKTOP layout (xl and up) */}
@@ -141,14 +145,22 @@ export default function PrecisionSection({ openModal }) {
                 and a transparent quote — all within 24 hours.
               </p>
 
+              {/* DESKTOP BUTTON */}
               <button
                 onClick={() => openModal("questionary")}
-                className="relative z-30 w-fit flex items-center gap-3 bg-[#A89F94] hover:bg-[#92897F] transition-all px-8 py-3 text-[17px] font-medium"
+                className="group relative overflow-hidden z-30 w-fit flex items-center px-8 py-3 text-[17px] font-medium border border-[#A89F94]"
                 style={{ visibility: showButton ? "visible" : "hidden" }}
               >
-                Send Us Your Idea
-                <FiArrowUpRight size={20} />
+                <span className="relative z-20 flex items-center gap-3 text-white group-hover:text-[rgb(var(--fg))] transition-colors duration-1000">
+                  Send Us Your Idea
+                  <span className="mt-[2px] transition-transform duration-1000 ease-in-out group-hover:rotate-45 origin-center">
+                    <Arrow />
+                  </span>
+                </span>
+                <div className="absolute inset-0 bg-[#A89F94] z-0" />
+                <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-[rgb(var(--bg))] rounded-full transition-transform duration-1000 ease-in-out scale-0 group-hover:scale-[30] z-10" />
               </button>
+
               <div
                 style={{ visibility: showHallImage ? "visible" : "hidden" }}
                 className="mt-[60px] absolute w-[622px] h-[332px]"
@@ -268,13 +280,21 @@ export default function PrecisionSection({ openModal }) {
             You'll receive a clear plan, expert recommendations, and a transparent quote — all
             within 24 hours.
           </p>
+
+          {/* MOBILE BUTTON */}
           <button
             style={{ visibility: showButton ? "visible" : "hidden" }}
             onClick={() => openModal("questionary")}
-            className="relative z-30 flex items-center justify-center gap-3 bg-[#A89F94] hover:bg-[#92897F] transition-all px-6 py-3 text-[16px] font-medium w-[159px] h-[34px] ml-0"
+            className="group relative overflow-hidden z-30 flex items-center justify-center px-6 py-3 w-[159px] h-[34px] ml-0 text-[16px] font-medium border border-[#A89F94]"
           >
-            <span className="text-nowrap">Send Us Your Idea</span>
-            <FiArrowUpRight size={20} />
+            <span className="relative z-20 flex items-center justify-center gap-3 text-white group-hover:text-[rgb(var(--fg))] transition-colors duration-1000">
+              <span className="text-nowrap">Send Us Your Idea</span>
+              <span className="mt-[2px] transition-transform duration-1000 ease-in-out group-hover:rotate-45 origin-center">
+                <Arrow />
+              </span>
+            </span>
+            <div className="absolute inset-0 bg-[#A89F94] z-0" />
+            <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-[rgb(var(--bg))] rounded-full transition-transform duration-1000 ease-in-out scale-0 group-hover:scale-[30] z-10" />
           </button>
         </div>
 
