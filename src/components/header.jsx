@@ -20,8 +20,7 @@ export function HeaderSection() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowHeader(true);
-    }, 2000); 
-
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
